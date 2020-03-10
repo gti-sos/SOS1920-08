@@ -1,0 +1,27 @@
+head {
+	margin-left: none;
+}
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: black;
+	background-color: #a09fb5
+}
+h1 {
+	font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
+	text-align: center;
+	margin-top: 50px;
+}
+li {
+	padding-bottom: 1em;
+}
+.logo {
+	position: absolute;
+	top: 25px;
+	right: 50px;
+	width: 200px;
+}
+.cuerpo {
+	padding-top: 3em;
+	margin-left: 15em;
+
+}
