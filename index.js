@@ -4,6 +4,7 @@ var app = express();
 var port = process.env.PORT || 80;
 const BASE_PATH = "/api/v1";
 app.use(bodyParser.json());
+app.use("/", express.static("./public"));
 var electricityProduced = [];
 
 // GET electricityProduced/loadInitialData
