@@ -169,7 +169,6 @@ app.get(BASE_PATH + "/motogp-statistics/loadInitialData", (req, res) =>{
 		victory: 47,
 		podium: 114
 		},
-
 		{
 		country: "Spain",
 		pilot: "Marc_Marquez",
@@ -177,7 +176,63 @@ app.get(BASE_PATH + "/motogp-statistics/loadInitialData", (req, res) =>{
 		world_title: 6,
 		victory: 56,
 		podium: 95
-		}
+		},
+		{
+		country: "Italy",
+		pilot: "Giacomo_Agostini",
+		last_title: 1975,
+		world_title: 8,
+		victory: 68,
+		podium: 88
+		},
+		{
+		country: "Italy",
+		pilot: "Valentino_Rossi",
+		last_title: 2009,
+		world_title: 7,
+		victory: 89,
+		podium: 198
+		},
+		{
+		country: "Australia",
+		pilot: "Mick_Doohan",
+		last_title: 1998,
+		world_title: 5,
+		victory: 54,
+		podium: 95
+		},
+		{
+		country: "Australia",
+		pilot: "Casey_Stoner",
+		last_title: 2011,
+		world_title: 2,
+		victory: 38,
+		podium: 69
+		},
+		{
+		country: "EEUU",
+		pilot: "Wayne_Rainey",
+		last_title: 1992,
+		world_title: 3,
+		victory: 24,
+		podium: 64
+		},
+		{
+		country: "Great_Britain",
+		pilot: "Mike_Hailwood",
+		last_title: 1965,
+		world_title: 4,
+		victory: 37,
+		podium: 48
+		},
+		{
+		country: "EEUU",
+		pilot: "Eddie_Lawson",
+		last_title: 1989,
+		world_title: 4,
+		victory: 31,
+		podium: 78
+		},
 	];
 	
 	motogp_statistics = motogp_statisticsInitial;
