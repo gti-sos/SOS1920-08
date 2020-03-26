@@ -8,8 +8,6 @@ app.use("/", express.static("./public"));
 var electricityProduced = [];
  
 
-//----------------------------------------------API ANGEL-------------------------------------------------------------------
-
 app.get(BASE_PATH + "/electricity-produced-stats/docs/", (req, res) => {
         res.redirect("https://documenter.getpostman.com/view/10851956/SzYUXfsE");
     });
@@ -20,6 +18,10 @@ app.get(BASE_PATH + "/motogp-statistics/docs/", (req, res) => {
 app.get(BASE_PATH + "/ucl_stats/docs/", (req, res) => {
         res.redirect("https://documenter.getpostman.com/view/10690065/SzYUa1nB");
     });
+
+//----------------------------------------------API ANGEL-------------------------------------------------------------------
+
+
 // GET electricityProduced/loadInitialData
 app.get(BASE_PATH + "/electricity-produced-stats/loadInitialData", (req, res)=> {
 	var electricityProducedInitial = [
