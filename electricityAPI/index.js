@@ -75,7 +75,7 @@ app.delete(BASE_PATH + "/electricity-produced-stats", (req, res)=>{
 //PUT NOT ALLOWED ON THE ENTIRE ARRAY
 
 app.put(BASE_PATH + "/electricity-produced-stats", (req, res) =>{
-	res.sendStatus(405, "YOU FUCKING DONKEY, THIS IS NOT ALLOWED");
+	res.sendStatus(405);
 });
 
 
@@ -83,14 +83,13 @@ app.put(BASE_PATH + "/electricity-produced-stats", (req, res) =>{
 app.get(BASE_PATH + "/electricity-produced-stats/:country/:state", (req, res)=>{
 	var country= req.params.country;
 	var state = req.params.state;
-	var filteredData= electricityProduced.filter((e) =>{
-		return (e.country == country) && (e.state == state);
-	});
-	if(filteredData.length >= 1){
-		res.send(filteredData[0]);
-	}else{
-		res.send(404, "Data not Found");
-	}
+	db.find({country : country, state : state}, (err,electricityProducedByState)=>{
+		electricityProducedByState.forEach((e) => {
+			delete e._id;
+		});
+		res.send(JSON.stringify(electricityProducedByState, null, 2));
+		res.sendStatus(200);
+});
 });
 
 //GET /electricity-produced-stats/:params
@@ -109,22 +108,17 @@ app.get(BASE_PATH + "/electricity-produced-stats/:country/:state", (req, res)=>{
 */
 // POST not allowed on a concrete resource
 app.post(BASE_PATH + "/electricity-produced-stats/:country/:state", (req, res) =>{
-	res.sendStatus(405, "YOU FUCKING DONKEY, THIS IS NOT ALLOWED");
+	res.sendStatus(405);
 });
 
 // DELETE /electricity-produced-stats/:country/:state
 
-app.delete(BASE_PATH + "/electricity-produced-stats/:state", (req, res) =>{
+app.delete(BASE_PATH + "/electricity-produced-stats/:country/:state", (req, res) =>{
+	var country= req.params.country;
 	var state = req.params.state;
-	var filteredDataForDelete= electricityProduced.filter((e)=>{
-		return (e.state != state);
-	});
-	if(filteredDataForDelete.length< electricityProduced.length){
-		electricityProduced= filteredDataForDelete;
-		res.sendStatus(200, "Data deleted");
-	}else{
-		res.sendStatus(404, "Data not pressent");
-	};
+	db.remove({country : country, state : state}, {}, function (err, numRemoved) {
+	});	
+	res.sendStatus(200);
 });
 
 //PUT /electricity-produced-stats/:country/:state
