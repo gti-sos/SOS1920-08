@@ -10,7 +10,7 @@ module.exports = function(app, BASE_PATH){
 	app.get(BASE_PATH + "/electricity-produced-stats/docs/", (req, res) => {
         res.redirect("https://documenter.getpostman.com/view/10851956/SzYUXfsE");
     });
-	var electricityProduced= [];
+	
 	
 	app.get(BASE_PATH + "/electricity-produced-stats/loadInitialData", (req, res)=> {
 	var electricityProducedInitial = [
@@ -45,6 +45,60 @@ app.get(BASE_PATH+ "/electricity-produced-stats", (req, res) =>{
 	res.send(JSON.stringify(electricityProduced, null, 2));
 	res.sendStatus(200);
 	});
+	
+	
+});
+	
+	//BUSQUEDAS
+	
+//GET electricityProduced/country/:country
+app.get(BASE_PATH+ "/electricity-produced-stats/country/:country", (req, res) =>{
+	var country = req.params.country;
+	if(country == null || country == ""){
+		res.sendStatus(400);
+	}else{
+		db.find({country : country}, (err,electricityProduced)=>{
+		electricityProduced.forEach((e) => {
+			delete e._id;
+		});
+	res.send(JSON.stringify(electricityProduced, null, 2));
+	res.sendStatus(200);
+	});
+	};
+	
+	
+});
+//GET electricityProduced/state/:state
+app.get(BASE_PATH+ "/electricity-produced-stats/state/:state", (req, res) =>{
+	var state = req.params.state;
+	if(state == null || state == ""){
+		res.sendStatus(400);
+	}else{
+	db.find({state : state}, (err,electricityProduced)=>{
+		electricityProduced.forEach((e) => {
+			delete e._id;
+		});
+	res.send(JSON.stringify(electricityProduced, null, 2));
+	res.sendStatus(200);
+	});	
+	};
+	
+	
+});
+	//GET electricityProduced/year/:year
+app.get(BASE_PATH+ "/electricity-produced-stats/year/:year", (req, res) =>{
+	var year = parseInt(req.params.year);
+	if(year == null || year == 0){
+		res.sendStatus(400);
+	}else{
+	db.find({year : year}, (err,electricityProduced)=>{
+		electricityProduced.forEach((e) => {
+			delete e._id;
+		});
+	res.send(JSON.stringify(electricityProduced, null, 2));
+	res.sendStatus(200);
+	});	
+	};
 	
 	
 });
@@ -133,7 +187,6 @@ app.put(BASE_PATH + "/electricity-produced-stats/:country/:state", (req, res)=>{
 	}else{
 		db.update({country : country, state : state}, {$set: {year : body.year, hydro: body.hydro, solar: body.solar, coal: body.coal}}, {}, function(err, numReplaced){});
 		res.sendStatus(200);
-		res.send( numReplaced + "estos paramatros han sido modificados");
 	};
 });
 
