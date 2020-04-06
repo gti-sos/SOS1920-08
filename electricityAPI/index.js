@@ -126,26 +126,15 @@ app.put(BASE_PATH + "/electricity-produced-stats/:country/:state", (req, res)=>{
 	var country= req.params.country;
 	var state = req.params.state;
 	var body= req.body;
-	var filteredDataForUpdate= electricityProduced.filter((e)=>{
-		return ((e.country == country) && (e.state == state));
-	});
-	if(filteredDataForUpdate.length ==1){
-		var updatedData= electricityProduced.map((e)=>{
-			var updData=e;
-			if(e.country == country && e.state == state){
-			for(var p in body){
-				updData[p]= body[p];
-			}
-		}
-		return (updData);
-	});
-		electricityProduced= updatedData;
-		res.sendStatus(200, "Data modified");
-		
+	var newCountry= body.country;
+	var newState= body.state;
+	if(country != newCountry || state != newState){
+		res.sendStatus(400);
 	}else{
-		res.sendStatus(404, "Data not found");
-	}
-	
+		db.update({country : country, state : state}, {$set: {year : body.year, hydro: body.hydro, solar: body.solar, coal: body.coal}}, {}, function(err, numReplaced){});
+		res.sendStatus(200);
+		res.send( numReplaced + "estos paramatros han sido modificados");
+	};
 });
 
 }

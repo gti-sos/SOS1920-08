@@ -1,3 +1,4 @@
 {"country":"EEUU","state":"California","year":2018,"hydro":26330667,"solar":26985181,"coal":281328,"_id":"6IId7E7cOT8MIFwJ"}
 {"country":"EEUU","state":"Arkansas","year":2018,"hydro":3008775,"solar":203413,"coal":29996101,"_id":"9LiNQXXVxuwGjBp6"}
 {"country":"EEUU","state":"Alabama","year":2018,"hydro":11142139,"solar":357252,"coal":3177520,"_id":"G9MjBd9GzptIJUwN"}
+{"country":"EEUU","state":"Alabama","year":2018,"hydro":0,"solar":26985181,"coal":281328,"_id":"G9MjBd9GzptIJUwN"}
