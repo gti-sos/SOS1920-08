@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use("/", express.static("./public"));
 
-electricityAPI(app, BASE_PATH);	
+electricityAPI(app);	
 motogpAPI(app);
 
 app.get(BASE_PATH + "/motogp-statistics/docs/", (req, res) => {
