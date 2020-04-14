@@ -92,7 +92,7 @@ module.exports = function(app) {
 		   || !newStat.hasOwnProperty("last_title") || !newStat.hasOwnProperty("world_title") 
 		   || !newStat.hasOwnProperty("victory") || !newStat.hasOwnProperty("podium")){
 			
-			res.sendStatus(400);
+			res.sendStatus(400).send("Debe de tener los campos country, pilot, last_title, world_title, victory y podium");
 			
 		}else{
 			
