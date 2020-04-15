@@ -33,6 +33,7 @@ module.exports = function(app) {
 	app.get(BASE_API_URL + '/motogp-statistics/loadInitialData', (req, res) => {
 		console.log('New GET .../motogp_statistics');
 
+		db.remove({}, { multi: true }, function(err, numRemoved) {});
 		db.insert(motogp_statistics);
 		res.sendStatus(200);
 		console.log('Initial motogp_statistics loaded: ' + JSON.stringify(motogp_statistics, null, 2)
