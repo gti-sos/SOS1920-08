@@ -12,6 +12,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use("/", express.static("./public"));
 
+app.get(BASE_API_URL + '/motogp-statistics/docs/', (req, res) => {
+		res.redirect('https://documenter.getpostman.com/view/10864755/SzYUa1rg');
+	});
 
 electricityAPI(app);	
 motogpAPI(app);

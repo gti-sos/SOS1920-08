@@ -7,9 +7,7 @@ module.exports = function(app) {
 
 	const BASE_API_URL = '/api/v1';
 
-	app.get(BASE_API_URL + '/motogp-statistics/docs/', (req, res) => {
-		res.redirect('https://documenter.getpostman.com/view/10864755/SzYUa1rg');
-	});
+	
 
 	const db = new dataStore({
 		filename: dbFileName,
