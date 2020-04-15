@@ -8,10 +8,6 @@ module.exports = function(app) {
 		autoload: true
 	});
 
-	app.get(BASE_PATH + '/electricity-produced-stats/docs/', (req, res) => {
-		res.redirect('https://documenter.getpostman.com/view/10851956/SzYUXfsE');
-	});
-
 	app.get(BASE_PATH + '/electricity-produced-stats/loadInitialData', (req, res) => {
 		var electricityProducedInitial = [
 			{

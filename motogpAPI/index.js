@@ -6,9 +6,7 @@ module.exports = function(app) {
 	const dbFileName = path.join(__dirname, 'motogp_statistics.db');
 
 	const BASE_API_URL = '/api/v1';
-
 	
-
 	const db = new dataStore({
 		filename: dbFileName,
 		autoload: true
