@@ -12,6 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use("/", express.static("./public"));
 
+
 electricityAPI(app);	
 motogpAPI(app);
 uclAPI(app);
