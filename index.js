@@ -5,10 +5,11 @@ const electricityAPI= require(path.join(__dirname, "electricityAPI"));
 const motogpAPI = require(path.join(__dirname,"motogpAPI"));
 const uclAPI = require(path.join(__dirname,"uclAPI"));
 
-
+const BASE_API_URL = '/api/v1';
 const port = process.env.PORT || 80;
 
 const app = express();
+
 app.use(bodyParser.json());
 app.use("/", express.static("./public"));
 
