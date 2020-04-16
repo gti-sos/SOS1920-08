@@ -4,6 +4,12 @@ module.exports = function(app) {
 	const dataStore = require('nedb');
 	const path = require('path');
 	const dbFileName = path.join(__dirname, 'motogp_statistics.db');
+	const BASE_PATH = '/api/v1';
+
+	app.get(BASE_PATH + '/motogp-statistics/docs/', (req, res) => {
+		res.redirect('https://documenter.getpostman.com/view/10864755/SzYUa1rg');
+	});
+
 
 	const BASE_API_URL = '/api/v1';
 	
@@ -26,7 +32,7 @@ module.exports = function(app) {
 
 	//---------------- /GET motogp-statistics/loadInitialData -------------------------
 
-	app.get(BASE_API_URL + '/motogp-statistics/loadInitialData', (req, res) => {
+	app.get(BASE_PATH + '/motogp-statistics/loadInitialData', (req, res) => {
 		console.log('New GET .../motogp_statistics');
 
 		db.remove({}, { multi: true }, function(err, numRemoved) {});
@@ -38,7 +44,7 @@ module.exports = function(app) {
 
 	//--------------------- GET /motogp-statistics---------------------------------------
 
-	app.get(BASE_API_URL + '/motogp-statistics', (req, res) => {
+	app.get(BASE_PATH + '/motogp-statistics', (req, res) => {
 		console.log('New GET .../motogp_statistics');
 
 		var limit = parseInt(req.query.limit);
@@ -82,7 +88,7 @@ module.exports = function(app) {
 
 	//-------------------- POST /motogp-statistics---------------------------------------
 
-	app.post(BASE_API_URL + '/motogp-statistics', (req, res) => {
+	app.post(BASE_PATH + '/motogp-statistics', (req, res) => {
 		var newStat = req.body;
 		var newPilot = req.body.pilot;
 
@@ -112,20 +118,20 @@ module.exports = function(app) {
 
 	// --------------------- PUT /motogp-statistics------------------------------------
 
-	app.put(BASE_API_URL + '/motogp-statistics', (req, res) => {
+	app.put(BASE_PATH + '/motogp-statistics', (req, res) => {
 		res.sendStatus(405, 'Method Not Allowed');
 	});
 
 	//--------------------- DELETE /motogp-statistics-----------------------------------
 
-	app.delete(BASE_API_URL + '/motogp-statistics', (req, res) => {
+	app.delete(BASE_PATH + '/motogp-statistics', (req, res) => {
 		db.remove({}, { multi: true }, function(err, numRemoved) {});
 		res.sendStatus(200, 'OK');
 	});
 
 	//---------------------- GET /motogp-statistics/:pilot----------------------------------
 
-	app.get(BASE_API_URL + '/motogp-statistics/:pilot', (req, res) => {
+	app.get(BASE_PATH + '/motogp-statistics/:pilot', (req, res) => {
 		var pilot = req.params.pilot;
 
 		db.find({ pilot: pilot }, (err, motogp_statistics) => {
@@ -145,13 +151,13 @@ module.exports = function(app) {
 
 	// ---------------------- POST /motogp-statistics/:pilot----------------------------------
 
-	app.post(BASE_API_URL + '/motogp-statistics/:pilot', (req, res) => {
+	app.post(BASE_PATH + '/motogp-statistics/:pilot', (req, res) => {
 		res.sendStatus(405, 'Method NOT Allowed');
 	});
 
 	//----------------------- PUT /motogp-statistics/:pilot-----------------------------------
 
-	app.put(BASE_API_URL + '/motogp-statistics/:pilot', (req, res) => {
+	app.put(BASE_PATH + '/motogp-statistics/:pilot', (req, res) => {
 		var pilot = req.params.pilot;
 		var newPilot = req.body;
 
@@ -184,7 +190,7 @@ module.exports = function(app) {
 
 	//----------------------- DELETE /motogp-statistics/:pilot--------------------------------
 
-	app.delete(BASE_API_URL + '/motogp-statistics/:pilot', (req, res) => {
+	app.delete(BASE_PATH + '/motogp-statistics/:pilot', (req, res) => {
 		var pilot = req.params.pilot;
 
 		db.remove({ pilot: pilot }, {}, function(err, numRemoved) {

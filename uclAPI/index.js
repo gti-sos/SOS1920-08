@@ -24,6 +24,42 @@ module.exports = function(app) {
 			victory: 121
 		},
 		{
+			country: 'England',
+			team: 'Man United',
+			last_title: 2008,
+			title: 3,
+			season: 26,
+			match: 279,
+			victory: 154
+		},
+		{
+			country: 'Italy',
+			team: 'AC Milan',
+			last_title: 2007,
+			title: 7,
+			season: 22,
+			match: 249,
+			victory: 125
+		},
+		{
+			country: 'Italy',
+			team: 'Internazionale',
+			last_title: 2010,
+			title: 3,
+			season: 17,
+			match: 178,
+			victory: 86
+		},
+		{
+			country: 'Spain',
+			team: 'FC Barcelona',
+			last_title: 2015,
+			title: 5,
+			season: 27,
+			match: 316,
+			victory: 187
+		},
+		{
 			country: 'Spain',
 			team: 'Real Madrid CF',
 			last_title: 2018,
@@ -120,7 +156,7 @@ module.exports = function(app) {
 		console.log('new Get../ucl_stats by team');
 		var team = req.params.team;
 		var country = req.params.country;
-		db.find({country:country ,team: team }, (err, ucl_stats) => {
+		db.find({ country: country, team: team }, (err, ucl_stats) => {
 			if (ucl_stats.length >= 1) {
 				res.send(ucl_stats[0]);
 			} else {
@@ -156,6 +192,11 @@ module.exports = function(app) {
 		}
 	});
 
+	//PUT /ucl_stats
+	app.put(BASE_PATH + '/ucl_stats', (req, res) => {
+		res.sendStatus(405, 'Method Not Allowed');
+	});
+
 	// PUT /ucl_stats/:country/:team
 	app.put(BASE_PATH + '/ucl_stats/:country/:team', (req, res) => {
 		var team = req.params.team;
@@ -184,8 +225,7 @@ module.exports = function(app) {
 			res.sendStatus(200, 'OK');
 		}
 	});
-
-
+	
 	//DELETE /ucl-stats
 	app.delete(BASE_PATH + '/ucl_stats', (req, res) => {
 		console.log('delete../ucl_stats');
