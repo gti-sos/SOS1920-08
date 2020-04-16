@@ -1,15 +1,11 @@
 module.exports = function(app) {
 	const dataStore = require('nedb');
-	const BASE_PATH = "/api/v1"; 
+	const BASE_PATH = '/api/v1';
 	const path = require('path');
 	const dbFileName = path.join(__dirname, 'electricity.db');
 	const db = new dataStore({
 		filename: dbFileName,
 		autoload: true
-	});
-
-	app.get(BASE_PATH + '/electricity-produced-stats/docs/', (req, res) => {
-		res.redirect('https://documenter.getpostman.com/view/10851956/SzYUXfsE');
 	});
 
 	app.get(BASE_PATH + '/electricity-produced-stats/loadInitialData', (req, res) => {
@@ -29,6 +25,62 @@ module.exports = function(app) {
 				hydro: 3008775,
 				solar: 203413,
 				coal: 29996101
+			},
+			{
+				country: 'EEUU',
+				state: 'California',
+				year: 2018,
+				hydro: 26330667,
+				solar: 26985181,
+				coal: 281328
+			},
+			{
+				country: 'EEUU',
+				state: 'Colorado',
+				year: 2018,
+				hydro: 1825385,
+				solar: 1062380,
+				coal: 26382060
+			},
+			{
+				country: 'EEUU',
+				state: 'Delaware',
+				year: 2018,
+				hydro: 0,
+				solar: 49789,
+				coal: 273388
+			},
+			{
+				country: 'EEUU',
+				state: 'Florida',
+				year: 2018,
+				hydro: 232574,
+				solar: 2412067,
+				coal: 30272201
+			},
+			{
+				country: 'EEUU',
+				state: 'Georgia',
+				year: 2018,
+				hydro: 3696868,
+				solar: 1995837,
+				coal: 32180555
+			},
+			{
+				country: 'EEUU',
+				state: 'Hawaii',
+				year: 2018,
+				hydro: 96520,
+				solar: 184576,
+				coal: 1311203
+			},
+			{
+				country: 'EEUU',
+				state: 'Iowa',
+				year: 2018,
+				hydro: 924861,
+				solar: 11456,
+				coal: 28552999
 			}
 		];
 		db.remove({}, { multi: true }, function(err, numRemoved) {});

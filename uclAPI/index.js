@@ -69,10 +69,7 @@ module.exports = function(app) {
 			victory: 262
 		}
 	];
-	//dirigiendo a postman
-	app.get(BASE_PATH + '/ucl_stats/docs/', (req, res) => {
-		res.redirect('https://documenter.getpostman.com/view/10690065/Szf26BGE');
-	});
+	
 	//Load initial data
 	app.get(BASE_PATH + '/ucl_stats/loadInitialData', (req, res) => {
 		console.log('new Get../loadInitialData');
