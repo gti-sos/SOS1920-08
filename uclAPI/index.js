@@ -156,11 +156,6 @@ module.exports = function(app) {
 		}
 	});
 
-	//PUT /ucl_stats
-	app.put(BASE_PATH + '/ucl_stats', (req, res) => {
-		res.sendStatus(405, 'Method Not Allowed');
-	});
-
 	// PUT /ucl_stats/:country/:team
 	app.put(BASE_PATH + '/ucl_stats/:country/:team', (req, res) => {
 		var team = req.params.team;
@@ -189,9 +184,7 @@ module.exports = function(app) {
 			res.sendStatus(200, 'OK');
 		}
 	});
-	app.put(BASE_PATH + '/ucl_stats', (req, res) => {
-		res.sendStatus(405, '');
-	});
+
 
 	//DELETE /ucl-stats
 	app.delete(BASE_PATH + '/ucl_stats', (req, res) => {
