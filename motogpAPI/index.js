@@ -4,18 +4,15 @@ module.exports = function(app) {
 	const dataStore = require('nedb');
 	const path = require('path');
 	const dbFileName = path.join(__dirname, 'motogp_statistics.db');
-<<<<<<< HEAD
 	const BASE_PATH = '/api/v1';
 
 	app.get(BASE_PATH + '/motogp-statistics/docs/', (req, res) => {
 		res.redirect('https://documenter.getpostman.com/view/10864755/SzYUa1rg');
 	});
 
-=======
 
 	const BASE_API_URL = '/api/v1';
 	
->>>>>>> e5c24e94d4be73dbfa2d5f41d9cfe7f2a8605829
 	const db = new dataStore({
 		filename: dbFileName,
 		autoload: true

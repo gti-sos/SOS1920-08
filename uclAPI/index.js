@@ -225,10 +225,7 @@ module.exports = function(app) {
 			res.sendStatus(200, 'OK');
 		}
 	});
-	app.put(BASE_PATH + '/ucl_stats', (req, res) => {
-		res.sendStatus(405, '');
-	});
-
+	
 	//DELETE /ucl-stats
 	app.delete(BASE_PATH + '/ucl_stats', (req, res) => {
 		console.log('delete../ucl_stats');
