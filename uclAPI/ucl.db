@@ -1,14 +1,6 @@
-{"country":"England","team":"Liverpool FC","last_title":2019,"title":6,"season":22,"match":216,"victory":121,"_id":"2zp4lAd62RXKE4Nc"}
-{"country":"England","team":"Man United","last_title":2008,"title":3,"season":26,"match":279,"victory":154,"_id":"okV52HiOrwIj9oZz"}
-{"country":"Italy","team":"AC Milan","last_title":2007,"title":7,"season":22,"match":249,"victory":125,"_id":"xnFWDQkzX5OH72Ai"}
-{"country":"Italy","team":"Internazionale","last_title":2010,"title":3,"season":17,"match":178,"victory":86,"_id":"rhuu9nICSfiEGQve"}
-{"country":"Spain","team":"FC Barcelona","last_title":2015,"title":5,"season":27,"match":316,"victory":187,"_id":"q7jlqmy3g5AO9YmE"}
-{"country":"Spain","team":"Real Madrid CF","last_title":2018,"title":13,"season":44,"match":437,"victory":262,"_id":"T1asFXv39WjpWNpH"}
-{"country":"Italy","team":"Juventus","last_title":1996,"title":2,"season":32,"match":277,"victory":140,"_id":"AczAIkIxmYDQ8yId"}
-{"$$deleted":true,"_id":"2zp4lAd62RXKE4Nc"}
-{"$$deleted":true,"_id":"AczAIkIxmYDQ8yId"}
-{"$$deleted":true,"_id":"T1asFXv39WjpWNpH"}
-{"$$deleted":true,"_id":"okV52HiOrwIj9oZz"}
-{"$$deleted":true,"_id":"q7jlqmy3g5AO9YmE"}
-{"$$deleted":true,"_id":"rhuu9nICSfiEGQve"}
-{"$$deleted":true,"_id":"xnFWDQkzX5OH72Ai"}
+{"country":"Spain","team":"Real Madrid CF","last_title":2018,"title":13,"season":44,"match":437,"victory":262,"_id":"4ZGjrN72jn4rQhx8"}
+{"country":"Spain","team":"FC Barcelona","last_title":2015,"title":5,"season":27,"match":316,"victory":187,"_id":"FyDdYkzVsdYHt88k"}
+{"country":"England","team":"Man United","last_title":2008,"title":3,"season":26,"match":279,"victory":154,"_id":"ZUYh9vwUk38zBsMO"}
+{"country":"Italy","team":"Internazionale","last_title":2010,"title":3,"season":17,"match":178,"victory":86,"_id":"mCop0g7oQhDdIRb4"}
+{"country":"England","team":"Liverpool FC","last_title":2019,"title":6,"season":22,"match":216,"victory":121,"_id":"oKcePtcCqq4Aauhh"}
+{"country":"Italy","team":"AC Milan","last_title":2007,"title":7,"season":22,"match":249,"victory":125,"_id":"yLCQKQjtZjUIhWf0"}
