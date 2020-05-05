@@ -7,6 +7,9 @@
 
 	import MotoGpTable from './motogpAPI/MotoGpTable.svelte';
 	import EditPilot from './motogpAPI/EditPilot.svelte';
+
+	//Electricity-produced-API
+	import ElectricityTable from './ElectricityAPI/ElectricityTable.svelte';
 	
 
 	const routes = {
@@ -15,6 +18,7 @@
 
 		"/motogp-statistics": MotoGpTable,
 		"/motogp-statistics/:pilot": EditPilot,
+		"/electricity-produced-stats" : ElectricityTable,
 		
 		"*" : NotFound
 

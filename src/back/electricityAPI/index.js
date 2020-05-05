@@ -178,7 +178,7 @@ module.exports = function(app) {
 	//DELETE electicity-produced-stats
 	app.delete(BASE_PATH + '/electricity-produced-stats', (req, res) => {
 		db.remove({}, { multi: true }, function(err, numRemoved) {});
-		res.sendStatus(200).send('Your DataBase has been wiped clean succesfully');
+		res.sendStatus(200);
 	});
 
 	//PUT NOT ALLOWED ON THE ENTIRE ARRAY
