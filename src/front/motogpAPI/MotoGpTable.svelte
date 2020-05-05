@@ -1,6 +1,7 @@
 <script>
 	import Table from "sveltestrap/src/Table.svelte";
 	import Button from "sveltestrap/src/Button.svelte";
+	import { Pagination, PaginationItem, PaginationLink } from 'sveltestrap';
 	import { onMount } from "svelte";
 
 	let pilots = [];
@@ -12,6 +13,12 @@
 		victory: "",
 		podium: ""
 	};
+
+	//VARIABLES PARA PAGINACION
+	let pag = 0;
+	let numero;
+	let limit = 4;
+	
 
 	//VARIABLES PARA BUSQUEDA
 	let Fcountry = "";
@@ -33,7 +40,7 @@
 
 	async function getPilots(){
 		console.log("Fetching pilots....");
-		const res = await fetch("/api/v1/motogp-statistics");
+		const res = await fetch("/api/v1/motogp-statistics?offset="+pag+"&limit="+limit);
 
 		if(res.ok){
 			console.log("Ok:");
@@ -126,7 +133,73 @@
 			console.log("ERROR");
 		}
 	}
-	
+
+	async function paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, num){
+		numero = num;
+		if(typeof Fcountry=='undefined'){
+			Fcountry="";
+		}
+		if(typeof Fpilot=='undefined'){
+			Fpilot="";
+		}
+		if(typeof Ffrom=='undefined'){
+			Ffrom="";
+		}
+		if(typeof Fto=='undefined'){
+			Fto="";
+		}
+		if(typeof Fworld_titleMax=='undefined'){
+			Fworld_titleMax="";
+		}
+		if(typeof Fworld_titleMin=='undefined'){
+			Fworld_titleMin="";
+		}
+		if(typeof FvictoryMax=='undefined'){
+			FvictoryMax="";
+		}
+		if(typeof FvictoryMin=='undefined'){
+			FvictoryMin="";
+		}
+		if(typeof FpodiumMax=='undefined'){
+			FpodiumMax="";
+		}
+		if(typeof FpodiumMin=='undefined'){
+			FpodiumMin="";
+		}
+		if(num==1){
+			pag=pag-limit;
+			if(pag<0){
+				pag=0;
+				const res = await fetch("/api/v1/motogp-statistics?country="+Fcountry+"&pilot="+Fpilot+"&from="+Ffrom+"&to="+Fto+"&world_titleMax="+Fworld_titleMax+
+				"&world_titleMin="+Fworld_titleMin+"&victoryMax="+FvictoryMax+"&victoryMin="+FvictoryMin+"&podiumMax="+FpodiumMax+"&podiumMin="+FpodiumMin+"&limit="+limit+"&offset="+pag)
+				if (res.ok){
+					const json = await res.json();
+					pilots = json;
+					numero=num;
+					
+				}
+			}else{
+				const res = await fetch("/api/v1/motogp-statistics?country="+Fcountry+"&pilot="+Fpilot+"&from="+Ffrom+"&to="+Fto+"&world_titleMax="+Fworld_titleMax+
+				"&world_titleMin="+Fworld_titleMin+"&victoryMax="+FvictoryMax+"&victoryMin="+FvictoryMin+"&podiumMax="+FpodiumMax+"&podiumMin="+FpodiumMin+"&limit="+limit+"&offset="+pag)
+				if (res.ok){
+					const json = await res.json();
+					pilots = json;
+					numero=num;
+					
+				}
+			}
+		}else{
+			pag = pag+limit;
+			const res = await fetch("/api/v1/motogp-statistics?country="+Fcountry+"&pilot="+Fpilot+"&from="+Ffrom+"&to="+Fto+"&world_titleMax="+Fworld_titleMax+
+			"&world_titleMin="+Fworld_titleMin+"&victoryMax="+FvictoryMax+"&victoryMin="+FvictoryMin+"&podiumMax="+FpodiumMax+"&podiumMin="+FpodiumMin+"&limit="+limit+"&offset="+pag)
+			if (res.ok){
+					const json = await res.json();
+					pilots = json;
+					numero=num;
+					
+			}
+		}
+	}
 
 </script>
 
@@ -138,17 +211,20 @@
 		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
 		<Button outline color="danger" on:click={deleteAllPilots}>Borrar Todo</Button>
 	</div>
-
-	<label>Pais: <input bind:value="{Fcountry}"></label>
-	<label>Piloto: <input bind:value="{Fpilot}"></label>
-	<label>Último Titulo (Desde): <input bind:value="{Ffrom}"></label>
-	<label>Último Titulo (Hasta): <input bind:value="{Fto}"></label>
-	<label>Mínimo Número de Titulos: <input bind:value="{Fworld_titleMin}"></label>
-	<label>Máximo Número de Titulos: <input bind:value="{Fworld_titleMax}"></label>
-	<label>Mínimo Número de Victorias: <input bind:value="{FvictoryMin}"></label>
-	<label>Máximo Número de Victorias: <input bind:value="{FvictoryMax}"></label>
-	<label>Mínimo Número de Podiums: <input bind:value="{FpodiumMin}"></label>
-	<label>Máximo Número de Podiums: <input bind:value="{FpodiumMax}"></label>
+	<tr>
+		<td><label>Pais: <input bind:value="{Fcountry}"></label></td>
+		<td><label>Último Titulo (Desde): <input bind:value="{Ffrom}"></label></td>
+		<td><label>Mín Nº de Titulos: <input bind:value="{Fworld_titleMin}"></label></td>
+		<td><label>Mín Nº de Victorias: <input bind:value="{FvictoryMin}"></label></td>
+		<td><label>Mín Nº de Podiums: <input bind:value="{FpodiumMin}"></label></td>
+	</tr>
+	<tr>
+		<td><label>Piloto: <input bind:value="{Fpilot}"></label></td>
+		<td><label>Último Titulo (Hasta): <input bind:value="{Fto}"></label></td>
+		<td><label>Máx Nº de Titulos: <input bind:value="{Fworld_titleMax}"></label></td>
+		<td><label>Máx Nº de Victorias: <input bind:value="{FvictoryMax}"></label></td>
+		<td><label>Máx Nº de Podiums: <input bind:value="{FpodiumMax}"></label></td>
+	</tr>
 
 	<Button outline color="primary" on:click="{busqueda (Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin)}">Buscar</Button>
 
@@ -196,5 +272,13 @@
 			</tbody>
 		</Table>
 	{/await}
+	{#if pag==0}
+		<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 2)}">&gt;</Button>
+	{/if}
+	{#if pag>0}
+		<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 1)}">&lt;</Button>
+		<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 2)}">&gt;</Button>
+	{/if}
+		
 
 </main>
