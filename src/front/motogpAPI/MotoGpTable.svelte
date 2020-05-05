@@ -7,11 +7,27 @@
 	let newPilot = {
 		country: "",
 		pilot: "",
-		last_title: 0,
-		world_title: 0,
-		victory: 0,
-		podium: 0
+		last_title: "",
+		world_title: "",
+		victory: "",
+		podium: ""
 	};
+
+	//VARIABLES PARA BUSQUEDA
+	let Fcountry = "";
+	let Fpilot = "";
+	let Flast_title = "";
+	let Ffrom = "";
+	let Fto = "";
+	let Fworld_titleMin = "";
+	let Fworld_titleMax = "";
+	let FvictoryMin = "";
+	let FvictoryMax = "";
+	let FpodiumMin = "";
+	let FpodiumMax = "";
+
+
+
 
 	onMount(getPilots);
 
@@ -51,11 +67,91 @@
 		});
 	}
 
+	async function deleteAllPilots() {
+		const res = await fetch("/api/v1/motogp-statistics", {
+			method:"DELETE"
+		}).then(function (res) {
+			getPilots();
+		});
+	}
+
+	async function loadInitialData() {
+		const res = await fetch("/api/v1/motogp-statistics/loadInitialData", {
+			method: "GET"
+		}).then(function (res) {
+			getPilots();
+		});
+	}
+
+	async function busqueda (Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin){
+		if(typeof Fcountry=='undefined'){
+			Fcountry="";
+		}
+		if(typeof Fpilot=='undefined'){
+			Fpilot="";
+		}
+		if(typeof Ffrom=='undefined'){
+			Ffrom="";
+		}
+		if(typeof Fto=='undefined'){
+			Fto="";
+		}
+		if(typeof Fworld_titleMax=='undefined'){
+			Fworld_titleMax="";
+		}
+		if(typeof Fworld_titleMin=='undefined'){
+			Fworld_titleMin="";
+		}
+		if(typeof FvictoryMax=='undefined'){
+			FvictoryMax="";
+		}
+		if(typeof FvictoryMin=='undefined'){
+			FvictoryMin="";
+		}
+		if(typeof FpodiumMax=='undefined'){
+			FpodiumMax="";
+		}
+		if(typeof FpodiumMin=='undefined'){
+			FpodiumMin="";
+		}
+		const res = await fetch("/api/v1/motogp-statistics?country="+Fcountry+"&pilot="+Fpilot+"&from="+Ffrom+"&to="+Fto+"&world_titleMax="+Fworld_titleMax+
+		"&world_titleMin="+Fworld_titleMin+"&victoryMax="+FvictoryMax+"&victoryMin="+FvictoryMin+"&podiumMax="+FpodiumMax+"&podiumMin="+FpodiumMin)
+
+		if (res.ok){
+			const json = await res.json();
+			pilots = json;
+			console.log("Found "+ pilots.length + "pilots");
+
+		}else{
+			console.log("ERROR");
+		}
+	}
+	
+
 </script>
 
 
 
 <main>
+
+	<div>
+		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
+		<Button outline color="danger" on:click={deleteAllPilots}>Borrar Todo</Button>
+	</div>
+
+	<label>Pais: <input bind:value="{Fcountry}"></label>
+	<label>Piloto: <input bind:value="{Fpilot}"></label>
+	<label>Último Titulo (Desde): <input bind:value="{Ffrom}"></label>
+	<label>Último Titulo (Hasta): <input bind:value="{Fto}"></label>
+	<label>Mínimo Número de Titulos: <input bind:value="{Fworld_titleMin}"></label>
+	<label>Máximo Número de Titulos: <input bind:value="{Fworld_titleMax}"></label>
+	<label>Mínimo Número de Victorias: <input bind:value="{FvictoryMin}"></label>
+	<label>Máximo Número de Victorias: <input bind:value="{FvictoryMax}"></label>
+	<label>Mínimo Número de Podiums: <input bind:value="{FpodiumMin}"></label>
+	<label>Máximo Número de Podiums: <input bind:value="{FpodiumMax}"></label>
+
+	<Button outline color="primary" on:click="{busqueda (Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin)}">Buscar</Button>
+
 	
 	{#await pilots}
 		Loadind pilots...
