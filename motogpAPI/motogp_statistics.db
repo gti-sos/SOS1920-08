@@ -5,6 +5,7 @@
 {"country":"Italy","pilot":"Giacomo_Agostini","last_title":1975,"world_title":8,"victory":68,"podium":88,"_id":"vImO3HYB1l8mPULH"}
 {"country":"EEUU","pilot":"Wayne Rainey","last_title":1992,"world_title":3,"victory":24,"podium":64,"_id":"wjz3eIo9QaB7TRFn"}
 {"country":"Australia","pilot":"Casey_Stoner","last_title":"2011","world_title":2,"victory":38,"podium":69,"_id":"zxPe9Xg9PuTVDFSb"}
+<<<<<<< HEAD
 {"country":"Spain","pilot":"dani","last_title":0,"world_title":0,"victory":0,"podium":0,"_id":"bVgAFc7hpx5uGpVI"}
 {"$$deleted":true,"_id":"bVgAFc7hpx5uGpVI"}
 {"country":"Italy","pilot":"Valentino_Rossi","last_title":2009,"world_title":"0","victory":64,"podium":198,"_id":"mgkQvj11TgGbRt8G"}
@@ -404,3 +405,5 @@
 {"country":"EEUU","pilot":"Wayne Rainey","last_title":1992,"world_title":3,"victory":24,"podium":64,"_id":"1w8gnRBuMm81rnyo"}
 {"country":"Great_Britain","pilot":"Mike_Hailwood","last_title":1965,"world_title":4,"victory":37,"podium":48,"_id":"Y2LQXekZ9gcRlGoH"}
 {"country":"EEUU","pilot":"Eddie_Lawson","last_title":1989,"world_title":4,"victory":31,"podium":78,"_id":"qLzNcez9wfx14lff"}
+=======
+>>>>>>> d3b6641a5e0257cce4e067c40b3d5187b237f0f4
