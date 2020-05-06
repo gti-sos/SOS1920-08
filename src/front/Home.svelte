@@ -7,6 +7,7 @@
     <html lang="en">
     <link rel="stylesheet" href="style.css">
 
+<<<<<<< HEAD
     <head>
         <title>SOS1920-08</title>
         <h1>SOS1920-08</h1>
@@ -23,6 +24,16 @@
                 <li>
                     <strong>Team: </strong>
                 </li>
+=======
+        <body>
+            <div class="home">
+                <Button outline color="success"><a href="#/motogp-statistics">API MOTOGP</a></Button>
+                <Button outline color="success"><a href="#/electricity-produced-stats">API Electricidad</a></Button>
+                <Button outline color="success"><a href="#/ucl_stats">API Ucl</a></Button>
+
+            </div>
+            <div class="cuerpo">
+>>>>>>> 06757268f02743d009ef0481bec09196103e60ea
                 <ul>
                     <li>
                         <a href="https://github.com/franbornos6">Francisco Jurado Garrido</a>
