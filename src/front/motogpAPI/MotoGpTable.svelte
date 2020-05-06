@@ -226,6 +226,7 @@
 	</div>
 
 	<div>
+		<Button outline color="primary" onclick="location.href='#/'">Inicio</Button>
 		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
 		<Button outline color="danger" on:click={deleteAllPilots} onclick="location.reload()">Borrar Todo</Button>
 	</div>
@@ -299,8 +300,7 @@
 		{#if pag>0}
 			<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 1)}">&lt;</Button>
 			<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 2)}">&gt;</Button>
-		{/if}
-		
+		{/if}	
 
 </main>
 

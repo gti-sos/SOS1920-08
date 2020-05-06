@@ -15,7 +15,6 @@
     let updatePodium = 0;
 
     let erroMsg = "";
-    let exitoMsg = "";
     
 	onMount(getPilot);
 
@@ -59,10 +58,9 @@ async function actualizaPilot(){
 		}).then(function (res) {
             getPilot();
             
-            if(res.status==404){
-                erroMsg="No existe ese piloto";
-            }else if(res.status==200){
-                exitoMsg = "Piloto editado correctamente";
+            if(res.status==200){
+                window.alert("El piloto se ha modificado correctamente");
+
             }
 		});
 
@@ -102,8 +100,5 @@ async function actualizaPilot(){
     {#if erroMsg}
         <p style="color: red">{erroMsg}</p>
     {/if}
-    {#if exitoMsg}
-        <p style="color:forestgreen">{exitoMsg}</p>
-    {/if}
-    <Button outline color="secondary" on:click="{pop}">Back</Button>
+    <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
