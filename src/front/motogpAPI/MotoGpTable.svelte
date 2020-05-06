@@ -41,7 +41,7 @@
 
 	async function getPilots(){
 		console.log("Fetching pilots....");
-		const res = await fetch("/api/v1/motogp-statistics?offset="+pag+"&limit="+limit);
+		const res = await fetch("/api/v1/motogp-statistics");
 
 		if(res.ok){
 			console.log("Ok:");
@@ -89,7 +89,7 @@
 			method:"DELETE"
 		}).then(function (res) {
 			getPilots();
-			exitoMsg = res.statusText+ ". Todos los pilotos eliminados";
+			window.alert("Todos los pilotos borrados con éxito");
 		});
 	}
 
@@ -155,7 +155,6 @@
 	}
 
 	async function paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, num){
-		numero = num;
 		if(typeof Fcountry=='undefined'){
 			Fcountry="";
 		}
@@ -194,18 +193,14 @@
 				"&world_titleMin="+Fworld_titleMin+"&victoryMax="+FvictoryMax+"&victoryMin="+FvictoryMin+"&podiumMax="+FpodiumMax+"&podiumMin="+FpodiumMin+"&limit="+limit+"&offset="+pag)
 				if (res.ok){
 					const json = await res.json();
-					pilots = json;
-					numero=num;
-					
+					pilots = json;					
 				}
 			}else{
 				const res = await fetch("/api/v1/motogp-statistics?country="+Fcountry+"&pilot="+Fpilot+"&from="+Ffrom+"&to="+Fto+"&world_titleMax="+Fworld_titleMax+
 				"&world_titleMin="+Fworld_titleMin+"&victoryMax="+FvictoryMax+"&victoryMin="+FvictoryMin+"&podiumMax="+FpodiumMax+"&podiumMin="+FpodiumMin+"&limit="+limit+"&offset="+pag)
 				if (res.ok){
 					const json = await res.json();
-					pilots = json;
-					numero=num;
-					
+					pilots = json;			
 				}
 			}
 		}else{
@@ -214,9 +209,9 @@
 			"&world_titleMin="+Fworld_titleMin+"&victoryMax="+FvictoryMax+"&victoryMin="+FvictoryMin+"&podiumMax="+FpodiumMax+"&podiumMin="+FpodiumMin+"&limit="+limit+"&offset="+pag)
 			if (res.ok){
 					const json = await res.json();
-					pilots = json;
-					numero=num;
-					
+					pilots = json;					
+			}else if(res.status==404){
+			window.alert("No hay más pilotos, vuelta a la página anterior");
 			}
 		}
 	}
@@ -231,8 +226,11 @@
 	</div>
 
 	<div>
+		<Button outline color="primary" onclick="location.href='#/'">Inicio</Button>
+	</div>
+	<div>
 		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
-		<Button outline color="danger" on:click={deleteAllPilots}>Borrar Todo</Button>
+		<Button outline color="danger" on:click={deleteAllPilots} onclick="location.reload()">Borrar Todo</Button>
 	</div>
 	<tr>
 		<td><label>Pais: <input bind:value="{Fcountry}"></label></td>
@@ -260,7 +258,7 @@
 				<tr>
 					<th>Pais</th>
 					<th>Piloto</th>
-					<th>Último Tiutlo</th>
+					<th>Último Titulo</th>
 					<th>Titulos Mundiales</th>
 					<th>Victorias</th>
 					<th>Podiums</th>
@@ -304,8 +302,7 @@
 		{#if pag>0}
 			<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 1)}">&lt;</Button>
 			<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 2)}">&gt;</Button>
-		{/if}
-		
+		{/if}	
 
 </main>
 

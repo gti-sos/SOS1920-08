@@ -15,7 +15,6 @@
     let updatePodium = 0;
 
     let erroMsg = "";
-
     
 	onMount(getPilot);
 
@@ -35,8 +34,8 @@ async function getPilot(){
         updatePodium = pilot.podium;
 
         console.log("Received pilot.");
-    }else{
-        erroMsg = res.status + ": " + res.statusText;
+    }else if(res.status==404){      
+        erroMsg="No existe ese piloto";
         console.log("ERROR" + erroMsg);
     }
 }
@@ -57,7 +56,12 @@ async function actualizaPilot(){
 				"Content-Type": "application/json"
 			}
 		}).then(function (res) {
-			getPilots();
+            getPilot();
+            
+            if(res.status==200){
+                window.alert("El piloto se ha modificado correctamente");
+
+            }
 		});
 
 	}
@@ -88,13 +92,13 @@ async function actualizaPilot(){
 					<td><input bind:value="{updateWorldTitle}"></td>
 					<td><input bind:value="{updateVictory}"></td>
 					<td><input bind:value="{updatePodium}"></td>
-					<td><Button outline color="primary" on:click={actualizaPilot}>Editar</Button></td>
+					<td><Button outline color="primary" on:click={actualizaPilot} onclick="location.href='#/motogp-statistics'">Editar</Button></td>
 				</tr>
 			</tbody>
 		</Table>
     {/await}
     {#if erroMsg}
-        <p style="color: red">ERROR: {erroMsg}</p>
+        <p style="color: red">{erroMsg}</p>
     {/if}
-    <Button outline color="secondary" on:click="{pop}">Back</Button>
+    <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
