@@ -7,12 +7,6 @@
     <html lang="en">
     <link rel="stylesheet" href="style.css">
 
-    <head>
-        <title>SOS1920-08</title>
-        <h1>SOS1920-08</h1>
-        <img class="logo" src="logo-us.png" alt="Logo US">
-    </head>
-
     <body>
        
             <div class="cuerpo">
