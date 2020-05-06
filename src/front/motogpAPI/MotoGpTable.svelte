@@ -222,33 +222,36 @@
 
 <main>
 	<div>
-		<h3>API MOTOGP</h3>
+		<h2>API MOTOGP</h2>
 	</div>
 
-	<div>
+	<div style="text-align:center;padding-bottom: 1%">
 		<Button outline color="primary" onclick="location.href='#/'">Inicio</Button>
 	</div>
-	<div>
+	<div style="text-align:center;padding-bottom: 1%">
 		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
 		<Button outline color="danger" on:click={deleteAllPilots} onclick="location.reload()">Borrar Todo</Button>
 	</div>
-	<tr>
-		<td><label>Pais: <input bind:value="{Fcountry}"></label></td>
-		<td><label>Último Titulo (Desde): <input bind:value="{Ffrom}"></label></td>
-		<td><label>Mín Nº de Titulos: <input bind:value="{Fworld_titleMin}"></label></td>
-		<td><label>Mín Nº de Victorias: <input bind:value="{FvictoryMin}"></label></td>
-		<td><label>Mín Nº de Podiums: <input bind:value="{FpodiumMin}"></label></td>
-	</tr>
-	<tr>
-		<td><label>Piloto: <input bind:value="{Fpilot}"></label></td>
-		<td><label>Último Titulo (Hasta): <input bind:value="{Fto}"></label></td>
-		<td><label>Máx Nº de Titulos: <input bind:value="{Fworld_titleMax}"></label></td>
-		<td><label>Máx Nº de Victorias: <input bind:value="{FvictoryMax}"></label></td>
-		<td><label>Máx Nº de Podiums: <input bind:value="{FpodiumMax}"></label></td>
-	</tr>
+	<Table borderless>
+		<tr>
+			<td style="padding-bottom: 1%"><strong><label>Pais: <input bind:value="{Fcountry}"></label></strong></td>
+			<td><strong><label>Último Titulo (Desde): <input bind:value="{Ffrom}"></label></strong></td>
+			<td><strong><label>Mín Nº de Titulos: <input bind:value="{Fworld_titleMin}"></label></strong></td>
+			<td><strong><label>Mín Nº de Victorias: <input bind:value="{FvictoryMin}"></label></strong></td>
+			<td><strong><label>Mín Nº de Podiums: <input bind:value="{FpodiumMin}"></label></strong></td>
+		</tr>
+		<tr>
+			<td><strong><label>Piloto: <input bind:value="{Fpilot}"></label></strong></td>
+			<td><strong><label>Último Titulo (Hasta): <input bind:value="{Fto}"></label></strong></td>
+			<td><strong><label>Máx Nº de Titulos: <input bind:value="{Fworld_titleMax}"></label></strong></td>
+			<td><strong><label>Máx Nº de Victorias: <input bind:value="{FvictoryMax}"></label></strong></td>
+			<td><strong><label>Máx Nº de Podiums: <input bind:value="{FpodiumMax}"></label></strong></td>
+		</tr>
+	</Table>
 
+	<div style="text-align:center;padding-bottom: 1%">
 	<Button outline color="primary" on:click="{busqueda (Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin)}">Buscar</Button>
-
+	</div>
 	
 	{#await pilots}
 		Loadind pilots...
@@ -308,7 +311,7 @@
 
 
 <style>
-h3{
+h2{
 	text-align: center;
 }
 tbody{
@@ -317,7 +320,6 @@ tbody{
 thead{
 	text-align: center;
 }
-
 main {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	color: black;
