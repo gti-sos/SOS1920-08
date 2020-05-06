@@ -253,7 +253,7 @@
 	{#await pilots}
 		Loadind pilots...
 	{:then pilots}
-		<Table bordered>
+		<Table bordered responsive>
 			<thead>
 				<tr>
 					<th>Pais</th>
@@ -306,3 +306,21 @@
 
 </main>
 
+
+<style>
+h3{
+	text-align: center;
+}
+tbody{
+	text-align: center;
+}
+thead{
+	text-align: center;
+}
+
+main {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: black;
+	background-color: #fcfa90
+}
+</style>

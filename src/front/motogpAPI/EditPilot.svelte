@@ -68,20 +68,23 @@ async function actualizaPilot(){
 </script>
 
 <main>
-    <h3>Edit Pilot <strong>{params.pilot}</strong></h3>
+    <div>
+		<h3>API MOTOGP</h3>
+	</div>
+    <h3>Editar Piloto:  <strong>{params.pilot}</strong></h3>
     {#await pilot}
 		Loadind pilots...
     {:then pilot}
 		<Table bordered>
 			<thead>
 				<tr>
-					<th>Country</th>
-					<th>Pilot</th>
-					<th>Last Title</th>
-					<th>World Title</th>
-					<th>Victory</th>
-					<th>Podium</th>
-					<th>Actions</th>
+					<th>Pais</th>
+					<th>Piloto</th>
+					<th>Último Titulo</th>
+					<th>Titulos Mundiales</th>
+					<th>Victorias</th>
+					<th>Podiums</th>
+					<th>Acción</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -102,3 +105,20 @@ async function actualizaPilot(){
     {/if}
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
+
+<style>
+h3{
+text-align: center;
+}
+tbody{
+	text-align: center;
+}
+thead{
+	text-align: center;
+}
+main {
+font-family: Georgia, "Times New Roman", Times, serif;
+color: black;
+background-color: #f7f6b9
+}
+</style>

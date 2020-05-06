@@ -4,21 +4,21 @@ head {
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	color: black;
-	background-color: #a09fb5
+	background-color: #fcfa90
 }
 h1 {
 	font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
 	text-align: center;
 	margin-top: 50px;
 }
-li {
+ul {
 	padding-bottom: 1em;
 }
 .logo {
 	position: absolute;
-	top: 25px;
+	top: 20px;
 	right: 50px;
-	width: 200px;
+	width: 150px;
 }
 .cuerpo {
 	padding-top: 3em;
