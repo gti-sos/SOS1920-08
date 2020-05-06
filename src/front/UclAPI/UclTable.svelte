@@ -32,7 +32,9 @@
 	let match_max_S="";
 	let match_min_S="";
 	let victory_max_S="";
-    let victory_min_S="";
+	let victory_min_S="";
+	
+	let exitoMsg="";
 
 	onMount(getUcls);
 	async function loadInitialData() {
@@ -157,6 +159,8 @@
 					ucls = json;
 					numero=num;
 					
+			}else if(res.status==404){
+			window.alert("No hay más equipos");
 			}
 		}
 	}
@@ -212,7 +216,14 @@
 			ucls = json;
 			console.log("Found "+ ucls.length + "team");
 
-		}else{
+			if(ucls.length==1){
+				exitoMsg = "Se ha encontrado " + ucls.length + " equipos";
+			}else{
+				exitoMsg = "Se han encontrado " + ucls.length + " equipos";
+			}
+
+		}else if (res.status==404){
+			window.alert("No hay datos con los parámetros introducidos");
 			console.log("ERROR");
 		}
 	}
@@ -222,7 +233,7 @@
 <main>
 	<div>
 		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
-		<Button outline color="danger" on:click={deleteTeams}>Borrar Todo</Button>
+		<Button outline color="danger" on:click={deleteTeams} onclick="location.reload()">Borrar Todo</Button>
 		<div>
 		</div>
 		<label>Pais: <input bind:value="{country_S}"></label>

@@ -16,7 +16,7 @@ module.exports = function(app) {
 	var ucl_statsInitial = [
 		{
 			country: 'England',
-			team: 'Liverpool FC',
+			team: 'LiverpoolFC',
 			last_title: 2019,
 			title: 6,
 			season: 22,
@@ -25,7 +25,7 @@ module.exports = function(app) {
 		},
 		{
 			country: 'England',
-			team: 'Man United',
+			team: 'ManUnited',
 			last_title: 2008,
 			title: 3,
 			season: 26,
@@ -34,7 +34,7 @@ module.exports = function(app) {
 		},
 		{
 			country: 'Italy',
-			team: 'AC Milan',
+			team: 'ACMilan',
 			last_title: 2007,
 			title: 7,
 			season: 22,
@@ -52,7 +52,7 @@ module.exports = function(app) {
 		},
 		{
 			country: 'Spain',
-			team: 'FC Barcelona',
+			team: 'FCBarcelona',
 			last_title: 2015,
 			title: 5,
 			season: 27,
@@ -61,7 +61,7 @@ module.exports = function(app) {
 		},
 		{
 			country: 'Spain',
-			team: 'Real Madrid CF',
+			team: 'RealMadridCF',
 			last_title: 2018,
 			title: 13,
 			season: 44,
