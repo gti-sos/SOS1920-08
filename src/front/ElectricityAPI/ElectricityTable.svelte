@@ -22,14 +22,21 @@
     onMount(getElegtricityStats);
 
     //pag vars
-    let numResourses = 5;
-    let offset = 0;
-    let currPage = 1;
-    let loadMore = true;
+    let page = 0;
+    let num;
+    let limit = 4;
     let succMsg = false;
     // search vars
-    let field = "";
-    let value = "";
+    let SCountry = "";
+    let SState = "";
+    let SYear = "";
+    let SHydroMin = "";
+    let SHydroMax = "";
+    let SSolarMin = "";
+    let SSolarMax = "";
+    let SCoalMin = "";
+    let SCoalMax = "";
+
 
     async function loadInitialData() {
         const res = await fetch("/api/v1/electricity-produced-stats/loadInitialData", {
@@ -41,28 +48,18 @@
 
 
     async function getElegtricityStats() {
-        const res = await fetch("/api/v1/electricity-produced-stats?offset=" + numResourses * offset + "&limit=" + numResourses);
-        const nextRes = await fetch("/api/v1/electricity-produced-stats?offset=" + numResourses * (offset + 1) + "&limit=" + numResourses);
-
-        if (res.ok && nextRes.ok) {
+       const res = await fetch("/api/v1/electricity-produced-stats");
+        if (res.ok) {
             const json = await res.json();
-            const newJson = await nextRes.json();
+            
             electricity = json;
-            if (nextRes.lenght == 0) {
-                loadMore = false;
-            } else {
-                loadMore = true;
-            }
+            console.log("Recieved " + electricity.lenght + "stats");
         } else {
             console.log("Error");
         }
     }
 
-    function plusOffset(value) {
-        offset += value;
-        currPage += value;
-        getElegtricityStats();
-    }
+ 
     async function insertNewElectricityStat() {
         const res = await fetch("/api/v1/electricity-produced-stats", {
             method: "POST",
@@ -72,15 +69,8 @@
             }
         }).then(function (res) {
             getElegtricityStats();
-            if (res.ok) {
-                newElectricity = {
-                    country: "",
-                    state: "",
-                    year: "",
-                    hydro: "",
-                    solar: "",
-                    coal: ""
-                };
+            if (res.status == 200) {
+              succMsg= res.statusText + " Muestra insertada con exito";
                 succMsg = res.status + ":" + res.statusText;
             } else if (res.status == 400) {
                 window.alert("ERROR: Se deben completar todos los campos");
@@ -92,6 +82,7 @@
             method: "DELETE"
         }).then(function (res) {
             getElegtricityStats();
+            window.alert("Todas las muestras se han borrado con exito");
         });
     }
     async function deleteAStat(country, state) {
@@ -99,71 +90,155 @@
             method: "DELETE"
         }).then(function (res) {
             getElegtricityStats();
+            succMsg= res.statusText + "Muestra eliminada con exito";
         })
     }
-    async function busqueda(field, value) {
+    async function busqueda(SCountry, SState, SYear, SHydroMin, SHydroMax,SSolarMin, SSolarMax, SCoalMin, SCoalMax) {
 		
-		console.log("Searching data: " + field + " and " + value);
-		
-		var url = "/api/v1/electricity-produced-stats";
-		
-		if (field != "" && value != "") {
-			url = url + "?" + field + "=" + value; 
-		}
-		
-		console.log(url)
-		
-		const res = await fetch(url);
-		
-		if (res.ok) {
-			console.log("Ok:");
-			const json = await res.json();
-			electricity = json;			
-			console.log("Found " + electricity.lenght + "electricity-produced-stats.");
-		} else {
-			console.log("ERROR!");
-		}
+		if(typeof SCountry== 'undefined'){
+             SCountry= "";
+        }
+		if(typeof SState== 'undefined'){
+             SState= "";
+        }
+        if(typeof SYear== 'undefined'){
+             SYear= "";
+        }
+        if(typeof SHydroMin== 'undefined'){
+             SHydroMin= "";
+        }
+        if(typeof SHydroMax== 'undefined'){
+             SHydroMax= "";
+        }
+         if(typeof SSolarMin== 'undefined'){
+             SSolarMin= "";
+        }
+        if(typeof SSolarMax== 'undefined'){
+             SSolarMax= "";
+        }
+        if(typeof SCoalMin== 'undefined'){
+             SCoalMin= "";
+        }
+        if(typeof SCoalMax== 'undefined'){
+             SCoalMax= "";
+        }
+        const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
+        + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+        + "&coalMax=" + SCoalMax
+        )
+        if(res.ok){
+            const json = await res.json();
+            electricity= json;
+            console.log( "Found: " + electricity.lenght + " stats");
+
+            if(electricity.lenght == 1){
+                succMsg = "Se ha encontrado " + electricity.lenght + " muestra";
+            }else{
+                succMsg = "Se han encontrado " + electricity.lenght + " muestras";
+            }
+        }else if(res.status == 400){
+            window.alert("No se han encontrado muestras con los parametros introducidos");
+        }
 	}
-	
-	let exitoMsg=""
+    
+    async function paginacion(SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, num){
+        if(typeof SCountry== 'undefined'){
+             SCountry= "";
+        }
+		if(typeof SState== 'undefined'){
+             SState= "";
+        }
+        if(typeof SYear== 'undefined'){
+             SYear= "";
+        }
+        if(typeof SHydroMin== 'undefined'){
+             SHydroMin= "";
+        }
+        if(typeof SHydroMax== 'undefined'){
+             SHydroMax= "";
+        }
+         if(typeof SSolarMin== 'undefined'){
+             SSolarMin= "";
+        }
+        if(typeof SSolarMax== 'undefined'){
+             SSolarMax= "";
+        }
+        if(typeof SCoalMin== 'undefined'){
+             SCoalMin= "";
+        }
+        if(typeof SCoalMax== 'undefined'){
+             SCoalMax= "";
+        }
+        if(num==1){
+            page= page-limit;
+            if(page < 0){
+                const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
+        + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+        + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
+        )
+        if(res.ok){
+            const json= await res.json();
+            electricity= json;
+        }
+            } else{
+                const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
+        + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+        + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
+        )
+        if(res.ok){
+            const json= await res.json();
+            electricity= json;
+            }
+        }
+    }else{
+        page = page + limit;
+        const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
+        + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+        + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
+        )
+        if(res.ok){
+            const json= await res.json();
+            electricity= json;
+    }else if(res.status==400){
+        window.alert("No existen mas muestras");
+    }
+}
+    }
 </script>
-<main>
-    <h2>Electricidad Producida</h2>
-    <div style="text-align:center;padding-bottom: 3%;">
+<main >
+    <html lang="ES">
+    <meta charset="UTF-8">
+    <body style="background-color: #e6f0ff; font-family: Arial, Helvetica, sans-serif;">
+    <h2 style="text-align: center;">Electricidad Producida</h2>
+    <div style="text-align:left;padding-bottom: 3%;">
         <Button outline color="primary" on:click={loadInitialData}>Cargar Datos</Button>
-        <Button outline color="danger" on:click={deleteAllStats}><i class="fa fa-trash" aria-hidden="true"></i> Borrar
+        <Button outline color="danger" on:click={deleteAllStats}>Borrar
             todos los datos</Button>
     </div>
+   <div style="border: 1px; border-color: black; border-style: groove; padding-bottom: 1%;">
+    <h6>Seccion de busqueda: </h6>
+    <tr>
+		<td><label>Pais: <input bind:value="{SCountry}"></label></td>
+        <td><label>Año: <input bind:value="{SYear}"></label></td>
+        <td><label>Estado/Provincia: <input bind:value="{SState}"></label></td>
+		<td><label>Min Hydro producida: <input bind:value="{SHydroMin}"></label></td>
+        <td><label>Max Hydro producida: <input bind:value="{SHydroMax}"></label></td>
+       
+        <td><label>Min E.Carbon Producida: <input bind:value="{SCoalMin}"></label></td>
+	</tr>
+	<tr>
+        <td><label>Min E.Solar Producida: <input bind:value="{SSolarMin}"></label></td>
+		<td><label>Max E.Solar Producida: <input bind:value="{SSolarMax}"></label></td>
+		<td><label>Máx E.Carbon producida: <input bind:value="{SCoalMax}"></label></td>
+		
+	</tr>
 
+	<Button outline color="primary" on:click="{busqueda (SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax)}">Buscar</Button>
+    </div>
     {#await electricity}
         Loading data...
     {:then electricity}
-	
-	
-		<FormGroup  style="width:25%;"> 
-			<label>Selecciona el campo por el que buscar:</label>
-			<Input type="select" name="inputField" id="inputField" bind:value="{field}">
-				<option disabled selected></option>
-				<option value="country">Pais</option>
-				<option value="state">Estado</option>
-				<option value="year">Año</option>
-				<option value="hydro">Electricidad producida por plantas Hidraulicas</option>
-                <option value="solar">Electricidad producida por plantas Solares</option>
-                <option value="coal">Electricidad producida por plantas de carbon</option>
-			</Input>
-		</FormGroup>
-				
-		<FormGroup style="width:25%;">
-			<label>Valor del campo:</label>
-			<Input type="text"  name="inputValue" id="inputValue" bind:value="{value}"></Input>
-		</FormGroup>
-
-		<Button style="margin-bottom:3%;" color="primary" on:click="{busqueda(field, value)}" class="button-search" >Buscar </Button>
-			
-	
-	
-	
-        <Table bordered>
+        <Table  style="border-style: groove; border-width: 1px; padding-block-start: 1%;">
             <thead>
                 <tr>
                     <th>Pais</th>
@@ -176,23 +251,24 @@
                 </tr>
             </thead>
             <tbody>
-                {#each electricity as tou}
+                {#each electricity as stat}
                     <tr>
 						<td>
-                        	<a href="#/electricity-produced-stats/{tou.country}/{tou.state}">{tou.country}</a>
+                        	<a href="#/electricity-produced-stats/{stat.country}/{stat.state}">{stat.country}</a>
                         </td>
-                        <td>{tou.state}</td>
-                        <td>{tou.year}</td>
-                        <td>{tou.hydro}</td>
-						<td>{tou.solar}</td>
-                        <td>{tou.coal}</td>
-                        <td><Button outline color="danger" on:click="{deleteAStat(tou.country,tou.state)}"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</Button></td>
+                        <td>{stat.state}</td>
+                        <td>{stat.year}</td>
+                        <td>{stat.hydro}</td>
+						<td>{stat.solar}</td>
+                        <td>{stat.coal}</td>
+                        <td><Button outline color="danger" on:click="{deleteAStat(stat.country,stat.state)}"> Eliminar</Button></td>
                     </tr>
                 {/each}
             </tbody>
         </Table>
-		<h3>Añadir nuevo dato:</h3>
-		<Table style="background-color:#EAEEF0;">
+		
+        <Table style="border-style: groove; border-width: 1px;">
+            <h4>Añadir nuevo dato:</h4>
 			<tr>
                 <td><strong>Pais:</strong> <input bind:value="{newElectricity.country}"></td>
                 <td><strong>Estado/Provincia:</strong> <input bind:value="{newElectricity.state}"></td>
@@ -208,34 +284,14 @@
 	{#if succMsg}
         <p style="color: green">{succMsg}. Dato insertado con éxito</p>
     {/if}
- 	<Pagination ariaLabel="Cambiar de página">
-
-
-		<PaginationItem class="{currPage === 1 ? 'disabled' : ''}">
-		  <PaginationLink previous href="#/electricity-produced-stats" on:click="{() => plusOffset(-1)}" />
-		</PaginationItem>
-		
-		<!-- If we are not in the first page-->
-		{#if currPage != 1}
-		<PaginationItem>
-			<PaginationLink href="#/electricity-produced-stats" on:click="{() => plusOffset(-1)}" >{currPage - 1}</PaginationLink>
-		</PaginationItem>
-		{/if}
-		<PaginationItem active>
-			<PaginationLink href="#/electricity-produced-stats" >{currPage}</PaginationLink>
-		</PaginationItem>
-
-		<!-- If there are more elements-->
-		{#if loadMore}
-		<PaginationItem >
-			<PaginationLink href="#/electricity-produced-stats" on:click="{() => plusOffset(1)}">{currPage + 1}</PaginationLink>
-		</PaginationItem>
-		{/if}
-
-		<PaginationItem class="{loadMore ? '' : 'disabled'}">
-		  <PaginationLink next href="#/electricity-produced-stats" on:click="{() => plusOffset(1)}"/>
-		</PaginationItem>
-
-	</Pagination>
- 
+     
+    {#if page==0}
+    <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 2))}">&gt;</button>
+    {/if}
+    {#if page > 0}
+    <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 1))}">&lt;</button>
+    <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 2))}">&gt;</button>
+    {/if}
+</body>
+    </html>
 </main>
