@@ -232,7 +232,7 @@
 		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
 		<Button outline color="danger" on:click={deleteAllPilots} onclick="location.reload()">Borrar Todo</Button>
 	</div>
-	<Table borderless>
+	<Table borderless responsive>
 		<tr>
 			<td style="padding-bottom: 1%"><strong><label>Pais: <input bind:value="{Fcountry}"></label></strong></td>
 			<td><strong><label>Último Titulo (Desde): <input bind:value="{Ffrom}"></label></strong></td>
