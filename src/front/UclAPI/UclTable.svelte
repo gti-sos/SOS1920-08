@@ -232,10 +232,14 @@
 
 <main>
 	<div>
+		<h3>Ucl API</h3>
+	</div>
+	<div>
+		<Button outline color="primary" onclick="location.href='#/'">Inicio</Button>
 		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
 		<Button outline color="danger" on:click={deleteTeams} onclick="location.reload()">Borrar Todo</Button>
-		<div>
-		</div>
+	</div>
+	<div>
 		<label>Pais: <input bind:value="{country_S}"></label>
 		<br>
 		<label>Equipo: <input bind:value="{team_S}"></label>
@@ -316,3 +320,20 @@
 
 	
 </main>
+<style>
+	h3{
+		text-align: center;
+	}
+	tbody{
+		text-align: center;
+	}
+	thead{
+		text-align: center;
+	}
+	
+	main {
+		font-family: Georgia, "Times New Roman", Times, serif;
+		color: black;
+	}
+	</style>
+	
