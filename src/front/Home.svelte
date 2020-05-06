@@ -7,7 +7,6 @@
     <html lang="en">
     <link rel="stylesheet" href="style.css">
 
-<<<<<<< HEAD
     <head>
         <title>SOS1920-08</title>
         <h1>SOS1920-08</h1>
@@ -16,24 +15,11 @@
 
     <body>
         <div class="home">
-            <Button outline color="success"><a href="#/motogp-statistics">API MOTOGP</a></Button>
             <Button outline color="success"><a href="#/electricity-produced-stats">API Electricidad</a></Button>
+            <Button outline color="success"><a href="#/ucl_stats">API Ucl</a></Button>
         </div>
-        <div class="cuerpo">
-            <ul>
-                <li>
-                    <strong>Team: </strong>
-                </li>
-=======
-        <body>
-            <div class="home">
-                <Button outline color="success"><a href="#/motogp-statistics">API MOTOGP</a></Button>
-                <Button outline color="success"><a href="#/electricity-produced-stats">API Electricidad</a></Button>
-                <Button outline color="success"><a href="#/ucl_stats">API Ucl</a></Button>
 
-            </div>
             <div class="cuerpo">
->>>>>>> 06757268f02743d009ef0481bec09196103e60ea
                 <ul>
                     <li>
                         <a href="https://github.com/franbornos6">Francisco Jurado Garrido</a>
@@ -73,7 +59,22 @@
                             https://sos1920-08.herokuapp.com/api/v1/electricity-produced-stats/docs </a>(developed by <a
                             href="https://github.com/angloadav">Angel Loaiza Davila</a>)</li>
                 </ul>
-            </ul>
+                <li>
+                    <strong>Front-end: </strong>
+                </li>
+                <ul>
+                    <li>
+                        <Button outline color="success"><a href="#/motogp-statistics">API MOTOGP</a></Button>
+                        (developed by<a href="https://github.com/franbornos6">Francisco Jurado Garrido</a>)</li>
+                    <li>
+                        <a href="https://sos1920-08.herokuapp.com/api/v1/ucl_stats/docs">
+                            https://sos1920-08.herokuapp.com/api/v1/ucl_stats/docs </a>(developed by
+                        <a href="https://github.com/josmolcol">Jose Carlos Molina Coloma</a>)</li>
+                    <li>
+                        <a href="https://sos1920-08.herokuapp.com/api/v1/electricity-produced-stats/docs">
+                            https://sos1920-08.herokuapp.com/api/v1/electricity-produced-stats/docs </a>(developed by <a
+                            href="https://github.com/angloadav">Angel Loaiza Davila</a>)</li>
+                </ul>
         </div>
     </body>
 </main>
