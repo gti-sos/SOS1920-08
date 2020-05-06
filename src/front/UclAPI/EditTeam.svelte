@@ -51,8 +51,8 @@
 		const res = await fetch("/api/v1/ucl_stats/"+params.uclCountry +"/" +params.uclTeam,{
 			method: "PUT",	
 			body: JSON.stringify({
-                country: params.uclCountry,
-                team: params.uclTeam,
+                country: updatedCountry,
+                team: updatedTeam,
                 last_title: updatedLastTitle,
                 title: updatedTitle,
                 season: updatedSeason,
@@ -65,12 +65,11 @@
 
 		}).then(function (res){
             getUcl();
-            if(res.ok){
-                console.log("Datos modificados");
+            if(res.status==200){
+                window.alert("Los datos se han modificado correctamente");
             }else{
-                errorMsg = res.status +": "+res.statusText;
-                console.log("ERROR!" + errorMsg);
-               
+                errorMsg ="Lo siento los datos introducidos no son correctos";
+                console.log(res.status +": "+res.statusText);
             }
 		});	
 
@@ -97,8 +96,8 @@
 		</thead>
 		<tbody>
 			<tr>
-                <td>{params.uclCountry}</td>
-                <td>{params.uclTeam}</td>
+                <td><input bind:value="{updatedCountry}"></td>
+                <td><input bind:value="{updatedTeam}"></td>
                 <td><input bind:value="{updatedLastTitle}"></td>
                 <td><input bind:value="{updatedTitle}"></td>
                 <td><input bind:value="{updatedSeason}"></td>
@@ -112,5 +111,5 @@
     {#if errorMsg}
     <p style="color: red">ERROR:{errorMsg}</p>
     {/if}
-    <button outline color ="secondary" on:click="{pop}">Back</button>
+    <button outline color ="secondary" on:click="{pop}">volver</button>
 </main>
