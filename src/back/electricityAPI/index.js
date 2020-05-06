@@ -7,7 +7,7 @@ module.exports = function(app) {
 		filename: dbFileName,
 		autoload: true
 	});
-
+	
 	app.get(BASE_PATH + '/electricity-produced-stats/loadInitialData', (req, res) => {
 		var electricityProducedInitial = [
 			{

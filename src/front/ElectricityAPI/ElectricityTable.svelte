@@ -18,6 +18,8 @@
         solar: "",
         coal: ""
     }
+    
+    onMount(getElegtricityStats);
 
     //pag vars
     let numResourses = 5;
@@ -117,7 +119,7 @@
 			console.log("Ok:");
 			const json = await res.json();
 			electricity = json;			
-			console.log("Found " + electricity.lenght + " rural-tourism-stats.");
+			console.log("Found " + electricity.lenght + "electricity-produced-stats.");
 		} else {
 			console.log("ERROR!");
 		}
