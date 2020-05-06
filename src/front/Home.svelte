@@ -10,6 +10,11 @@
     <body>
        
             <div class="cuerpo">
+                <head>
+                    <title>SOS1920-08</title>
+                    <h1>SOS1920-08</h1>
+                    <img class="logo" src="logo-us.png" alt="Logo US">
+                </head>
                 <ul>
                     <li>
                         <a href="https://github.com/franbornos6">Francisco Jurado Garrido</a>
