@@ -14,11 +14,7 @@
     </head>
 
     <body>
-        <div class="home">
-            <Button outline color="success"><a href="#/electricity-produced-stats">API Electricidad</a></Button>
-            <Button outline color="success"><a href="#/ucl_stats">API Ucl</a></Button>
-        </div>
-
+       
             <div class="cuerpo">
                 <ul>
                     <li>
@@ -67,13 +63,11 @@
                         <Button outline color="success"><a href="#/motogp-statistics">API MOTOGP</a></Button>
                         (developed by<a href="https://github.com/franbornos6">Francisco Jurado Garrido</a>)</li>
                     <li>
-                        <a href="https://sos1920-08.herokuapp.com/api/v1/ucl_stats/docs">
-                            https://sos1920-08.herokuapp.com/api/v1/ucl_stats/docs </a>(developed by
-                        <a href="https://github.com/josmolcol">Jose Carlos Molina Coloma</a>)</li>
+                        <Button outline color="success"><a href="#/electricity-produced-stats">API Electricidad</a></Button>
+                        (developed by<a href="https://github.com/josmolcol">Jose Carlos Molina Coloma</a>)</li>
                     <li>
-                        <a href="https://sos1920-08.herokuapp.com/api/v1/electricity-produced-stats/docs">
-                            https://sos1920-08.herokuapp.com/api/v1/electricity-produced-stats/docs </a>(developed by <a
-                            href="https://github.com/angloadav">Angel Loaiza Davila</a>)</li>
+                        <Button outline color="success"><a href="#/ucl_stats">API Ucl</a></Button>
+                        (developed by <a href="https://github.com/angloadav">Angel Loaiza Davila</a>)</li>
                 </ul>
         </div>
     </body>
