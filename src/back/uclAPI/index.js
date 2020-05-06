@@ -7,7 +7,8 @@ module.exports = function(app) {
 
 	const db = new dataStore({
 		filename: dbFileName,
-		autoload: true
+		autoload: true,
+		corruptAlertThreshold:1
 	});
 
 	//-----------------------------API JOSE CARLOS----------------------------------

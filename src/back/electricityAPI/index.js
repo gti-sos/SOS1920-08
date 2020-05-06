@@ -5,7 +5,8 @@ module.exports = function(app) {
 	const dbFileName = path.join(__dirname, 'electricity.db');
 	const db = new dataStore({
 		filename: dbFileName,
-		autoload: true
+		autoload: true,
+		corruptAlertThreshold:1
 	});
 	
 	app.get(BASE_PATH + '/electricity-produced-stats/loadInitialData', (req, res) => {
