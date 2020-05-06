@@ -227,6 +227,8 @@
 
 	<div>
 		<Button outline color="primary" onclick="location.href='#/'">Inicio</Button>
+	</div>
+	<div>
 		<Button outline color="primary" on:click={loadInitialData}>Cargar Datos Iniciales</Button>
 		<Button outline color="danger" on:click={deleteAllPilots} onclick="location.reload()">Borrar Todo</Button>
 	</div>
