@@ -1,7 +1,6 @@
 <script>
 	import Table from "sveltestrap/src/Table.svelte";
 	import Button from "sveltestrap/src/Button.svelte";
-	import { Pagination, PaginationItem, PaginationLink } from 'sveltestrap';
 	import { onMount } from "svelte";
 
 	let pilots = [];
@@ -13,6 +12,8 @@
 		victory: "",
 		podium: ""
 	};
+
+	let exitoMsg="";
 
 	//VARIABLES PARA PAGINACION
 	let pag = 0;
@@ -62,6 +63,14 @@
 			}
 		}).then(function (res) {
 			getPilots();
+
+			if(res.status==409){
+				window.alert("El piloto con ese nombre ya existe");
+			}else if(res.status==400){
+				window.alert("Como mínimo debe introducir los campos Pais y Piloto");
+			}else if(res.status==201){
+				exitoMsg = res.statusText+ ". Piloto creado con éxito";
+			}
 		});
 
 	}
@@ -71,14 +80,16 @@
 			method: "DELETE"
 		}).then(function (res) {
 			getPilots();
+			exitoMsg = res.statusText+ ". Piloto eliminado con éxito";
 		});
 	}
 
 	async function deleteAllPilots() {
-		const res = await fetch("/api/v1/motogp-statistics", {
+		const res = await fetch("/api/v1/motogp-statistics/", {
 			method:"DELETE"
 		}).then(function (res) {
 			getPilots();
+			exitoMsg = res.statusText+ ". Todos los pilotos eliminados";
 		});
 	}
 
@@ -87,6 +98,8 @@
 			method: "GET"
 		}).then(function (res) {
 			getPilots();
+			exitoMsg = res.statusText+ ". Pilotos iniciales cargados con éxito";
+
 		});
 	}
 
@@ -128,8 +141,15 @@
 			const json = await res.json();
 			pilots = json;
 			console.log("Found "+ pilots.length + "pilots");
+			
+			if(pilots.length==1){
+				exitoMsg = "Se ha encontrado " + pilots.length + " piloto";
+			}else{
+				exitoMsg = "Se han encontrado " + pilots.length + " pilotos";
+			}
 
-		}else{
+		}else if (res.status==404){
+			window.alert("No hay datos con los parámetros introducidos");
 			console.log("ERROR");
 		}
 	}
@@ -238,13 +258,13 @@
 		<Table bordered>
 			<thead>
 				<tr>
-					<th>Country</th>
-					<th>Pilot</th>
-					<th>Last Title</th>
-					<th>World Title</th>
-					<th>Victory</th>
-					<th>Podium</th>
-					<th>Actions</th>
+					<th>Pais</th>
+					<th>Piloto</th>
+					<th>Último Tiutlo</th>
+					<th>Titulos Mundiales</th>
+					<th>Victorias</th>
+					<th>Podiums</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -275,13 +295,17 @@
 			</tbody>
 		</Table>
 	{/await}
-	{#if pag==0}
-		<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 2)}">&gt;</Button>
-	{/if}
-	{#if pag>0}
-		<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 1)}">&lt;</Button>
-		<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 2)}">&gt;</Button>
-	{/if}
+		{#if exitoMsg}
+			<p style="color: forestgreen;">{exitoMsg}</p>
+		{/if}
+		{#if pag==0}
+			<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 2)}">&gt;</Button>
+		{/if}
+		{#if pag>0}
+			<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 1)}">&lt;</Button>
+			<Button outline color="primary" on:click="{paginacion(Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin, 2)}">&gt;</Button>
+		{/if}
 		
 
 </main>
+
