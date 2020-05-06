@@ -21,14 +21,14 @@
 
 async function getElectricity(){
     console.log("Fetching electricity....");
-    const res = await fetch("/api/v1/electricity-produced-stats/" + params.country + params.state);
+    const res = await fetch("/api/v1/electricity-produced-stats/" + params.country + "/"+  params.state);
 
     if(res.ok){
         console.log("Ok:");
         const json = await res.json();
         electricity = json;
-        updateCountry = electricity.country;
-        updateState = electricity.state;
+        updateCountry = params.country;
+        updateState = params.state;
         updateYear = parseInt(electricity.year);
         updateHydro = parseInt(electricity.hydro);
         updateSolar = parseInt(electricity.solar);
@@ -48,7 +48,7 @@ async function actualizaElectricity(){
 			body: JSON.stringify({
                 country : params.country,
                 state : params.state,
-                year: parseInt(params.year),
+                year: parseInt(updateYear),
                 hydro : parseInt(updateHydro),
                 solar : parseInt(updateSolar),
                 coal : parseInt(updateCoal),
@@ -57,7 +57,7 @@ async function actualizaElectricity(){
 				"Content-Type": "application/json"
 			}
 		}).then(function (res) {
-			getelectricitys();
+			getElectricity();
 		});
 
 	}
@@ -84,7 +84,7 @@ async function actualizaElectricity(){
 				<tr>
 					<td>{params.country}</td>
 					<td>{params.state}</td>
-					<td>{params.year}</td>
+					<td><input bind:value = "{updateYear}"></td>
 					<td><input bind:value="{updateHydro}"></td>
 					<td><input bind:value="{updateSolar}"></td>
 					<td><input bind:value="{updateCoal}"></td>
