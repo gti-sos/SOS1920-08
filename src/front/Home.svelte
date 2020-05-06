@@ -62,10 +62,11 @@
                         <Button outline color="success"><a href="#/motogp-statistics">API MOTOGP</a></Button>
                         (developed by<a href="https://github.com/franbornos6">Francisco Jurado Garrido</a>)</li>
                     <li>
-                        <Button outline color="success"><a href="#/electricity-produced-stats">API Electricidad</a></Button>
+                        <Button outline color="success"><a href="#/ucl_stats">API Ucl</a></Button>
                         (developed by<a href="https://github.com/josmolcol">Jose Carlos Molina Coloma</a>)</li>
                     <li>
-                        <Button outline color="success"><a href="#/ucl_stats">API Ucl</a></Button>
+                        
+                        <Button outline color="success"><a href="#/electricity-produced-stats">API Electricidad</a></Button>
                         (developed by <a href="https://github.com/angloadav">Angel Loaiza Davila</a>)</li>
                 </ul>
         </div>
