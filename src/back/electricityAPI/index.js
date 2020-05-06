@@ -7,82 +7,82 @@ module.exports = function(app) {
 		filename: dbFileName,
 		autoload: true
 	});
-
+	var electricityProducedInitial = [
+		{
+			country: 'EEUU',
+			state: 'Alabama',
+			year: 2018,
+			hydro: 11142139,
+			solar: 357252,
+			coal: 3177520
+		},
+		{
+			country: 'EEUU',
+			state: 'Arkansas',
+			year: 2018,
+			hydro: 3008775,
+			solar: 203413,
+			coal: 29996101
+		},
+		{
+			country: 'EEUU',
+			state: 'California',
+			year: 2018,
+			hydro: 26330667,
+			solar: 26985181,
+			coal: 281328
+		},
+		{
+			country: 'EEUU',
+			state: 'Colorado',
+			year: 2018,
+			hydro: 1825385,
+			solar: 1062380,
+			coal: 26382060
+		},
+		{
+			country: 'EEUU',
+			state: 'Delaware',
+			year: 2018,
+			hydro: 0,
+			solar: 49789,
+			coal: 273388
+		},
+		{
+			country: 'EEUU',
+			state: 'Florida',
+			year: 2018,
+			hydro: 232574,
+			solar: 2412067,
+			coal: 30272201
+		},
+		{
+			country: 'EEUU',
+			state: 'Georgia',
+			year: 2018,
+			hydro: 3696868,
+			solar: 1995837,
+			coal: 32180555
+		},
+		{
+			country: 'EEUU',
+			state: 'Hawaii',
+			year: 2018,
+			hydro: 96520,
+			solar: 184576,
+			coal: 1311203
+		},
+		{
+			country: 'EEUU',
+			state: 'Iowa',
+			year: 2018,
+			hydro: 924861,
+			solar: 11456,
+			coal: 28552999
+		}
+	];
 	app.get(BASE_PATH + '/electricity-produced-stats/loadInitialData', (req, res) => {
-		var electricityProducedInitial = [
-			{
-				country: 'EEUU',
-				state: 'Alabama',
-				year: 2018,
-				hydro: 11142139,
-				solar: 357252,
-				coal: 3177520
-			},
-			{
-				country: 'EEUU',
-				state: 'Arkansas',
-				year: 2018,
-				hydro: 3008775,
-				solar: 203413,
-				coal: 29996101
-			},
-			{
-				country: 'EEUU',
-				state: 'California',
-				year: 2018,
-				hydro: 26330667,
-				solar: 26985181,
-				coal: 281328
-			},
-			{
-				country: 'EEUU',
-				state: 'Colorado',
-				year: 2018,
-				hydro: 1825385,
-				solar: 1062380,
-				coal: 26382060
-			},
-			{
-				country: 'EEUU',
-				state: 'Delaware',
-				year: 2018,
-				hydro: 0,
-				solar: 49789,
-				coal: 273388
-			},
-			{
-				country: 'EEUU',
-				state: 'Florida',
-				year: 2018,
-				hydro: 232574,
-				solar: 2412067,
-				coal: 30272201
-			},
-			{
-				country: 'EEUU',
-				state: 'Georgia',
-				year: 2018,
-				hydro: 3696868,
-				solar: 1995837,
-				coal: 32180555
-			},
-			{
-				country: 'EEUU',
-				state: 'Hawaii',
-				year: 2018,
-				hydro: 96520,
-				solar: 184576,
-				coal: 1311203
-			},
-			{
-				country: 'EEUU',
-				state: 'Iowa',
-				year: 2018,
-				hydro: 924861,
-				solar: 11456,
-				coal: 28552999
-			}
-		];
+		
 		db.remove({}, { multi: true }, function(err, numRemoved) {});
 		db.insert(electricityProducedInitial);
 

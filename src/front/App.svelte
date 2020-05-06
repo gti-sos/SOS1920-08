@@ -10,6 +10,7 @@
 
 	//Electricity-produced-API
 	import ElectricityTable from './ElectricityAPI/ElectricityTable.svelte';
+	import EditStat from './ElectricityAPI/EditStat.svelte';
 	
 
 	const routes = {
@@ -19,6 +20,7 @@
 		"/motogp-statistics": MotoGpTable,
 		"/motogp-statistics/:pilot": EditPilot,
 		"/electricity-produced-stats" : ElectricityTable,
+		"/electricity-produced-stats/:country/:state" : EditStat,
 		
 		"*" : NotFound
 
