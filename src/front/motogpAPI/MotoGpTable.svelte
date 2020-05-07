@@ -2,6 +2,7 @@
 	import Table from "sveltestrap/src/Table.svelte";
 	import Button from "sveltestrap/src/Button.svelte";
 	import { onMount } from "svelte";
+	import { pop } from "svelte-spa-router";
 
 	let pilots = [];
 	let newPilot = {
@@ -18,7 +19,7 @@
 	//VARIABLES PARA PAGINACION
 	let pag = 0;
 	let numero;
-	let limit = 4;
+	let limit = 10;
 	
 
 	//VARIABLES PARA BUSQUEDA
@@ -69,7 +70,7 @@
 			}else if(res.status==400){
 				window.alert("Como mínimo debe introducir los campos Pais y Piloto");
 			}else if(res.status==201){
-				exitoMsg = res.statusText+ ". Piloto creado con éxito";
+				exitoMsg = "Piloto creado con éxito";
 			}
 		});
 
@@ -80,7 +81,7 @@
 			method: "DELETE"
 		}).then(function (res) {
 			getPilots();
-			exitoMsg = res.statusText+ ". Piloto eliminado con éxito";
+			exitoMsg = "Piloto eliminado con éxito";
 		});
 	}
 
@@ -98,7 +99,7 @@
 			method: "GET"
 		}).then(function (res) {
 			getPilots();
-			exitoMsg = res.statusText+ ". Pilotos iniciales cargados con éxito";
+			exitoMsg = "Pilotos iniciales cargados con éxito";
 
 		});
 	}
@@ -149,7 +150,7 @@
 			}
 
 		}else if (res.status==404){
-			window.alert("No hay datos con los parámetros introducidos");
+			window.alert("No hay pilotos con los parámetros introducidos");
 			console.log("ERROR");
 		}
 	}
@@ -252,12 +253,12 @@
 	<div style="text-align:center;padding-bottom: 1%">
 	<Button outline color="primary" on:click="{busqueda (Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin)}">Buscar</Button>
 	</div>
-	
+	<div class="table-responsive">
 	{#await pilots}
 		Loadind pilots...
 	{:then pilots}
-		<Table bordered responsive>
-			<thead>
+		<Table class="table table-sm" bordered>
+			<thead class="thead-dark">
 				<tr>
 					<th>Pais</th>
 					<th>Piloto</th>
@@ -296,6 +297,7 @@
 			</tbody>
 		</Table>
 	{/await}
+	</div>
 		{#if exitoMsg}
 			<p style="color: forestgreen;">{exitoMsg}</p>
 		{/if}

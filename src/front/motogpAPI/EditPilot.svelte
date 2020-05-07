@@ -71,7 +71,7 @@ async function actualizaPilot(){
     <div>
 		<h3>API MOTOGP</h3>
 	</div>
-    <h3>Editar Piloto:  <strong>{params.pilot}</strong></h3>
+    <h3>Editar: <strong>{params.pilot}</strong></h3>
     {#await pilot}
 		Loadind pilots...
     {:then pilot}
