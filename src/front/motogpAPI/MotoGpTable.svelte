@@ -221,7 +221,7 @@
 
 
 
-<main>
+<main >
 	<div>
 		<h2>API MOTOGP</h2>
 	</div>
