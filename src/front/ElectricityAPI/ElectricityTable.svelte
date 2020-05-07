@@ -26,17 +26,17 @@
     let page=0;
     let numero;
     let limit = 10;
-    let succMsg = false;
+    let succMsg;
     // search vars
     let SCountry = "";
     let SState = "";
     let SYear = "";
     let SHydroMin = 0;
-    let SHydroMax = 0;
+    let SHydroMax = "";
     let SSolarMin = 0;
-    let SSolarMax = 0;
+    let SSolarMax = "";
     let SCoalMin = 0;
-    let SCoalMax = 0;
+    let SCoalMax = "";
 
 
     async function loadInitialData() {
@@ -49,12 +49,12 @@
 
 
     async function getElegtricityStats() {
-        const res = await fetch("/api/v1/electricity-produced-stats?" + "limit=" + limit + "&offset=" + page);
+        const res = await fetch("/api/v1/electricity-produced-stats?limit="+limit + "&offset=" + page);
         if (res.ok) {
             const json = await res.json();
 
             electricity = json;
-            console.log("Recieved " + electricity.lenght + "stats");
+            console.log("Recieved " + electricity.length + "stats");
         } else {
             console.log("Error");
         }
@@ -130,12 +130,12 @@
         if (res.ok) {
             const json = await res.json();
             electricity = json;
-            console.log("Found: " + electricity.lenght + " stats");
+            console.log("Found: " + electricity.length + " stats");
 
-            if (electricity.lenght == 1) {
-                succMsg = "Se ha encontrado " + electricity.lenght + " muestra";
+            if (electricity.length == 1) {
+                succMsg = "Se ha encontrado " + electricity.length + " muestra";
             } else {
-                succMsg = "Se han encontrado " + electricity.lenght + " muestras";
+                succMsg = "Se han encontrado " + electricity.length + " muestras";
             }
         } else if (res.status == 400) {
             window.alert("No se han encontrado muestras con los parametros introducidos");
@@ -204,7 +204,7 @@
                 const json = await res.json();
                 electricity = json;
                 numero=num;
-            } else if (res.status == 400) {
+            } else if (res.status == 404) {
                 window.alert("No existen mas muestras");
             }
         }
