@@ -8,6 +8,7 @@
     import { Pagination, PaginationItem, PaginationLink } from 'sveltestrap';
     import Input from "sveltestrap/src/Input.svelte";
     import FormGroup from "sveltestrap/src/FormGroup.svelte";
+    import { pop } from "svelte-spa-router";
 
     let electricity = [];
     let newElectricity = {
@@ -30,11 +31,11 @@
     let SCountry = "";
     let SState = "";
     let SYear = "";
-    let SHydroMin = "";
+    let SHydroMin = 0;
     let SHydroMax = "";
-    let SSolarMin = "";
+    let SSolarMin = 0;
     let SSolarMax = "";
-    let SCoalMin = "";
+    let SCoalMin = 0;
     let SCoalMax = "";
 
 
@@ -172,6 +173,7 @@
         if(num==1){
             page= page-limit;
             if(page < 0){
+                page=0;
                 const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
         + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
         + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
@@ -212,8 +214,9 @@
     <h2 style="text-align: center;">Electricidad Producida</h2>
     <div style="text-align:left;padding-bottom: 3%;">
         <Button outline color="primary" on:click={loadInitialData}>Cargar Datos</Button>
-        <Button outline color="danger" on:click={deleteAllStats}>Borrar
+        <Button outline color="danger" on:click={deleteAllStats} onclick="location.reload()">Borrar
             todos los datos</Button>
+         <Button outline color="secondary" on:click="{pop}">Back</Button>
     </div>
    <div style="border: 1px; border-color: black; border-style: groove; padding-bottom: 1%;">
     <h6>Seccion de busqueda: </h6>
@@ -224,12 +227,14 @@
 		<td><label>Min Hydro producida: <input bind:value="{SHydroMin}"></label></td>
         <td><label>Max Hydro producida: <input bind:value="{SHydroMax}"></label></td>
        
-        <td><label>Min E.Carbon Producida: <input bind:value="{SCoalMin}"></label></td>
+        
 	</tr>
 	<tr>
+        <td><label>Min E.Carbon Producida: <input bind:value="{SCoalMin}"></label></td>
+        <td><label>Máx E.Carbon producida: <input bind:value="{SCoalMax}"></label></td>
         <td><label>Min E.Solar Producida: <input bind:value="{SSolarMin}"></label></td>
-		<td><label>Max E.Solar Producida: <input bind:value="{SSolarMax}"></label></td>
-		<td><label>Máx E.Carbon producida: <input bind:value="{SCoalMax}"></label></td>
+        <td><label>Max E.Solar Producida: <input bind:value="{SSolarMax}"></label></td>
+		
 		
 	</tr>
 
@@ -284,14 +289,15 @@
 	{#if succMsg}
         <p style="color: green">{succMsg}. Dato insertado con éxito</p>
     {/if}
-     
+   
     {#if page==0}
-    <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 2))}">&gt;</button>
+        <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 2))}">&gt;</button>
     {/if}
     {#if page > 0}
-    <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 1))}">&lt;</button>
-    <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 2))}">&gt;</button>
+        <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 1))}">&lt;</button>
+        <button outline color="primary" on:click = "{paginacion((SCountry, SState, SYear, SHydroMin, SHydroMax, SSolarMin, SSolarMax, SCoalMin, SCoalMax, 2))}">&gt;</button>
     {/if}
+
 </body>
     </html>
 </main>

@@ -1,25 +1,9 @@
-{"country":"EEUU","pilot":"Wayne Rainey","last_title":1992,"world_title":3,"victory":24,"podium":64,"_id":"BH7O6Xfo1EbDpf6N"}
-{"country":"Italy","pilot":"Valentino_Rossi","last_title":2009,"world_title":7,"victory":64,"podium":198,"_id":"GIM4NmgNMtCeurKg"}
-{"country":"Australia","pilot":"Casey_Stoner","last_title":2011,"world_title":2,"victory":38,"podium":69,"_id":"T552YEaJ0Xg9tcBz"}
-{"country":"Spain","pilot":"Jorge_Lorenzo","last_title":2015,"world_title":3,"victory":47,"podium":114,"_id":"ZjUJKlIoMiKQeajb"}
-{"country":"EEUU","pilot":"Eddie_Lawson","last_title":1989,"world_title":4,"victory":31,"podium":78,"_id":"bXiZmE7XILzM3que"}
-{"country":"Italy","pilot":"Giacomo_Agostini","last_title":1975,"world_title":8,"victory":68,"podium":88,"_id":"pyLYHTjc2L67idw3"}
-{"country":"Australia","pilot":"Mick_Doohan","last_title":1998,"world_title":5,"victory":54,"podium":95,"_id":"sB857z6l4Mx3FPfE"}
-{"country":"Great_Britain","pilot":"Mike_Hailwood","last_title":1965,"world_title":4,"victory":37,"podium":48,"_id":"wGhcUEdSpWNDX0ZX"}
-{"$$deleted":true,"_id":"BH7O6Xfo1EbDpf6N"}
-{"$$deleted":true,"_id":"GIM4NmgNMtCeurKg"}
-{"$$deleted":true,"_id":"T552YEaJ0Xg9tcBz"}
-{"$$deleted":true,"_id":"ZjUJKlIoMiKQeajb"}
-{"$$deleted":true,"_id":"bXiZmE7XILzM3que"}
-{"$$deleted":true,"_id":"pyLYHTjc2L67idw3"}
-{"$$deleted":true,"_id":"sB857z6l4Mx3FPfE"}
-{"$$deleted":true,"_id":"wGhcUEdSpWNDX0ZX"}
-{"country":"Spain","pilot":"Jorge_Lorenzo","last_title":2015,"world_title":3,"victory":47,"podium":114,"_id":"zJkBI4zbDTTByTJD"}
-{"country":"Spain","pilot":"Marc_Marquez","last_title":2019,"world_title":6,"victory":56,"podium":95,"_id":"jL4fAgUULonbQfej"}
 {"country":"Italy","pilot":"Giacomo_Agostini","last_title":1975,"world_title":8,"victory":68,"podium":88,"_id":"2uZ2KNPCRE8jZ3IK"}
+{"country":"EEUU","pilot":"Wayne Rainey","last_title":1992,"world_title":3,"victory":24,"podium":64,"_id":"9KskNDv6VvAGwcva"}
 {"country":"Italy","pilot":"Valentino_Rossi","last_title":2009,"world_title":7,"victory":64,"podium":198,"_id":"CkTB0tCHFVUwtzRJ"}
 {"country":"Australia","pilot":"Mick_Doohan","last_title":1998,"world_title":5,"victory":54,"podium":95,"_id":"D5yim6FXmEG3Mxhf"}
-{"country":"Australia","pilot":"Casey_Stoner","last_title":2011,"world_title":2,"victory":38,"podium":69,"_id":"h2K8GnanVN1tbzcs"}
-{"country":"EEUU","pilot":"Wayne Rainey","last_title":1992,"world_title":3,"victory":24,"podium":64,"_id":"9KskNDv6VvAGwcva"}
-{"country":"Great_Britain","pilot":"Mike_Hailwood","last_title":1965,"world_title":4,"victory":37,"podium":48,"_id":"gq6z53UEeWoIGKCd"}
 {"country":"EEUU","pilot":"Eddie_Lawson","last_title":1989,"world_title":4,"victory":31,"podium":78,"_id":"GLXjEw5s0MS5ErP0"}
+{"country":"Great_Britain","pilot":"Mike_Hailwood","last_title":1965,"world_title":4,"victory":37,"podium":48,"_id":"gq6z53UEeWoIGKCd"}
+{"country":"Australia","pilot":"Casey_Stoner","last_title":2011,"world_title":2,"victory":38,"podium":69,"_id":"h2K8GnanVN1tbzcs"}
+{"country":"Spain","pilot":"Marc_Marquez","last_title":2019,"world_title":6,"victory":56,"podium":95,"_id":"jL4fAgUULonbQfej"}
+{"country":"Spain","pilot":"Jorge_Lorenzo","last_title":2015,"world_title":3,"victory":47,"podium":114,"_id":"zJkBI4zbDTTByTJD"}
