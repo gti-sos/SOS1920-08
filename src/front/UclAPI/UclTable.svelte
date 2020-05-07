@@ -19,7 +19,7 @@
 
 	let pag = 0;
 	let numero;
-	let limit = 4;
+	let limit = 10;
 
 	let country_S="";
 	let team_S="";
