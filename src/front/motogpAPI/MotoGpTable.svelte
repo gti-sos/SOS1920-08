@@ -42,7 +42,7 @@
 
 	async function getPilots(){
 		console.log("Fetching pilots....");
-		const res = await fetch("/api/v1/motogp-statistics");
+		const res = await fetch("/api/v1/motogp-statistics?"+"limit="+limit+"&offset="+pag);
 
 		if(res.ok){
 			console.log("Ok:");
