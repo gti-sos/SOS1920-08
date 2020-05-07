@@ -6,7 +6,7 @@
 
     export let params = {}
     let electricity = {};
-    
+
     let updateCountry = "";
     let updateState = "";
     let updateYear = 0;
@@ -16,58 +16,64 @@
 
     let erroMsg = "";
 
-    
-	onMount(getElectricity);
 
-async function getElectricity(){
-    console.log("Fetching electricity....");
-    const res = await fetch("/api/v1/electricity-produced-stats/" + params.country + "/"+  params.state);
+    onMount(getElectricity);
 
-    if(res.ok){
-        console.log("Ok:");
-        const json = await res.json();
-        electricity = json;
-        updateCountry = params.country;
-        updateState = params.state;
-        updateYear = parseInt(electricity.year);
-        updateHydro = parseInt(electricity.hydro);
-        updateSolar = parseInt(electricity.solar);
-        updateCoal = parseInt(electricity.coal);
+    async function getElectricity() {
+        console.log("Fetching electricity....");
+        const res = await fetch("/api/v1/electricity-produced-stats/" + params.country + "/" + params.state);
 
-        console.log("Received electricity.");
-    }else{
-        erroMsg = res.status + ": " + res.statusText;
-        console.log("ERROR" + erroMsg);
+        if (res.ok) {
+            console.log("Ok:");
+            const json = await res.json();
+            electricity = json;
+            updateCountry = params.country;
+            updateState = params.state;
+            updateYear = parseInt(electricity.year);
+            updateHydro = parseInt(electricity.hydro);
+            updateSolar = parseInt(electricity.solar);
+            updateCoal = parseInt(electricity.coal);
+
+            console.log("Received electricity.");
+        } else {
+            erroMsg = res.status + ": " + res.statusText;
+            console.log("ERROR" + erroMsg);
+        }
     }
-}
 
-async function actualizaElectricity(){
-		console.log("Updating electricitys...." + JSON.stringify(params.country));
-		const res = await fetch("/api/v1/electricity-produced-stats/" + params.country +"/"+params.state,{
-			method: "PUT",
-			body: JSON.stringify({
-                country : params.country,
-                state : params.state,
+    async function actualizaElectricity() {
+        console.log("Updating electricitys...." + JSON.stringify(params.country));
+        const res = await fetch("/api/v1/electricity-produced-stats/" + params.country + "/" + params.state, {
+            method: "PUT",
+            body: JSON.stringify({
+                country: params.country,
+                state: params.state,
                 year: parseInt(updateYear),
-                hydro : parseInt(updateHydro),
-                solar : parseInt(updateSolar),
-                coal : parseInt(updateCoal),
+                hydro: parseInt(updateHydro),
+                solar: parseInt(updateSolar),
+                coal: parseInt(updateCoal),
             }),
-			headers: {
-				"Content-Type": "application/json"
-			}
-		}).then(function (res) {
-			getElectricity();
-		});
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+            getElectricity();
+        });
 
-	}
+    }
 </script>
 
 <main>
-    <h3>Edit electricity <strong>{params.country}</strong></h3>
-    {#await electricity}
+    <html lang="ES">
+    <meta charset="UTF-8">
+
+    <body style="background-color: #e6f0ff; font-family: Arial, Helvetica, sans-serif;">
+
+
+        <h3>Edit electricity <strong>{params.country}</strong></h3>
+        {#await electricity}
 		Loadind electricitys...
-    {:then electricity}
+         {:then electricity}
 		<Table bordered>
 			<thead>
 				<tr>
@@ -97,4 +103,6 @@ async function actualizaElectricity(){
         <p style="color: red">ERROR: {erroMsg}</p>
     {/if}
     <Button outline color="secondary" on:click="{pop}">Back</Button>
+</body>
+    </html>
 </main>

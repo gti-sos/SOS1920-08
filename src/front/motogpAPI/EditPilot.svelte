@@ -71,7 +71,7 @@ async function actualizaPilot(){
     <div>
 		<h3>API MOTOGP</h3>
 	</div>
-    <h3>Editar Piloto:  <strong>{params.pilot}</strong></h3>
+    <h3>Editar: <strong>{params.pilot}</strong></h3>
     {#await pilot}
 		Loadind pilots...
     {:then pilot}
@@ -119,6 +119,6 @@ thead{
 main {
 font-family: Georgia, "Times New Roman", Times, serif;
 color: black;
-background-color: #f7f6b9
+background-color: #fcfa90
 }
 </style>
