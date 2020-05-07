@@ -23,20 +23,20 @@
     onMount(getElegtricityStats);
 
     //pag vars
-    let page = 0;
-    let num;
-    let limit = 4;
+    let page=0;
+    let numero;
+    let limit = 10;
     let succMsg = false;
     // search vars
     let SCountry = "";
     let SState = "";
     let SYear = "";
     let SHydroMin = 0;
-    let SHydroMax = "";
+    let SHydroMax = 0;
     let SSolarMin = 0;
-    let SSolarMax = "";
+    let SSolarMax = 0;
     let SCoalMin = 0;
-    let SCoalMax = "";
+    let SCoalMax = 0;
 
 
     async function loadInitialData() {
@@ -49,7 +49,7 @@
 
 
     async function getElegtricityStats() {
-        const res = await fetch("/api/v1/electricity-produced-stats");
+        const res = await fetch("/api/v1/electricity-produced-stats?" + "limit=" + limit + "&offset=" + page);
         if (res.ok) {
             const json = await res.json();
 
@@ -124,7 +124,7 @@
             SCoalMax = "";
         }
         const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
-            + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+            + "&hydroMin=" + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax=" + SSolarMax + "&coalMin=" + SCoalMin
             + "&coalMax=" + SCoalMax
         )
         if (res.ok) {
@@ -175,32 +175,35 @@
             if (page < 0) {
                 page = 0;
                 const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
-                    + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+                    + "&hydroMin=" + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax=" + SSolarMax + "&coalMin=" + SCoalMin
                     + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
                 )
                 if (res.ok) {
                     const json = await res.json();
                     electricity = json;
+                    numero= num;
                 }
             } else {
                 const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
-                    + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+                    + "&hydroMin=" + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax=" + SSolarMax + "&coalMin=" + SCoalMin
                     + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
                 )
                 if (res.ok) {
                     const json = await res.json();
                     electricity = json;
+                    numero=num;
                 }
             }
         } else {
             page = page + limit;
             const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
-                + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+                + "&hydroMin=" + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax=" + SSolarMax + "&coalMin=" + SCoalMin
                 + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
             )
             if (res.ok) {
                 const json = await res.json();
                 electricity = json;
+                numero=num;
             } else if (res.status == 400) {
                 window.alert("No existen mas muestras");
             }
