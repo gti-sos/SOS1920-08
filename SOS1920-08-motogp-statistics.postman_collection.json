@@ -1,0 +1,770 @@
+{
+	"info": {
+		"_postman_id": "b6f5f204-42c5-4a6d-9dda-84258edf9db1",
+		"name": "SOS1920-08-motogp-statistics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get /motogp-statistics/loadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "546f570c-867f-47d3-b954-deeb53007dc2",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics/loadInitialData",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post /motogp-statistics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f546f6b-f624-463e-8b3c-73c25d54006e",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Spain\",\r\n\"pilot\": \"Dani_Pedrosa\",\r\n\"last_title\": \"-\",\r\n\"world_title\": 0,\r\n\"victory\": 31,\r\n\"podium\": 112\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are more than 1 pilot\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.above(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics paginación 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 pilot or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics?limit=4&offset=0",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "4"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics paginación Intermedia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 pilot or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics?limit=4&offset=4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "4"
+						},
+						{
+							"key": "offset",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics paginación ultima",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 pilot or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics?limit=4&offset=8",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "4"
+						},
+						{
+							"key": "offset",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics busq country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 pilot or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics?country=Spain&victoryMin=40",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Spain"
+						},
+						{
+							"key": "victoryMin",
+							"value": "40"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics busq last_title",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 pilot or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics?last_title=2011",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					],
+					"query": [
+						{
+							"key": "last_title",
+							"value": "2011"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics busq world_title",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 pilot or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics?world_titleMin=8&podiumMin=50",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					],
+					"query": [
+						{
+							"key": "world_titleMin",
+							"value": "8"
+						},
+						{
+							"key": "podiumMin",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics busq victory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 pilot or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics?victoryMin=50&victoryMax=60",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					],
+					"query": [
+						{
+							"key": "victoryMin",
+							"value": "50"
+						},
+						{
+							"key": "victoryMax",
+							"value": "60"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics busq y pag podium",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f23b5fd4-7f7e-4919-8b1f-eaa91b1bd5af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 pilot or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics?podiumMin=80&limit=4&offset=0",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					],
+					"query": [
+						{
+							"key": "podiumMin",
+							"value": "80"
+						},
+						{
+							"key": "limit",
+							"value": "4"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put /motogp-statistics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "edd4bd51-f020-41c6-9fa1-68a7224d9821",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get /motogp-statistics/pilot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5751c957-1435-4df2-968a-1530f3a83715",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property country\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"country\");",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property pilot\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"pilot\");",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property last_title\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"last_title\");",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property world_title\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"world_title\");",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property victory\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"victory\");",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property podium\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"podium\");",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics/Jorge_Lorenzo",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics",
+						"Jorge_Lorenzo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post /motogp-statistics/pilot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5751c957-1435-4df2-968a-1530f3a83715",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics/Jorge_Lorenzo",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics",
+						"Jorge_Lorenzo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put /motogp-statistics/pilot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5751c957-1435-4df2-968a-1530f3a83715",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Italy\",\r\n\"pilot\": \"Jorge_Lorenzo\",\r\n\"last_title\": \"-\",\r\n\"world_title\": 0,\r\n\"victory\": 89,\r\n\"podium\": 198\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics/Jorge_Lorenzo",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics",
+						"Jorge_Lorenzo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete /motogp-statistics/pilot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5751c957-1435-4df2-968a-1530f3a83715",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"\t\t"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics/Dani_Pedrosa",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics",
+						"Dani_Pedrosa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete /motogp-statistics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "781c475f-81b6-47dc-8f4b-c9cddfa60fb5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/motogp-statistics",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motogp-statistics"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
