@@ -23,10 +23,10 @@
     onMount(getElegtricityStats);
 
     //pag vars
-    let page = 0;
-    let num;
-    let limit = 4;
-    let succMsg = false;
+    let page=0;
+    let numero;
+    let limit = 10;
+    let succMsg;
     // search vars
     let SCountry = "";
     let SState = "";
@@ -49,12 +49,12 @@
 
 
     async function getElegtricityStats() {
-        const res = await fetch("/api/v1/electricity-produced-stats");
+        const res = await fetch("/api/v1/electricity-produced-stats?limit="+limit + "&offset=" + page);
         if (res.ok) {
             const json = await res.json();
 
             electricity = json;
-            console.log("Recieved " + electricity.lenght + "stats");
+            console.log("Recieved " + electricity.length + "stats");
         } else {
             console.log("Error");
         }
@@ -124,18 +124,18 @@
             SCoalMax = "";
         }
         const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
-            + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+            + "&hydroMin=" + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax=" + SSolarMax + "&coalMin=" + SCoalMin
             + "&coalMax=" + SCoalMax
         )
         if (res.ok) {
             const json = await res.json();
             electricity = json;
-            console.log("Found: " + electricity.lenght + " stats");
+            console.log("Found: " + electricity.length + " stats");
 
-            if (electricity.lenght == 1) {
-                succMsg = "Se ha encontrado " + electricity.lenght + " muestra";
+            if (electricity.length == 1) {
+                succMsg = "Se ha encontrado " + electricity.length + " muestra";
             } else {
-                succMsg = "Se han encontrado " + electricity.lenght + " muestras";
+                succMsg = "Se han encontrado " + electricity.length + " muestras";
             }
         } else if (res.status == 400) {
             window.alert("No se han encontrado muestras con los parametros introducidos");
@@ -175,33 +175,36 @@
             if (page < 0) {
                 page = 0;
                 const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
-                    + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+                    + "&hydroMin=" + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax=" + SSolarMax + "&coalMin=" + SCoalMin
                     + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
                 )
                 if (res.ok) {
                     const json = await res.json();
                     electricity = json;
+                    numero= num;
                 }
             } else {
                 const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
-                    + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+                    + "&hydroMin=" + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax=" + SSolarMax + "&coalMin=" + SCoalMin
                     + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
                 )
                 if (res.ok) {
                     const json = await res.json();
                     electricity = json;
+                    numero=num;
                 }
             }
         } else {
             page = page + limit;
             const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
-                + "&hydroMin= " + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax" + SSolarMax + "&coalMin= " + SCoalMin
+                + "&hydroMin=" + SHydroMin + "&hydroMax=" + SHydroMax + "&solarMin=" + SSolarMin + "&solarMax=" + SSolarMax + "&coalMin=" + SCoalMin
                 + "&coalMax=" + SCoalMax + "&limit=" + limit + "&offset=" + page
             )
             if (res.ok) {
                 const json = await res.json();
                 electricity = json;
-            } else if (res.status == 400) {
+                numero=num;
+            } else if (res.status == 404) {
                 window.alert("No existen mas muestras");
             }
         }
