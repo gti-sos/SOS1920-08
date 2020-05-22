@@ -2,6 +2,8 @@
 	import Router from 'svelte-spa-router';
 	import NotFound from './NotFound.svelte';
 	import Home from './Home.svelte';
+	import Integrations from './Integrations.svelte';
+	import About from './about.svelte';
 	
 	//MOTOGP-API
 
@@ -27,7 +29,9 @@
 		"/electricity-produced-stats" : ElectricityTable,
 		"/electricity-produced-stats/:country/:state" : EditStat,
 		"/ucl_stats/" : UclTable,
-		"/ucl_stats/:uclCountry/:uclTeam": EditTeam,		
+		"/ucl_stats/:uclCountry/:uclTeam": EditTeam,
+		"/integrations": Integrations,	
+		"/about": About,	
 		"*" : NotFound
 
 	};
