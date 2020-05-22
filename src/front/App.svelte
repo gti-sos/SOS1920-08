@@ -3,7 +3,7 @@
 	import NotFound from './NotFound.svelte';
 	import Home from './Home.svelte';
 	import Integrations from './Integrations.svelte';
-	import About from './about.svelte';
+	import About from './About.svelte';
 	
 	//MOTOGP-API
 

@@ -72,7 +72,6 @@
                 </li>
 
                 <li style="padding-bottom: 1%">
-                    
                     <Button outline color="success"><a href="#/electricity-produced-stats">API Electricidad</a></Button>
                     (developed by <a href="https://github.com/angloadav">Angel Loaiza Davila</a>)
                 </li>
