@@ -1,4 +1,7 @@
 <script>
+    import Button from "sveltestrap/src/Button.svelte";
+    import { pop } from "svelte-spa-router";
+
     async function loadGraph(){
 
         let MyData = [];
@@ -97,5 +100,5 @@
             En la gráfica se muestra el número de podiums y victorias de los pilotos.
         </p>
     </figure>
-    
+    <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
