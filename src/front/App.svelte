@@ -10,6 +10,7 @@
 	import MotoGpTable from './motogpAPI/MotoGpTable.svelte';
 	import EditPilot from './motogpAPI/EditPilot.svelte';
 	import GraphVicPod from './motogpAPI/analytics/analyticsVicPod.svelte';
+	import GraphTitMun from './motogpAPI/analytics/titulosMundiales.svelte'
 
 	//Electricity-produced-API
 	import ElectricityTable from './ElectricityAPI/ElectricityTable.svelte';
@@ -27,7 +28,8 @@
 
 		"/motogp-statistics": MotoGpTable,
 		"/motogp-statistics/:pilot": EditPilot,
-		"/motogp-graph/graph": GraphVicPod,
+		"/motogp-graph/graphHC": GraphVicPod,
+		"/motogp-graph/graphAS": GraphTitMun,
 
 		"/electricity-produced-stats" : ElectricityTable,
 		"/electricity-produced-stats/:country/:state" : EditStat,

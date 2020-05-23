@@ -16,6 +16,7 @@
 
     <li><strong>Moto Gp</strong></li>
         <ul style="list-style-type:circle;">
-            <li><a href="#/motogp-graph/graph">Victorias y Podiums</a></li>
+            <li><a href="#/motogp-graph/graphHC">Victorias y Podiums (Biblioteca Highcharts)</a></li>
+            <li><a href="#/motogp-graph/graphAS">Titulos Mundiales (Biblioteca Awesome)</a></li>
         </ul>
 </body>

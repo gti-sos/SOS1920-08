@@ -42,7 +42,7 @@
                 }
             }, { // Secondary yAxis
                 title: {
-                    text: 'Podiums',
+                    text: '',
                     style: {
                         color: Highcharts.getOptions().colors[0]
                     }
@@ -80,9 +80,6 @@
             }]
         });
 }
-    
-
-
 </script>
 
 <svelte:head>
@@ -96,7 +93,7 @@
 
     <figure class="highcharts-figure">
         <div id="container"></div>
-        <p class="highcharts-description">
+        <p class="highcharts-description" align="center">
             En la gráfica se muestra el número de podiums y victorias de los pilotos.
         </p>
     </figure>
