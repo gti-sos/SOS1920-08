@@ -4,7 +4,7 @@ const path = require("path");
 const electricityAPI= require(path.join(__dirname, "electricityAPI"));
 const motogpAPI = require(path.join(__dirname,"motogpAPI"));
 const uclAPI = require(path.join(__dirname,"uclAPI"));
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 9999;
 const app = express();
 const back = require("./src/back");
 
