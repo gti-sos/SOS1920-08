@@ -29,7 +29,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics/loadInitialData",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -73,7 +73,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -111,7 +111,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -149,7 +149,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics?limit=4&offset=0",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -197,7 +197,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics?limit=4&offset=4",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -245,7 +245,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics?limit=4&offset=8",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -294,7 +294,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics?country=Spain&victoryMin=40",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -342,7 +342,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics?last_title=2011",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -386,7 +386,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics?world_titleMin=8&podiumMin=50",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -434,7 +434,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics?victoryMin=50&victoryMax=60",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -482,7 +482,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics?podiumMin=80&limit=4&offset=0",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -529,7 +529,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -595,7 +595,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics/Jorge_Lorenzo",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -629,7 +629,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics/Jorge_Lorenzo",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -674,7 +674,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics/Jorge_Lorenzo",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -719,7 +719,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics/Dani_Pedrosa",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -754,7 +754,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v1/motogp-statistics",
 					"host": [
-						"localhost"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
