@@ -14,6 +14,7 @@
 	//Electricity-produced-API
 	import ElectricityTable from './ElectricityAPI/ElectricityTable.svelte';
 	import EditStat from './ElectricityAPI/EditStat.svelte';
+	import linearGraph from './ElectricityAPI/graficas/linearGraph.svelte';
 
 	//Ucl_stats_api
 	import UclTable from './UclAPI/UclTable.svelte';
@@ -31,6 +32,7 @@
 
 		"/electricity-produced-stats" : ElectricityTable,
 		"/electricity-produced-stats/:country/:state" : EditStat,
+		"/electricity-graph/graph": linearGraph,
 
 
 		"/ucl_stats/" : UclTable,
