@@ -9,6 +9,6 @@
 
     <li><strong>Moto Gp</strong></li>
         <ul style="list-style-type:circle;">
-            <li><a href="/motogp-statistics/graph">Victorias y Podiums</a></li>
+            <li><a href="#/motogp-graph/graph">Victorias y Podiums</a></li>
         </ul>
 </body>

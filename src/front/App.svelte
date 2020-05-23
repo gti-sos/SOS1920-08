@@ -27,7 +27,7 @@
 
 		"/motogp-statistics": MotoGpTable,
 		"/motogp-statistics/:pilot": EditPilot,
-		"/motogp-statistics/graph": GraphVicPod,
+		"/motogp-graph/graph": GraphVicPod,
 
 		"/electricity-produced-stats" : ElectricityTable,
 		"/electricity-produced-stats/:country/:state" : EditStat,
