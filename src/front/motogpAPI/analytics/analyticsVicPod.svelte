@@ -99,3 +99,11 @@
     </figure>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
+
+<style>
+    #container {
+      border: 1px solid black;
+      margin: 10px auto;
+    } 
+    
+</style>

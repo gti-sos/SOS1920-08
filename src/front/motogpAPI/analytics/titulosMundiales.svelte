@@ -1,41 +1,67 @@
-<canvas id="myChart" width="400" height="400"></canvas>
 <script>
+    import Button from "sveltestrap/src/Button.svelte";
+    import { pop } from "svelte-spa-router";
+  
+  async function loadGraph(){
 
-    async function loadGraph(){
-        let MyData = [];
-        let pilotos = [];
-        let titulosMundiales= [];
+    let MyData = [];
+    let pilot = [];
+    let world_title= [];
+    
 
-        const resData = await fetch("api/v1/motogp-statistics");
-        MyData = await resData.json();
-        
-        pilotos = MyData.map((MyData)=> MyData.pilot);
-        titulosMundiales = MyData.map((MyData)=> MyData.world_title);
+    const resData = await fetch("api/v1/motogp-statistics");
+    MyData = await resData.json();
 
-        var ctx = document.getElementById('myDoughnutChart').getContext('2d');
-
-        var myDoughnutChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: titulosMundiales
-                }],
-
-                // These labels appear in the legend and in the tooltips when hovering different arcs
-                labels: pilotos
-        },
-        options: options
+    MyData.forEach( (x) => {
+        world_title.push({pilot: x.pilot, titles: x.world_title})
     });
-    }
+    
+    am4core.ready(function() {
 
+        // Themes begin
+        am4core.useTheme(am4themes_kelly);
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+        chart.legend = new am4charts.Legend();
+        chart.legend.position = "right";
+
+        chart.data = world_title;
+
+        chart.innerRadius = 100;
+
+        var series = chart.series.push(new am4charts.PieSeries3D());
+        series.dataFields.value = "titles";
+        series.dataFields.category = "pilot";
+
+        }); // end am4core.ready()
+  }
+
+  loadGraph();
 </script>
 
 <svelte:head>
-    <script src="path/to/chartjs/dist/Chart.js" on:load="{loadGraph}"></script>
+   <!--En public/index.html-->
 </svelte:head>
 
 
 <main>
+    <div><h6 style="text-align: center">Gráfica de número de titulos mundiales por pilotos.</h6></div>
+    <div id="chartdiv"></div>
 
-
+    <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
+
+<style>
+    #chartdiv {
+      width: 90%;
+      height: 500px;
+      border: 1px solid black;
+      margin: 10px auto;
+    } 
+    
+</style>
+

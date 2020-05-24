@@ -15,8 +15,14 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	  
-
 	<script defer src='/build/bundle.js'></script>
+
+	<!--Grafica awesome Fran (titulosMundiales.svelte)-->
+	<script src="https://www.amcharts.com/lib/4/core.js" defer></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js" defer></script>
+    <script src="https://www.amcharts.com/lib/4/themes/kelly.js" defer></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js" defer on:load="{loadGraph}"></script>
+	
 </head>
 
 <body>
