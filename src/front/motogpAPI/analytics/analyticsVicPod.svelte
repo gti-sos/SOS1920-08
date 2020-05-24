@@ -1,74 +1,85 @@
 <script>
+    import Button from "sveltestrap/src/Button.svelte";
+    import { pop } from "svelte-spa-router";
+
     async function loadGraph(){
 
         let MyData = [];
+        let ejeX = [];
+        let victorias= [];
+        let podiums= [];
 
         const resData = await fetch("api/v1/motogp-statistics");
         MyData = await resData.json();
+        
+        ejeX = MyData.map((MyData)=> MyData.pilot);
+        victorias = MyData.map((MyData)=> MyData.victory);
+        podiums = MyData.map((MyData)=> MyData.podium);
 
         Highcharts.chart('container', {
-        chart: {
-            zoomType: 'xy'
-        },
-        title: {
-            text: 'Average Monthly Temperature and Rainfall in Tokyo'
-        },
-        subtitle: {
-            text: 'Source: WorldClimate.com'
-        },
-        xAxis: [{
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            crosshair: true
-        }],
-        yAxis: [{ // Primary yAxis
-            labels: {
-                format: '{value}°C',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
+            chart: {
+                zoomType: 'xy'
             },
             title: {
-                text: 'Temperature',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
-            }
-        }, { // Secondary yAxis
-            title: {
-                text: 'Rainfall',
-                style: {
-                    color: Highcharts.getOptions().colors[0]
-                }
+                text: 'Victorias y Podiums en MotoGp'
             },
-            labels: {
-                format: '{value} mm',
-                style: {
-                    color: Highcharts.getOptions().colors[0]
+            xAxis: [{
+                categories: ejeX,
+                crosshair: true
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    format: '{value}',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                title: {
+                    text: 'Victorias',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
                 }
+            }, { // Secondary yAxis
+                title: {
+                    text: '',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                labels: {
+                    format: '{value}',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                opposite: true
+            }],
+            tooltip: {
+                shared: true
             },
-            opposite: true
-        }],
-        tooltip: {
-            shared: true
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'left',
-            x: 120,
-            verticalAlign: 'top',
-            y: 100,
-            floating: true,
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || // theme
-                'rgba(255,255,255,0.25)'
-        },
-        series: MyData,
-    });
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 100,
+                floating: true,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || // theme
+                    'rgba(255,255,255,0.25)'
+            },
+            series: [{
+                name: 'Podiums',
+                type: 'column',
+                data: podiums
+            }, {
+                name: 'Victorias',
+                type: 'spline',
+                data: victorias
+            }]
+        });
 }
-    
-
-
 </script>
 
 <svelte:head>
@@ -82,9 +93,17 @@
 
     <figure class="highcharts-figure">
         <div id="container"></div>
-        <p class="highcharts-description">
+        <p class="highcharts-description" align="center">
             En la gráfica se muestra el número de podiums y victorias de los pilotos.
         </p>
     </figure>
-    
+    <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
+
+<style>
+    #container {
+      border: 1px solid black;
+      margin: 10px auto;
+    } 
+    
+</style>
