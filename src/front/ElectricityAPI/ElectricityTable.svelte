@@ -220,7 +220,9 @@
             <Button outline color="primary" on:click={loadInitialData}>Cargar Datos</Button>
             <Button outline color="danger" on:click={deleteAllStats} onclick="location.reload()">Borrar
                 todos los datos</Button>
-
+            <input
+                style="appearance: button; color: black; border-color:deepskyblue; background-color: #e6f0ff; font-family: Arial, Helvetica, sans-serif;"
+                type="button" onclick="location.href='#/electricity-graph/graph';" value="Grafica HighChart" />
             <Button outline color="secondary" on:click="{pop}">Back</Button>
         </div>
         <div style="border: 1px; border-color: black; border-style: groove; padding-bottom: 1%;">
@@ -307,3 +309,14 @@
 </body>
     </html>
 </main>
+
+<style>
+    a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+</style>
