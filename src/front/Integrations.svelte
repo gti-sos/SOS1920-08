@@ -21,6 +21,7 @@
         </ul>
         <ul style="list-style-type:circle;">
             <li><a href="#/electricity-graph/graph">Electricidad producida por distintas fuentes</a></li>
+            <li><a href="#/electricity-graph/awesomeGraph">Electricidad producida por distintas fuentes(biblioteca awesome)</a></li>
            
         </ul>
 </body>
