@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/gti-sos/SOS1920-08#readme",
   "dependencies": {
+    "billboard.js": "^1.12.0-next.5",
     "body-parser": "^1.19.0",
     "chart.js": "^2.9.3",
     "express": "^4.17.1",

@@ -21,7 +21,15 @@
         </ul>
         <ul style="list-style-type:circle;">
             <li><a href="#/electricity-graph/graph">Electricidad producida por distintas fuentes</a></li>
+<<<<<<< HEAD
             <li><a href="#/electricity-graph/awesomeGraph">Electricidad producida por distintas fuentes(biblioteca awesome)</a></li>
            
+=======
+        </ul>
+        <li><strong>Ucl</strong></li>
+        <ul style="list-style-type:circle;">
+            <li><a href="#/ucl-graphic/graphHC">Victorias por partidos disputados</a></li>
+            <li><a href="#/ucl-graphic/graphAS">Ttitulos UCl</a></li>
+>>>>>>> 7c3782275c29b66ea98a2bde8996fda580a68a54
         </ul>
 </body>

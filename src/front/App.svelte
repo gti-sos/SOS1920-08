@@ -21,7 +21,8 @@
 	//Ucl_stats_api
 	import UclTable from './UclAPI/UclTable.svelte';
 	import EditTeam from './UclAPI/EditTeam.svelte';
-	import advanceSearch from './UclAPI/advanceSearch.svelte';
+	import GraphTitPais from './UclAPI/graphic/prueba.svelte';
+	import GraphTitTemp from './UclAPI/graphic/prueba2.svelte';
 	
 
 	const routes = {
@@ -41,6 +42,8 @@
 
 		"/ucl_stats/" : UclTable,
 		"/ucl_stats/:uclCountry/:uclTeam": EditTeam,
+		"/ucl-graphic/graphHC": GraphTitPais,
+		"/ucl-graphic/graphAS": GraphTitTemp,
 
 
 		"/integrations": Integrations,	
