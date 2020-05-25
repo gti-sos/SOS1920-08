@@ -23,7 +23,7 @@
     onMount(getElegtricityStats);
 
     //pag vars
-    let page=0;
+    let page = 0;
     let numero;
     let limit = 10;
     let succMsg;
@@ -49,7 +49,7 @@
 
 
     async function getElegtricityStats() {
-        const res = await fetch("/api/v1/electricity-produced-stats?limit="+limit + "&offset=" + page);
+        const res = await fetch("/api/v1/electricity-produced-stats?limit=" + limit + "&offset=" + page);
         if (res.ok) {
             const json = await res.json();
 
@@ -181,7 +181,7 @@
                 if (res.ok) {
                     const json = await res.json();
                     electricity = json;
-                    numero= num;
+                    numero = num;
                 }
             } else {
                 const res = await fetch("/api/v1/electricity-produced-stats?country=" + SCountry + "&state=" + SState + "&year=" + SYear
@@ -191,7 +191,7 @@
                 if (res.ok) {
                     const json = await res.json();
                     electricity = json;
-                    numero=num;
+                    numero = num;
                 }
             }
         } else {
@@ -203,7 +203,7 @@
             if (res.ok) {
                 const json = await res.json();
                 electricity = json;
-                numero=num;
+                numero = num;
             } else if (res.status == 404) {
                 window.alert("No existen mas muestras");
             }
@@ -220,6 +220,7 @@
             <Button outline color="primary" on:click={loadInitialData}>Cargar Datos</Button>
             <Button outline color="danger" on:click={deleteAllStats} onclick="location.reload()">Borrar
                 todos los datos</Button>
+
             <Button outline color="secondary" on:click="{pop}">Back</Button>
         </div>
         <div style="border: 1px; border-color: black; border-style: groove; padding-bottom: 1%;">

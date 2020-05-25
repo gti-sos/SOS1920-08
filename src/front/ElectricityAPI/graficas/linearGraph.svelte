@@ -1,8 +1,18 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
-
+    import { pop } from "svelte-spa-router";
     async function loadGraphTotalCompare() {
-
+        let Data = [];
+        let State = [];
+        let Hydro = [];
+        let Solar = [];
+        let Coal = [];
+        const resData = await fetch("api/v1/electricity-produced-stats");
+        Data = await resData.json();
+        State = Data.map((Data) => Data.state);
+        Hydro = Data.map((Data) => Data.hydro);
+        Solar = Data.map((Data) => Data.solar);
+        Coal = Data.map((Data) => Data.coal);
         Highcharts.chart('container', {
             chart: {
                 type: 'line'
@@ -11,10 +21,10 @@
                 text: 'Electricidad producida por distintas fuentes anualmente'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
+                text: 'Source: A PDF '
             },
             xAxis: {
-                categories: ['Alabama', 'Arkansas', 'California', 'Colorado', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa']
+                categories: State
             },
             yAxis: {
                 title: {
@@ -31,33 +41,41 @@
             },
             series: [{
                 name: 'Plantas Hidroeléctricas',
-                data: [11142139.0, 3008775.0, 26330667.0, 1825385.0, 0.0, 232574.0, 3696868.0, 96520.0, 924861.0]
+                data: Hydro
             }, {
                 name: 'Plantas Solares',
-                data: [357252.0, 203413.0, 26985181.0, 1062380.0, 49789.0, 2412067.0, 1995837.0, 184576.0, 11456.0]
+                data: Solar
             }
                 , {
                 name: 'Plantas De Carbon',
-                data: [3177520.0, 29996101.0, 281328.0, 26382060.0, 273388.0, 30272201.0, 32180555.0, 1311203.0, 28552999.0]
+                data: Coal
             }]
         });
     }
 
     async function loadGraphHydroCompare() {
 
-
+        let Data = [];
+        let State = [];
+        let Hydro = [];
+       
+        const resData = await fetch("api/v1/electricity-produced-stats");
+        Data = await resData.json();
+        State = Data.map((Data) => Data.state);
+        Hydro = Data.map((Data) => Data.hydro);
+       
         Highcharts.chart('container', {
             chart: {
                 type: 'line'
             },
             title: {
-                text: 'Electricidad producida por plantas hidroeléctricas anualmente'
+                text: 'Electricidad producida por plantas Hidroeléctricas'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
+                text: 'Source: A PDF'
             },
             xAxis: {
-                categories: ['Alabama', 'Arkansas', 'California', 'Colorado', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa']
+                categories: State
             },
             yAxis: {
                 title: {
@@ -74,7 +92,7 @@
             },
             series: [{
                 name: 'Plantas Hidroeléctricas',
-                data: [11142139.0, 3008775.0, 26330667.0, 1825385.0, 0.0, 232574.0, 3696868.0, 96520.0, 924861.0]
+                data: Hydro
             }]
         });
     }
@@ -82,18 +100,27 @@
     async function loadGraphSolarCompare() {
 
 
+        let Data = [];
+        let State = [];
+        let Solar = [];
+       
+        const resData = await fetch("api/v1/electricity-produced-stats");
+        Data = await resData.json();
+        State = Data.map((Data) => Data.state);
+        Solar = Data.map((Data) => Data.solar);
+       
         Highcharts.chart('container', {
             chart: {
                 type: 'line'
             },
             title: {
-                text: 'Electricidad producida por plantas solares anualmente'
+                text: 'Electricidad producida por plantas Solares'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
+                text: 'Source: A PDF'
             },
             xAxis: {
-                categories: ['Alabama', 'Arkansas', 'California', 'Colorado', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa']
+                categories: State
             },
             yAxis: {
                 title: {
@@ -110,27 +137,35 @@
             },
             series: [{
                 name: 'Plantas Solares',
-                data: [357252.0, 203413.0, 26985181.0, 1062380.0, 49789.0, 2412067.0, 1995837.0, 184576.0, 11456.0]
-            }
-            ]
+                data: Solar
+            }]
         });
     }
 
     async function loadGraphCarbonCompare() {
 
 
+        let Data = [];
+        let State = [];
+        let Coal = [];
+       
+        const resData = await fetch("api/v1/electricity-produced-stats");
+        Data = await resData.json();
+        State = Data.map((Data) => Data.state);
+        Coal = Data.map((Data) => Data.coal);
+       
         Highcharts.chart('container', {
             chart: {
                 type: 'line'
             },
             title: {
-                text: 'Electricidad producida por plantas que utilizan carbon'
+                text: 'Electricidad producida por plantas de Carbon'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
+                text: 'Source: A PDF'
             },
             xAxis: {
-                categories: ['Alabama', 'Arkansas', 'California', 'Colorado', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa']
+                categories: State
             },
             yAxis: {
                 title: {
@@ -147,7 +182,7 @@
             },
             series: [{
                 name: 'Plantas De Carbon',
-                data: [3177520.0, 29996101.0, 281328.0, 26382060.0, 273388.0, 30272201.0, 32180555.0, 1311203.0, 28552999.0]
+                data: Coal
             }]
         });
     }
@@ -186,7 +221,10 @@
             Grafica que compara la produccion de las plantas que usan carbon:
             <Button outline color="primary" on:click={loadGraphCarbonCompare}>Cargar Datos</Button>
         </h4>
-
+        <h3>
+            Pagina principal: 
+            <Button outline color="secondary" on:click="{pop}">Back</Button>
+        </h3>
 
     </figure>
 </main>
