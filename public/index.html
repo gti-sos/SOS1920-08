@@ -15,8 +15,21 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	  
-
 	<script defer src='/build/bundle.js'></script>
+
+	<!--Grafica awesome Fran (titulosMundiales.svelte)-->
+	<script src="https://www.amcharts.com/lib/4/core.js" defer></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js" defer></script>
+    <script src="https://www.amcharts.com/lib/4/themes/kelly.js" defer></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js" defer on:load="{loadGraph}"></script>
+
+	<!--Grafica awesome Jose Carlos-->
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- Step 2) Load billboard.js with style -->
+    <script src="$YOUR_PATH/billboard.js"></script>
+	
+
+	
 </head>
 
 <body>

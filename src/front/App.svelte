@@ -2,20 +2,26 @@
 	import Router from 'svelte-spa-router';
 	import NotFound from './NotFound.svelte';
 	import Home from './Home.svelte';
+	import Integrations from './Integrations.svelte';
+	import About from './About.svelte';
 	
 	//MOTOGP-API
 
 	import MotoGpTable from './motogpAPI/MotoGpTable.svelte';
 	import EditPilot from './motogpAPI/EditPilot.svelte';
+	import GraphVicPod from './motogpAPI/analytics/analyticsVicPod.svelte';
+	import GraphTitMun from './motogpAPI/analytics/titulosMundiales.svelte'
 
 	//Electricity-produced-API
 	import ElectricityTable from './ElectricityAPI/ElectricityTable.svelte';
 	import EditStat from './ElectricityAPI/EditStat.svelte';
+	import linearGraph from './ElectricityAPI/graficas/linearGraph.svelte';
 
 	//Ucl_stats_api
 	import UclTable from './UclAPI/UclTable.svelte';
 	import EditTeam from './UclAPI/EditTeam.svelte';
-	import advanceSearch from './UclAPI/advanceSearch.svelte';
+	import GraphTitPais from './UclAPI/graphic/prueba.svelte';
+	import GraphTitTemp from './UclAPI/graphic/prueba2.svelte';
 	
 
 	const routes = {
@@ -24,10 +30,22 @@
 
 		"/motogp-statistics": MotoGpTable,
 		"/motogp-statistics/:pilot": EditPilot,
+		"/motogp-graph/graphHC": GraphVicPod,
+		"/motogp-graph/graphAS": GraphTitMun,
+
 		"/electricity-produced-stats" : ElectricityTable,
 		"/electricity-produced-stats/:country/:state" : EditStat,
+		"/electricity-graph/graph": linearGraph,
+
+
 		"/ucl_stats/" : UclTable,
-		"/ucl_stats/:uclCountry/:uclTeam": EditTeam,		
+		"/ucl_stats/:uclCountry/:uclTeam": EditTeam,
+		"/ucl-graphic/graphHC": GraphTitPais,
+		"/ucl-graphic/graphAS": GraphTitTemp,
+
+
+		"/integrations": Integrations,	
+		"/about": About,	
 		"*" : NotFound
 
 	};
