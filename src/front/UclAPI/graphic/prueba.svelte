@@ -8,15 +8,18 @@
     let team = [];
     let victorias = [];
     let partidos = [];
-    let participaciones = [];
-    let titulos = [];
+    
+
     const resData = await fetch("api/v1/ucl_stats");
     MyData = await resData.json();
+
     team = MyData.map((MyData) => MyData.team);
     victorias = MyData.map((MyData) => MyData.victory);
     partidos = MyData.map((MyData) => MyData.match);
-    participaciones = MyData.map((MyData) => MyData.season);
-    titulos = MyData.map((MyData) => MyData.title);
+   
+    //console.log(victorias.length);
+    //console.log(partidos.length);
+
 
     Highcharts.chart('container', {
       chart: {
@@ -65,9 +68,6 @@
         data: victorias
       }]
     });
-
-
-
 
   };
 </script>
