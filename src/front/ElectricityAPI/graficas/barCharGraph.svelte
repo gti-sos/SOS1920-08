@@ -1,6 +1,6 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
-
+    import { pop } from "svelte-spa-router";
     async function loadChart() {
         Morris.Bar({
             element: 'bar-example',
@@ -87,12 +87,20 @@
 <head>
 
     <meta charset=utf-8 />
-    <title>Morris.js Bar Chart Example</title>
+    <title>Libreria Awesome-Charts/Morris</title>
 </head>
 
-<body>
+<body style="background-color: #b0f2f7; border-radius: 1%;">
     <div id="bar-example"></div>
-    <Button outline color="primary" on:click={loadChart}>Cargar Datos</Button>
+    <h4 style="text-align: center;">En esta grafica podemos observar una comparacion de la cantidad de energia que se
+        produce gracias a las plantas
+        Hidroeléctricas, plantas solares y plantas de carbon</h4>
+        <div>
+        <Button outline color="primary" on:click={loadChart}>Cargar Datos</Button>
+    
+       
+        <Button outline color="secondary" on:click="{pop}">Back</Button>
+    </div>
 </body>
 
 </html>

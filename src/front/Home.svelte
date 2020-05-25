@@ -4,7 +4,7 @@
 <main>
 
 
-    <html lang="en">
+    <html lang="ES">
     <link rel="stylesheet" href="style.css">
 
     <body>

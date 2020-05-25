@@ -198,7 +198,7 @@
 
 <main>
 
-    <body style="background-color: #e6f0ff;">
+    <body style="background-color: #a8a8a8;">
         <figure class="highcharts-figure">
             <div id="container"></div>
             <p class="highcharts-description">En esta serie de graficas podemos observar como la cantidad de energia que
