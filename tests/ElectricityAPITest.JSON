@@ -1,0 +1,827 @@
+{
+	"info": {
+		"_postman_id": "393677c8-2835-4e6a-a156-b5652850cc52",
+		"name": "sos1920-08",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get loadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3912a8f-9d1b-4eac-a39c-f98659444e4e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/loadInitialData",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "EEUU"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?country &limit & offset",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU&limit=1&offset=1",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "EEUU"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?coutry & state",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU&state=Alabama",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "EEUU"
+						},
+						{
+							"key": "state",
+							"value": "Alabama"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?coutry & state & year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU&state=Alabama&year=2018",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "EEUU"
+						},
+						{
+							"key": "state",
+							"value": "Alabama"
+						},
+						{
+							"key": "year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?coutry & state & year & Min/max",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU&state=Alabama&year=2018&coalMin=0&coalMax=9999999",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "EEUU"
+						},
+						{
+							"key": "state",
+							"value": "Alabama"
+						},
+						{
+							"key": "year",
+							"value": "2018"
+						},
+						{
+							"key": "coalMin",
+							"value": "0"
+						},
+						{
+							"key": "coalMax",
+							"value": "9999999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?state",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?state=Arkansas",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "Arkansas"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?state & year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?state=Arkansas&year=2018",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "Arkansas"
+						},
+						{
+							"key": "year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?state & year &Min/max",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?state=Arkansas&year=2018&hydroMin=0&hydroMax=99999999",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "Arkansas"
+						},
+						{
+							"key": "year",
+							"value": "2018"
+						},
+						{
+							"key": "hydroMin",
+							"value": "0"
+						},
+						{
+							"key": "hydroMax",
+							"value": "99999999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?year=2018",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced ?year & Min/Max",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca4a3052-a31e-4cb9-a9c4-91d25776a3c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?year=2018&coalMin=0&coalMax=999999999",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2018"
+						},
+						{
+							"key": "coalMin",
+							"value": "0"
+						},
+						{
+							"key": "coalMax",
+							"value": "999999999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get electricityProduced by state",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1db4adc4-37bd-4151-8d2a-2e37239accab",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/EEUU/Alabama",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats",
+						"EEUU",
+						"Alabama"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put electricityProduced",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "38cd1356-1143-497b-98eb-9d7388e18e78",
+						"exec": [
+							"pm.test(\"Status code is 405\", function(){",
+							"    pm.response.to.have.status(405);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"country\": \"EEUU\",\r\n\"state\": \"Alabama\",\r\n\"year\": 2018,\r\n\"hydro\": 0,\r\n\"solar\": 26985181,\r\n\"coal\": 281328\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put electricityProduced by state",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b4c710e6-2993-4f4c-8fc4-dd82cd6606c2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"country\": \"EEUU\",\r\n\"state\": \"Alabama\",\r\n\"year\": 2018,\r\n\"hydro\": 0,\r\n\"solar\": 26985181,\r\n\"coal\": 281328\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/EEUU/Alabama",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats",
+						"EEUU",
+						"Alabama"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete electricityProduced by state",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "428e9a18-13a1-449a-b287-3f3799cccd9b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/EEUU/Alabama",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats",
+						"EEUU",
+						"Alabama"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post electricityProduced",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee40028e-6536-4be9-9fa8-84345548a3ab",
+						"exec": [
+							"pm.test(\"Status code is 201\", function(){",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"country\": \"SPAIN\",\r\n\"state\": \"Sevilla\",\r\n\"year\": 2018,\r\n\"hydro\": 26330667,\r\n\"solar\": 26985181,\r\n\"coal\": 281328\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post electricityProduced By country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5de2ef93-5493-4862-a004-0f0820eb8076",
+						"exec": [
+							"pm.test(\"Status code is 405\", function(){",
+							"    pm.response.to.have.status(405);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"country\": \"EEUU\",\r\n\"state\": \"California\",\r\n\"year\": 2018,\r\n\"hydro\": 26330667,\r\n\"solar\": 26985181,\r\n\"coal\": 281328\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/EEUU/Alabama",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats",
+						"EEUU",
+						"Alabama"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete electricityProduced",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d45ec47e-6d21-4556-a9d5-36d459be7bc7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats",
+					"host": [
+						"{{BASE_PATH}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"electricity-produced-stats"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
