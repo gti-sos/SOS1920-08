@@ -34,7 +34,7 @@
 		"/motogp-statistics/:pilot": EditPilot,
 		"/motogp-graph/graphHC": GraphVicPod,
 		"/motogp-graph/graphAS": GraphTitMun,
-		"/motogp-graph/graphExt1": GraphExt1,
+		//"/motogp-graph/graphExt1": GraphExt1,
 
 		"/electricity-produced-stats" : ElectricityTable,
 		"/electricity-produced-stats/:country/:state" : EditStat,
