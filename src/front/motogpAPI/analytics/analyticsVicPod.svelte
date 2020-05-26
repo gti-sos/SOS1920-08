@@ -13,8 +13,8 @@
         MyData = await resData.json();
         
         ejeX = MyData.map((MyData)=> MyData.pilot);
-        victorias = MyData.map((MyData)=> MyData.victory);
-        podiums = MyData.map((MyData)=> MyData.podium);
+        victorias = MyData.map((MyData)=> parseInt(MyData.victory));
+        podiums = MyData.map((MyData)=> parseInt(MyData.podium));
 
         Highcharts.chart('container', {
             chart: {
@@ -93,7 +93,7 @@
 
     <figure class="highcharts-figure">
         <div id="container"></div>
-        <p class="highcharts-description" align="center">
+        <p class="highcharts-description" text-align="center">
             En la gráfica se muestra el número de podiums y victorias de los pilotos.
         </p>
     </figure>

@@ -250,6 +250,7 @@
 		</tr>
 	</Table>
 
+	<p style="color: red;">NOTA: Al añadir un nuevo piloto, utilice "_" en lugar de espacio en blanco</p>
 	<div style="text-align:center;padding-bottom: 1%">
 	<Button outline color="primary" on:click="{busqueda (Fcountry, Fpilot, Ffrom, Fto, Fworld_titleMax, Fworld_titleMin, FvictoryMax, FvictoryMin, FpodiumMax, FpodiumMin)}">Buscar</Button>
 	</div>
