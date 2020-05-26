@@ -14,12 +14,13 @@
     MyData = await resData.json();
 
     team = MyData.map((MyData) => MyData.team);
-    victorias = MyData.map((MyData) => MyData.victory);
-    partidos = MyData.map((MyData) => MyData.match);
+    victorias = MyData.map((MyData) => parseInt(MyData.victory));
+    partidos = MyData.map((MyData) => parseInt(MyData.match));
    
     //console.log(victorias.length);
     //console.log(partidos.length);
-
+    console.log("Victorias del equipo añadido "+victorias[4]);
+    console.log("Partidos del equipo añadido "+partidos[4]);
 
     Highcharts.chart('container', {
       chart: {
