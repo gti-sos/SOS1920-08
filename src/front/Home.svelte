@@ -83,6 +83,11 @@
             </li>
             <li>
                 <strong>
+                    <a href="#/analytics">Analytics</a>
+                </strong>
+            </li>
+            <li>
+                <strong>
                     <a href="#/about">About</a>
                 </strong>
             </li>
