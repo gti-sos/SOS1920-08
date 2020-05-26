@@ -21,6 +21,7 @@
     <ul style="list-style-type:circle; font-size: 20px;">
         <li><a href="#/motogp-graph/graphHC">Victorias y Podiums (Biblioteca Highcharts)</a></li>
         <li><a href="#/motogp-graph/graphAS">Titulos Mundiales (Biblioteca Awesome)</a></li>
+        <li><a href="#/motogp-graph/graphExt1">Grafica Externa 1</a></li>
     </ul>
     <li style="font-size: 22px;"><strong>Electricidad Producida</strong></li>
     <ul style="list-style-type:circle; font-size: 20px;">
