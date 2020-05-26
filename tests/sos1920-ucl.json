@@ -1,0 +1,821 @@
+{
+	"info": {
+		"_postman_id": "79c36019-42b3-43ff-9464-faca4f1256e3",
+		"name": "sos1920-ucl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "675ee547-3635-4d7e-8739-8b54565c3993",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"It should return 2 states\", function(){",
+							"   var jsonData = pm.response.json();",
+							"   pm.expect(jsonData).to.have.lengthOf.above(1);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats/loadInitialData",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post ucl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "395e3220-4533-47ad-a510-5b7c08a3119f",
+						"exec": [
+							"pm.test(\"Status code is 201\", function(){",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"country\": \"Italy\",\r\n\"team\": \"Juventus\",\r\n\"last_title\": 1996,\r\n\"title\": 2,\r\n\"season\": 32,\r\n\"match\": 277,\r\n\"victory\": 140\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats/",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEquipos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3364f192-6564-4e31-8436-9e2ab27d54ff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"It should return 2 states\", function(){",
+							"   var jsonData = pm.response.json();",
+							"   pm.expect(jsonData).to.have.lengthOf.above(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?country=Spain&victoryMin=40",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Spain"
+						},
+						{
+							"key": "victoryMin",
+							"value": "40"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl-stats pag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3037fe0d-0658-4938-9a01-ff1ee4fcb09d",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?limit=2&offset=0",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl pag inter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd3ee1b8-643e-4d6d-84d6-bab5042b878a",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?limit=3&offset=3",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "offset",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl last pag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1d502cd1-d2f1-448f-a3a7-b2dc2e1500af",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?limit=3&offset=5",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl search country and",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "644d3172-b20c-40fe-b5a4-fec2b0eeb971",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?country=Spain&titel_min=3",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Spain"
+						},
+						{
+							"key": "titel_min",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl search last titel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00098bec-b21a-4479-96a4-2f81added16b",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?last_title=2018",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "last_title",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl search title",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4f51dfe-963d-4c73-9fca-9624eeb46006",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?title_min=6",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "title_min",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl search season",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f299ab91-0cf6-4ea7-a3fb-49d3d50e9a23",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?season_min=20&season_max=25",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "season_min",
+							"value": "20"
+						},
+						{
+							"key": "season_max",
+							"value": "25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl search match",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d876854-5472-4713-8e4e-f91c888fc88b",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?match_min=280&match_max=440",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "match_min",
+							"value": "280"
+						},
+						{
+							"key": "match_max",
+							"value": "440"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUcl search&pag victory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "25a1b660-3700-4859-af5a-01dc71d45248",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"There are 1 team or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats?victory_min=130&limit=2&offset=0",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					],
+					"query": [
+						{
+							"key": "victory_min",
+							"value": "130"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putUclStats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bca84b98-a5e9-46ef-b287-04c01516dc6d",
+						"exec": [
+							"pm.test(\"Status code is 405\", function(){",
+							"    pm.response.to.have.status(405);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEstadisticasPorEquipos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "285df6dc-1bd6-49bb-8a04-fab74bd45fec",
+						"exec": [
+							"pm.test(\"Status code is 200\",function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property country\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"country\");",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property team\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"team\");",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property last_title\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"last_title\");",
+							"});",
+							"",
+							"pm.test(\"Check if object contains the property title\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"title\");",
+							"});",
+							"pm.test(\"Check if object contains the property season\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"season\");",
+							"});",
+							"pm.test(\"Check if object contains the property match\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"match\");",
+							"});",
+							"pm.test(\"Check if object contains the property victory\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"victory\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats/Spain/FCBarcelona",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats",
+						"Spain",
+						"FCBarcelona"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post ucl BY TEAM",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08b7232d-bf92-479b-80cc-137c3f3bb3ad",
+						"exec": [
+							"pm.test(\"Status code is 405\", function(){",
+							"    pm.response.to.have.status(405);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats/Real Madrid CF",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats",
+						"Real Madrid CF"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putUclStats by team",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "374ee52a-e81c-4e8c-b5be-83646b9a97b9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Spain\",\r\n\"team\": \"Real Madrid CF\",\r\n\"last_title\": 2020,\r\n\"title\": 11,\r\n\"season\": 32,\r\n\"match\": 277,\r\n\"victory\": 400\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats/Spain/Real Madrid CF",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats",
+						"Spain",
+						"Real Madrid CF"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Team por nombre",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "809c2d9c-e797-4827-a716-120049901845",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats/Liverpool FC",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats",
+						"Liverpool FC"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Team",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3f6aa95-f38e-456e-bb6e-8537a56808e0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/api/v1/ucl_stats",
+					"host": [
+						"localhost:9999"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ucl_stats"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

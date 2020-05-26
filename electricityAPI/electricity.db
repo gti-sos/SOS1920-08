@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {"country":"Spain","state":"Sevilla","year":2018,"hydro":50000000,"solar":50000000,"coal":50000000,"_id":"3mdwjAkdAGETuPpH"}
 {"country":"EEUU","state":"Florida","year":2018,"hydro":232574,"solar":2412067,"coal":30272201,"_id":"5FFdFyDD4VLWe6ut"}
 {"country":"EEUU","state":"Alabama","year":2018,"hydro":11142139,"solar":357252,"coal":3177520,"_id":"ALcmYXHtBac5RDWQ"}
@@ -8,3 +9,15 @@
 {"country":"EEUU","state":"Colorado","year":2018,"hydro":1825385,"solar":1062380,"coal":26382060,"_id":"rrnaqNrZQb6RFiJ1"}
 {"country":"EEUU","state":"Arkansas","year":2018,"hydro":3008775,"solar":203413,"coal":29996101,"_id":"t0Efnow2b7d2fC8O"}
 {"country":"EEUU","state":"Hawaii","year":2018,"hydro":96520,"solar":184576,"coal":1311203,"_id":"yiOqUvnYpakvXi27"}
+=======
+{"country":"EEUU","state":"Georgia","year":2018,"hydro":3696868,"solar":1995837,"coal":32180555,"_id":"1oMk115ry2NNEJPK"}
+{"country":"EEUU","state":"California","year":2018,"hydro":26330667,"solar":26985181,"coal":281328,"_id":"7pcph6OixvjFBFJ2"}
+{"country":"EEUU","state":"Delaware","year":2018,"hydro":0,"solar":49789,"coal":273388,"_id":"B6V9n3Qkv4jm3SJy"}
+{"country":"EEUU","state":"Colorado","year":2018,"hydro":1825385,"solar":1062380,"coal":26382060,"_id":"F88UwEn3nM7Tlj4h"}
+{"country":"EEUU","state":"Iowa","year":2018,"hydro":924861,"solar":11456,"coal":28552999,"_id":"TN7HOz9DxlAHoyD1"}
+{"country":"EEUU","state":"Arkansas","year":2018,"hydro":3008775,"solar":203413,"coal":29996101,"_id":"eBykp4yuRinJ2yaD"}
+{"country":"EEUU","state":"dsadfas","year":2018,"hydro":46,"solar":67,"coal":31,"_id":"nPZOlCVRCIRKoJWm"}
+{"country":"EEUU","state":"Hawaii","year":2018,"hydro":96520,"solar":184576,"coal":1311203,"_id":"o3ewiGNJcmwUJkKr"}
+{"country":"EEUU","state":"Alabama","year":2018,"hydro":11142139,"solar":357252,"coal":3177520,"_id":"ssZ4nlPxZBACpJd9"}
+{"country":"EEUU","state":"Florida","year":2018,"hydro":232574,"solar":2412067,"coal":30272201,"_id":"yHYnUjDOLRUKLZ31"}
+>>>>>>> 5c6bdc4c3fe25d4c4126002d582feb464b35bae6

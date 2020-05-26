@@ -58,12 +58,12 @@
         let Data = [];
         let State = [];
         let Hydro = [];
-       
+
         const resData = await fetch("api/v1/electricity-produced-stats");
         Data = await resData.json();
         State = Data.map((Data) => Data.state);
         Hydro = Data.map((Data) => Data.hydro);
-       
+
         Highcharts.chart('container', {
             chart: {
                 type: 'line'
@@ -103,12 +103,12 @@
         let Data = [];
         let State = [];
         let Solar = [];
-       
+
         const resData = await fetch("api/v1/electricity-produced-stats");
         Data = await resData.json();
         State = Data.map((Data) => Data.state);
         Solar = Data.map((Data) => Data.solar);
-       
+
         Highcharts.chart('container', {
             chart: {
                 type: 'line'
@@ -148,12 +148,12 @@
         let Data = [];
         let State = [];
         let Coal = [];
-       
+
         const resData = await fetch("api/v1/electricity-produced-stats");
         Data = await resData.json();
         State = Data.map((Data) => Data.state);
         Coal = Data.map((Data) => Data.coal);
-       
+
         Highcharts.chart('container', {
             chart: {
                 type: 'line'
@@ -197,36 +197,39 @@
 </svelte:head>
 
 <main>
-    <figure class="highcharts-figure">
-        <div id="container"></div>
-        <p class="highcharts-description">En esta serie de graficas podemos observar como la cantidad de energia que
-            producen estos estados Americanos</p>
-        <h4>
-            Grafica que compara todas las fuentes de produccion:
-            <Button outline color="primary" on:click={loadGraphTotalCompare}>Cargar Datos</Button>
 
-        </h4>
+    <body style="background-color: #e6f0ff;">
+        <figure class="highcharts-figure">
+            <div id="container"></div>
+            <p class="highcharts-description">En esta serie de graficas podemos observar como la cantidad de energia que
+                producen estos estados Americanos</p>
+            <h4>
+                Grafica que compara todas las fuentes de produccion:
+                <Button outline color="primary" on:click={loadGraphTotalCompare}>Cargar Datos</Button>
 
-        <h4>
-            Grafica que compara la produccion de las plantas hidroelectricas:
-            <Button outline color="primary" on:click={loadGraphHydroCompare}>Cargar Datos</Button>
-        </h4>
+            </h4>
 
-        <h4>
-            Grafica que compara la produccion de plantas solares:
-            <Button outline color="primary" on:click={loadGraphSolarCompare}>Cargar Datos</Button>
-        </h4>
+            <h4>
+                Grafica que compara la produccion de las plantas hidroelectricas:
+                <Button outline color="primary" on:click={loadGraphHydroCompare}>Cargar Datos</Button>
+            </h4>
 
-        <h4>
-            Grafica que compara la produccion de las plantas que usan carbon:
-            <Button outline color="primary" on:click={loadGraphCarbonCompare}>Cargar Datos</Button>
-        </h4>
-        <h3>
-            Pagina principal: 
-            <Button outline color="secondary" on:click="{pop}">Back</Button>
-        </h3>
+            <h4>
+                Grafica que compara la produccion de plantas solares:
+                <Button outline color="primary" on:click={loadGraphSolarCompare}>Cargar Datos</Button>
+            </h4>
 
-    </figure>
+            <h4>
+                Grafica que compara la produccion de las plantas que usan carbon:
+                <Button outline color="primary" on:click={loadGraphCarbonCompare}>Cargar Datos</Button>
+            </h4>
+            <h3>
+                Pagina principal:
+                <Button outline color="secondary" on:click="{pop}">Back</Button>
+            </h3>
+
+        </figure>
+    </body>
 </main>
 
 <style>

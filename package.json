@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "npx newman run tests/apiTestsFran.json",
+    "test": "npx newman run tests/apiTestsFran.json && npx newman run tests/sos1920-ucl.json",
     "start": "node index"
   },
   "devDependencies": {
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/gti-sos/SOS1920-08#readme",
   "dependencies": {
+    "billboard.js": "^1.12.0-next.5",
     "body-parser": "^1.19.0",
     "chart.js": "^2.9.3",
     "express": "^4.17.1",

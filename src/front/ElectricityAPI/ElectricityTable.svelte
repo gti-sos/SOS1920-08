@@ -220,10 +220,14 @@
             <Button outline color="primary" on:click={loadInitialData}>Cargar Datos</Button>
             <Button outline color="danger" on:click={deleteAllStats} onclick="location.reload()">Borrar
                 todos los datos</Button>
+            <Button outline color="primary" onclick="location.href='#/electricity-graph/graph'">Grafica
+                HighChart</Button>
+            <Button outline color="primary" onclick="location.href='#/electricity-graph/awesomeGraph'">Grafica
+                AwesomeChart</Button>
 
             <Button outline color="secondary" on:click="{pop}">Back</Button>
         </div>
-        <div style="border: 1px; border-color: black; border-style: groove; padding-bottom: 1%;">
+        <div style="border: 1px; border-color: black; border-style: groove; padding-bottom: 1%; font-size: 18px;">
             <h6>Seccion de busqueda: </h6>
             <tr>
                 <td><label>Pais: <input bind:value="{SCountry}"></label></td>
@@ -249,7 +253,8 @@
         {#await electricity}
         Loading data...
     {:then electricity}
-        <Table  style="border-style: groove; border-width: 1px; padding-block-start: 1%;">
+    <div style="font-size: 18px;">  
+    <Table  style="border-style: groove; border-width: 1px; padding-block-start: 1%;">
             <thead>
                 <tr>
                     <th>Pais</th>
@@ -277,8 +282,8 @@
                 {/each}
             </tbody>
         </Table>
-		
-        <Table style="border-style: groove; border-width: 1px;">
+    </div> 
+        <Table style="border:1px;border-style: groove; border-width: 1px; border-top: black; padding-block-start: 1%; font-size: 18px;">
             <h4>Añadir nuevo dato:</h4>
 			<tr>
                 <td><strong>Pais:</strong> <input bind:value="{newElectricity.country}"></td>

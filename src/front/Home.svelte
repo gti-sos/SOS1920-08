@@ -4,10 +4,10 @@
 <main>
 
 
-    <html lang="en">
+    <html lang="ES">
     <link rel="stylesheet" href="style.css">
 
-    <body>
+    <body style="font-size: 22px;">
        
         <div class="cuerpo">
             <head>
