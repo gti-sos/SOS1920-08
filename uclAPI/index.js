@@ -10,6 +10,10 @@ module.exports = function(app) {
 		autoload: true
 	});
 
+	app.get(BASE_PATH + "/ucl_stats/docs/", (req, res) => {
+        res.redirect("https://documenter.getpostman.com/view/10690065/SztBa7m1");
+    });
+
 	//-----------------------------API JOSE CARLOS----------------------------------
 
 	//array con datos iniciales
