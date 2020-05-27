@@ -21,6 +21,14 @@
     <ul style="list-style-type:circle; font-size: 20px;">
         <li><a href="#/motogp-graph/graphHC">Victorias y Podiums (Biblioteca Highcharts)</a></li>
         <li><a href="#/motogp-graph/graphAS">Titulos Mundiales (Biblioteca Awesome)</a></li>
+        <li><a href="#/motogp-graph/graphExt1">Grafica Externa 1</a></li>
+        <li><a href="#/motogp-graph/graphExt2">Grafica Externa 2</a></li>
+        <li><a href="#/motogp-graph/graphG1">Grafica Grupo 1</a></li>
+        <li><a href="#/motogp-graph/graphG2">Grafica Grupo 2</a></li>
+        <li><a href="#/motogp-graph/graphG5">Grafica Grupo 5</a></li>
+        <li><a href="#/motogp-graph/graphG7">Grafica Grupo 7</a></li>
+        <li><a href="#/motogp-graph/graphG9">Grafica Grupo 9</a></li>
+        <li><a href="#/motogp-graph/graphG22">Grafica Grupo 22</a></li>
     </ul>
     <li style="font-size: 22px;"><strong>Electricidad Producida</strong></li>
     <ul style="list-style-type:circle; font-size: 20px;">

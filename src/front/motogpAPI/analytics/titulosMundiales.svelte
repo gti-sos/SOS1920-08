@@ -13,31 +13,31 @@
     MyData = await resData.json();
 
     MyData.forEach( (x) => {
-        world_title.push({pilot: x.pilot, titles: x.world_title})
+        world_title.push({pilot: x.pilot, titles: parseInt(x.world_title)})
     });
     
     am4core.ready(function() {
 
-        // Themes begin
-        am4core.useTheme(am4themes_kelly);
-        am4core.useTheme(am4themes_animated);
-        // Themes end
+      // Themes begin
+      am4core.useTheme(am4themes_kelly);
+      am4core.useTheme(am4themes_animated);
+      // Themes end
 
-        var chart = am4core.create("chartdiv", am4charts.PieChart3D);
-        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+      var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+      chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
-        chart.legend = new am4charts.Legend();
-        chart.legend.position = "right";
+      chart.legend = new am4charts.Legend();
+      chart.legend.position = "right";
 
-        chart.data = world_title;
+      chart.data = world_title;
 
-        chart.innerRadius = 100;
+      chart.innerRadius = 100;
 
-        var series = chart.series.push(new am4charts.PieSeries3D());
-        series.dataFields.value = "titles";
-        series.dataFields.category = "pilot";
+      var series = chart.series.push(new am4charts.PieSeries3D());
+      series.dataFields.value = "titles";
+      series.dataFields.category = "pilot";
 
-        }); // end am4core.ready()
+      }); // end am4core.ready()
   }
 
   loadGraph();

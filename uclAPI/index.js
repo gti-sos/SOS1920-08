@@ -9,9 +9,17 @@ module.exports = function(app) {
 		filename: dbFileName,
 		autoload: true
 	});
+<<<<<<< HEAD
 	app.get(BASE_PATH + "/ucl_stas/docs/", (req, res) => {
         res.redirect("https://documenter.getpostman.com/view/10690065/SztBa7m1");
     });
+=======
+
+	app.get(BASE_PATH + "/ucl_stats/docs/", (req, res) => {
+        res.redirect("https://documenter.getpostman.com/view/10690065/SztBa7m1");
+    });
+
+>>>>>>> 3304ad2468c8ba52b2bacdd4158b6f82f1b4bd44
 	//-----------------------------API JOSE CARLOS----------------------------------
 
 	//array con datos iniciales
