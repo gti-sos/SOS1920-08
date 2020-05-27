@@ -49,7 +49,7 @@
                         https://sos1920-08.herokuapp.com/api/v1/motogp-statistics/docs </a>(developed by
                     <a href="https://github.com/franbornos6">Francisco Jurado Garrido</a>)</li>
                 <li>
-                    <a href="https://sos1920-08.herokuapp.com/api/v1/ucl_stats/docs">
+                    <a href="https://documenter.getpostman.com/view/10690065/SztBa7m1">
                         https://sos1920-08.herokuapp.com/api/v1/ucl_stats/docs </a>(developed by
                     <a href="https://github.com/josmolcol">Jose Carlos Molina Coloma</a>)</li>
                 <li>

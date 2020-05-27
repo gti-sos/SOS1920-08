@@ -9,7 +9,9 @@ module.exports = function(app) {
 		filename: dbFileName,
 		autoload: true
 	});
-
+	app.get(BASE_PATH + "/ucl_stas/docs/", (req, res) => {
+        res.redirect("https://documenter.getpostman.com/view/10690065/SztBa7m1");
+    });
 	//-----------------------------API JOSE CARLOS----------------------------------
 
 	//array con datos iniciales
