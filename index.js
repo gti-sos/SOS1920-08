@@ -6,11 +6,13 @@ const motogpAPI = require(path.join(__dirname,"motogpAPI"));
 const uclAPI = require(path.join(__dirname,"uclAPI"));
 const port = process.env.PORT || 9999;
 const app = express();
+const cors = require("cors");
 const back = require("./src/back");
 
 back(app);
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use("/", express.static("./public"));
 
 electricityAPI(app);	
