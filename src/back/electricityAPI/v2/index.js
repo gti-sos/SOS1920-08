@@ -1,91 +1,91 @@
-module.exports = function(app) {
+module.exports = function (app) {
 	const dataStore = require('nedb');
-	const BASE_PATH = '/api/v1';
+
 	const path = require('path');
 	const dbFileName = path.join(__dirname, 'electricity.db');
 	const db = new dataStore({
 		filename: dbFileName,
-		autoload: true
+		autoload: true,
+		corruptAlertThreshold: 1
 	});
-	app.get(BASE_PATH + "/electricity-produced-stats/docs/", (req, res) => {
-        res.redirect("https://documenter.getpostman.com/view/10851956/SzYUXfsE");
-    });
+	const BASE_PATH = '/api/v2';
+	var electricityProducedInitial = [
+		{
+			country: 'EEUU',
+			state: 'Alabama',
+			year: 2018,
+			hydro: 11142139,
+			solar: 357252,
+			coal: 3177520
+		},
+		{
+			country: 'EEUU',
+			state: 'Arkansas',
+			year: 2018,
+			hydro: 3008775,
+			solar: 203413,
+			coal: 29996101
+		},
+		{
+			country: 'EEUU',
+			state: 'California',
+			year: 2018,
+			hydro: 26330667,
+			solar: 26985181,
+			coal: 281328
+		},
+		{
+			country: 'EEUU',
+			state: 'Colorado',
+			year: 2018,
+			hydro: 1825385,
+			solar: 1062380,
+			coal: 26382060
+		},
+		{
+			country: 'EEUU',
+			state: 'Delaware',
+			year: 2018,
+			hydro: 0,
+			solar: 49789,
+			coal: 273388
+		},
+		{
+			country: 'EEUU',
+			state: 'Florida',
+			year: 2018,
+			hydro: 232574,
+			solar: 2412067,
+			coal: 30272201
+		},
+		{
+			country: 'EEUU',
+			state: 'Georgia',
+			year: 2018,
+			hydro: 3696868,
+			solar: 1995837,
+			coal: 32180555
+		},
+		{
+			country: 'EEUU',
+			state: 'Hawaii',
+			year: 2018,
+			hydro: 96520,
+			solar: 184576,
+			coal: 1311203
+		},
+		{
+			country: 'EEUU',
+			state: 'Iowa',
+			year: 2018,
+			hydro: 924861,
+			solar: 11456,
+			coal: 28552999
+		}
+	];
 	app.get(BASE_PATH + '/electricity-produced-stats/loadInitialData', (req, res) => {
-		var electricityProducedInitial = [
-			{
-				country: 'EEUU',
-				state: 'Alabama',
-				year: 2018,
-				hydro: 11142139,
-				solar: 357252,
-				coal: 3177520
-			},
-			{
-				country: 'EEUU',
-				state: 'Arkansas',
-				year: 2018,
-				hydro: 3008775,
-				solar: 203413,
-				coal: 29996101
-			},
-			{
-				country: 'EEUU',
-				state: 'California',
-				year: 2018,
-				hydro: 26330667,
-				solar: 26985181,
-				coal: 281328
-			},
-			{
-				country: 'EEUU',
-				state: 'Colorado',
-				year: 2018,
-				hydro: 1825385,
-				solar: 1062380,
-				coal: 26382060
-			},
-			{
-				country: 'EEUU',
-				state: 'Delaware',
-				year: 2018,
-				hydro: 0,
-				solar: 49789,
-				coal: 273388
-			},
-			{
-				country: 'EEUU',
-				state: 'Florida',
-				year: 2018,
-				hydro: 232574,
-				solar: 2412067,
-				coal: 30272201
-			},
-			{
-				country: 'EEUU',
-				state: 'Georgia',
-				year: 2018,
-				hydro: 3696868,
-				solar: 1995837,
-				coal: 32180555
-			},
-			{
-				country: 'EEUU',
-				state: 'Hawaii',
-				year: 2018,
-				hydro: 96520,
-				solar: 184576,
-				coal: 1311203
-			},
-			{
-				country: 'EEUU',
-				state: 'Iowa',
-				year: 2018,
-				hydro: 924861,
-				solar: 11456,
-				coal: 28552999
-			}
-		];
-		db.remove({}, { multi: true }, function(err, numRemoved) {});
+
+		db.remove({}, { multi: true }, function (err, numRemoved) { });
 		db.insert(electricityProducedInitial);
 
 		res.send(JSON.stringify(electricityProducedInitial, null, 2));
@@ -138,7 +138,7 @@ module.exports = function(app) {
 			.find(search)
 			.skip(offset)
 			.limit(limit)
-			.exec(function(err, electricityProduced) {
+			.exec(function (err, electricityProduced) {
 				electricityProduced.forEach(e => {
 					delete e._id;
 				});
@@ -179,8 +179,8 @@ module.exports = function(app) {
 
 	//DELETE electicity-produced-stats
 	app.delete(BASE_PATH + '/electricity-produced-stats', (req, res) => {
-		db.remove({}, { multi: true }, function(err, numRemoved) {});
-		res.sendStatus(200).send('Your DataBase has been wiped clean succesfully');
+		db.remove({}, { multi: true }, function (err, numRemoved) { });
+		res.sendStatus(200);
 	});
 
 	//PUT NOT ALLOWED ON THE ENTIRE ARRAY
@@ -211,7 +211,7 @@ module.exports = function(app) {
 	app.delete(BASE_PATH + '/electricity-produced-stats/:country/:state', (req, res) => {
 		var country = req.params.country;
 		var state = req.params.state;
-		db.remove({ country: country, state: state }, {}, function(err, numRemoved) {});
+		db.remove({ country: country, state: state }, {}, function (err, numRemoved) { });
 		res.sendStatus(200).send('Data removed');
 	});
 
@@ -231,7 +231,7 @@ module.exports = function(app) {
 					$set: { year: body.year, hydro: body.hydro, solar: body.solar, coal: body.coal }
 				},
 				{},
-				function(err, numReplaced) {}
+				function (err, numReplaced) { }
 			);
 			res.sendStatus(200).send('Data modified succesfully');
 		}
