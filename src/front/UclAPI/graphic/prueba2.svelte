@@ -8,13 +8,13 @@
         let MyData = [];
         let team = [];
         let victorias = [];
-        let partidos = [];
-        let participaciones = [];
         let titulos = [];
         const resData = await fetch("api/v1/ucl_stats");
         MyData = await resData.json();
         team = MyData.map((MyData) => MyData.team);
         titulos = MyData.map((MyData) => MyData.title);
+
+      
 
 
         var chart = bb.generate({

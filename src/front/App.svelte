@@ -32,6 +32,7 @@
 	import EditTeam from './UclAPI/EditTeam.svelte';
 	import GraphTitPais from './UclAPI/graphic/prueba.svelte';
 	import GraphTitTemp from './UclAPI/graphic/prueba2.svelte';
+	import grupo2 from './UclAPI/graphic/integrationG2.svelte';
 	
 
 	const routes = {
@@ -61,6 +62,7 @@
 		"/ucl_stats/:uclCountry/:uclTeam": EditTeam,
 		"/ucl-graphic/graphHC": GraphTitPais,
 		"/ucl-graphic/graphAS": GraphTitTemp,
+		"/ucl-graphic/grupo2": grupo2,
 
 
 		"/integrations": Integrations,
