@@ -29,7 +29,10 @@
 	import GraphGroup9 from './ElectricityAPI/Integraciones/GraphGroup9.svelte';
 	import GraphGroup2 from './ElectricityAPI/Integraciones/GraphGroup2.svelte';
 	import GraphGroup23 from './ElectricityAPI/Integraciones/GraphGroup23.svelte';
-
+	import GraphGroup12 from './ElectricityAPI/Integraciones/GraphGroup12.svelte';
+	import GraphGroup06 from './ElectricityAPI/Integraciones/GraphGroup06.svelte';
+	import GraphGroup24 from './ElectricityAPI/Integraciones/GraphGroup24.svelte';
+	import GraphGroup01 from './ElectricityAPI/Integraciones/GraphGroup01.svelte';
 	//Ucl_stats_api
 	import UclTable from './UclAPI/UclTable.svelte';
 	import EditTeam from './UclAPI/EditTeam.svelte';
@@ -62,6 +65,10 @@
 		"/electricity-graph/graficaGrupo9" : GraphGroup9,
 		"/electricity-graph/graficaGrupo2" : GraphGroup2,
 		"/electricity-graph/graficaGrupo23" : GraphGroup23,
+		"/electricity-graph/graficaGrupo12" : GraphGroup12,
+		"/electricity-graph/graficaGrupo06" : GraphGroup06,
+		"/electricity-graph/graficaGrupo24" : GraphGroup24,
+		"/electricity-graph/graficaGrupo01" : GraphGroup01,
 
 
 		"/ucl_stats/" : UclTable,

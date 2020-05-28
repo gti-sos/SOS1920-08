@@ -20,7 +20,7 @@
         State = myData.map((myData) => myData.state);
         Coal = myData.map((myData) => myData.coal);
         CountryG9 = dataG9.map((dataG9) => dataG9.coutry);
-        //annualSalesG9 = dataG9.map((dataG9) => dataG9.annual-sale);
+        annualSalesG9 = dataG9.map((dataG9) => dataG9.annual-sale);
 
         Highcharts.chart('container', {
             chart: {

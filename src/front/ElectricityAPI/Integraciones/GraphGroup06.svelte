@@ -2,11 +2,11 @@
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
     var miAPI = "https://sos1920-08.herokuapp.com/api/v2/electricity-produced-stats";
-    var API2 = "https://sos1920-12.herokuapp.com/api/v2/overdose-deaths";
+    var API2 = "https://sos1920-06.herokuapp.com/api/v2/accstats";
 
 
     async function loadGraphGr9() {
-        let dataG12 = [];
+        let dataG06 = [];
         let myData = [];
         let State = [];
         let Solar = [];
@@ -15,23 +15,23 @@
         let Coal = [];
         let HydroDiv = [];
         let CoalDiv = [];
-        let Death_MaleG12=[];
-        let Death_FemaleG12=[];
-        let Death_TotalG12=[];
-        let CountryG12=[];
+        let AccVicTotalG06=[];
+        let AccVicInter06=[];
+        let AccFall06=[];
+        let Province06=[];
 
-        const resDataG12 = await fetch(API2);
+        const resdataG06 = await fetch(API2);
         const resMyData = await fetch(miAPI);
-        dataG12 = await resDataG12.json();
+        dataG06 = await resdataG06.json();
         myData = await resMyData.json();
         State = myData.map((myData) => myData.state);
         Solar = myData.map((myData) => myData.solar);
         Hydro = myData.map((myData) => myData.hydro);
         Coal = myData.map((myData) => myData.coal);
-        Death_MaleG12 = dataG12.map((dataG12) => dataG12.death_male);
-        Death_FemaleG12 = dataG12.map((dataG12) => dataG12.death_female);
-        Death_TotalG12 = dataG12.map((dataG12) => dataG12.death_total);
-        CountryG12 = dataG12.map((dataG12) => dataG12.country);
+        AccVicTotalG06 = dataG06.map((dataG06) => dataG06.accvictotal);
+        AccVicInter06 = dataG06.map((dataG06) => dataG06.accvicinter);
+        AccFall06 = dataG06.map((dataG06) => dataG06.accfall);
+        Province06 = dataG06.map((dataG06) => dataG06.province);
        
        //Funciones para ajustar los datos
         myData.forEach((x) => {
@@ -70,13 +70,13 @@
                 type: 'line'
             },
             title: {
-                text: 'Electricidad producida por plantas solares en comparacion a los km totales de las rutas ciclitas en algunas provincias de España'
+                text: 'Electricidad producida por distintas fuentes y los datos de la api de Ass-stats'
             },
             subtitle: {
-                text: 'Source: ElectricityAPI y Overdose Deaths API'
+                text: 'Source: ElectricityAPI y Acc stats API'
             },
             xAxis: {
-                categories: CountryG12
+                categories: Province06
 
             },
             yAxis: {
@@ -104,16 +104,16 @@
                 name: 'Plantas de Carbon',
                 data: CoalDiv
             }, {
-                name: 'Muertes Masculinas por sobredosis',
-                data: Death_MaleG12
+                name: 'Acc Total',
+                data: AccVicTotalG06
             },
             {
-                name: 'Muertes Femeninas por sobredosis',
-                data: Death_FemaleG12
+                name: 'Acc Inter',
+                data: AccVicInter06
             },
             {
-                name: 'Muertes Totales por sobredosis',
-                data: Death_TotalG12
+                name: 'Acc Fall',
+                data: AccFall06
             }
             ]
         });
