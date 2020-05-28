@@ -42,6 +42,7 @@
     <ul style="list-style-type:circle; font-size: 20px;">
         <li><a href="#/ucl-graphic/graphHC">Victorias por partidos disputados</a></li>
         <li><a href="#/ucl-graphic/graphAS">Ttitulos UCl</a></li>
+        <li><a href="#/ucl-graphic/grupo2">integracion datos grupo 2</a></li>
     </ul>
 </div>
 </body>
