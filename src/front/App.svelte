@@ -26,6 +26,9 @@
 	import EditStat from './ElectricityAPI/EditStat.svelte';
 	import linearGraph from './ElectricityAPI/graficas/linearGraph.svelte';
 	import barChartGraph from './ElectricityAPI/graficas/barCharGraph.svelte';
+	import GraphGroup9 from './ElectricityAPI/Integraciones/GraphGroup9.svelte';
+	import GraphGroup2 from './ElectricityAPI/Integraciones/GraphGroup2.svelte';
+	import GraphGroup23 from './ElectricityAPI/Integraciones/GraphGroup23.svelte';
 
 	//Ucl_stats_api
 	import UclTable from './UclAPI/UclTable.svelte';
@@ -51,11 +54,14 @@
 		"/motogp-graph/graphG7": GraphG7,
 		"/motogp-graph/graphG9": GraphG9,
 		"/motogp-graph/graphG22": GraphG22,
-
+		//Angel
 		"/electricity-produced-stats" : ElectricityTable,
 		"/electricity-produced-stats/:country/:state" : EditStat,
 		"/electricity-graph/graph": linearGraph,
 		"/electricity-graph/awesomeGraph": barChartGraph,
+		"/electricity-graph/graficaGrupo9" : GraphGroup9,
+		"/electricity-graph/graficaGrupo2" : GraphGroup2,
+		"/electricity-graph/graficaGrupo23" : GraphGroup23,
 
 
 		"/ucl_stats/" : UclTable,
