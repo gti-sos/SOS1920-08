@@ -26,9 +26,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/loadInitialData",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats/loadInitialData",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -60,9 +60,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -95,9 +95,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?country=EEUU",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -136,9 +136,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU&limit=1&offset=1",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?country=EEUU&limit=1&offset=1",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -185,9 +185,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU&state=Alabama",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?country=EEUU&state=Alabama",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -229,9 +229,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU&state=Alabama&year=2018",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?country=EEUU&state=Alabama&year=2018",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -278,9 +278,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?country=EEUU&state=Alabama&year=2018&coalMin=0&coalMax=9999999",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?country=EEUU&state=Alabama&year=2018&coalMin=0&coalMax=9999999",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -335,9 +335,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?state=Arkansas",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?state=Arkansas",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -376,9 +376,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?state=Arkansas&year=2018",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?state=Arkansas&year=2018",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -420,9 +420,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?state=Arkansas&year=2018&hydroMin=0&hydroMax=99999999",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?state=Arkansas&year=2018&hydroMin=0&hydroMax=99999999",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -473,9 +473,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?year=2018",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?year=2018",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -514,9 +514,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats?year=2018&coalMin=0&coalMax=999999999",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats?year=2018&coalMin=0&coalMax=999999999",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -562,9 +562,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/EEUU/Alabama",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats/EEUU/Alabama",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -607,9 +607,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -650,9 +650,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/EEUU/Alabama",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats/EEUU/Alabama",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -686,9 +686,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/EEUU/Alabama",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats/EEUU/Alabama",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -730,9 +730,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -773,9 +773,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats/EEUU/Alabama",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats/EEUU/Alabama",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
@@ -809,9 +809,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_PATH}}/api/v1/electricity-produced-stats",
+					"raw": "https://localhost:9999/api/v1/electricity-produced-stats",
 					"host": [
-						"{{BASE_PATH}}"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
