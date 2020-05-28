@@ -1,7 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const electricityAPI= require(path.join(__dirname, "electricityAPI"));
+//Api Angel
+const electricityAPIv1= require("./src/back/electricityAPI/v1");
+const electricityAPIv2= require("./src/back/electricityAPI/v2");
+//
 const motogpAPI = require(path.join(__dirname,"motogpAPI"));
 const uclAPI = require(path.join(__dirname,"uclAPI"));
 const port = process.env.PORT || 9999;
@@ -15,7 +18,8 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use("/", express.static("./public"));
 
-electricityAPI(app);	
+electricityAPIv1(app);	
+electricityAPIv2(app);
 motogpAPI(app);
 uclAPI(app);
 
