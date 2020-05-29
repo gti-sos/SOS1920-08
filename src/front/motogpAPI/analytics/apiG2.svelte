@@ -38,7 +38,7 @@
                     x: datosPilotos,
                     y: Array.apply(null, datosVictoria),
                     line: { 
-                        color: 'red'
+                        color: 'green'
                     },
                     visible: i === 0,
                     name: 'Victimas en accidentes',
@@ -48,7 +48,7 @@
                     x: datosProvincias,
                     y: Array.apply(null, MyDataGraphD),
                     line: { 
-                        color: 'blue'
+                        color: 'black'
                     },
                     visible: i === 0,
                     name: 'Muertos',

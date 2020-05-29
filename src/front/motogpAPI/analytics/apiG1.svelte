@@ -7,71 +7,85 @@
 
     async function loadGraph(){
 
-        let myData = [];
         let dataG1 = [];
+        let myData = [];
+        let datosPodium = [];
+        let datosPilotos = [];
+        let dataMujer = [];
+        let datosPais = [];
+
 
         const resDataG1 = await fetch(API1);
         const resData = await fetch(miAPI);
 
-        myData = resData.map((resData)=> resData.country);
-        resDataG1 = resDataG1.map((resDataG1)=> resDataG1.country);
+        myData = await resData.json();
+        dataG1 = await resDataG1.json();
 
-        Highcharts.chart('container', {
-            chart: {
-                type: 'line'
-            },
-            title: {
-                text: 'Monthly Average Temperature'
-            },
-            subtitle: {
-                text: 'Source: WorldClimate.com'
-            },
-            xAxis: {
-                categories: myData
-            },
-            yAxis: {
-                title: {
-                    text: 'Temperature (°C)'
-                }
-            },
-            plotOptions: {
-                line: {
-                    dataLabels: {
-                        enabled: true
-                    },
-                    enableMouseTracking: false
-                }
-            },
-            series: [{
-                name: 'Tokyo',
-                data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-            }, {
-                name: 'London',
-                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-            }]
+        datosPilotos = myData.map((myData)=> myData.pilot);
+
+        datosPodium = myData.map((myData)=> parseInt(myData.podium));
+
+        dataG1.forEach( (x) => {
+            if (x.year == 2017) {
+                dataMujer.push(parseInt(x.em_woman));
+                datosPais.push(x.country);
+            }
         });
-        
-        
-    }
 
+        function makeTrace(i) {
+            if (i == 0) {
+                return {
+                    x: datosPilotos,
+                    y: Array.apply(null, datosPodium),
+                    line: { 
+                        color: 'red'
+                    },
+                    visible: i === 0,
+                    name: 'Podiums',
+                };
+            } else if (i == 1) {
+                return {
+                    x: datosPais,
+                    y: Array.apply(null, dataMujer),
+                    line: { 
+                        color: 'blue'
+                    },
+                    visible: i === 0,
+                    name: 'Emigraciones',
+                };
+            }
+            
+        }
+        Plotly.plot('graph', [0, 1].map(makeTrace), {
+            updatemenus: [{
+                y: 1,
+                yanchor: 'top',
+                buttons: [{
+                    method: 'restyle',
+                    args: ['visible', [true, false]],
+                    label: 'Podiums'
+                }, {
+                    method: 'restyle',
+                    args: ['visible', [false, true]],
+                    label: 'Emigraciones de Mujeres'
+                }]
+            }],
+        });
+
+
+        }
+    
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js" on:load="{loadGraph}"></script>
 </svelte:head>
 
-Página Grafica grupo 1
+
 <main>
+    <h3 style="text-align: center;"> Número de podiums por piloto y Número de Emigraciones de Mujeres en 2017</h3>
+
+    <div id="graph"></div>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
-    <figure class="highcharts-figure">
-        <div id="container"></div>
-        <p class="highcharts-description">
-            This chart shows how data labels can be added to the data series. This
-            can increase readability and comprehension for small datasets.
-        </p>
-    </figure>
     
 </main>
