@@ -688,7 +688,7 @@
 				"url": {
 					"raw": "https://localhost:9999/api/v2/electricity-produced-stats/EEUU/Alabama",
 					"host": [
-						"https://localhost:9999"
+						"localhost:9999"
 					],
 					"path": [
 						"api",
