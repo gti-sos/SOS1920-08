@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "npx newman run tests/apiTestsFran.json && npx newman run tests/sos1920-ucl.json && npx newman run tests/ElectricityAPITest.json",
+    "test": "npx newman run tests/apiTestsFran.json && npx newman run tests/sos1920-ucl.json && npx newman run tests/Electricityv2.json",
     "start": "node index"
   },
   "devDependencies": {
