@@ -38,7 +38,9 @@
 	import EditTeam from './UclAPI/EditTeam.svelte';
 	import GraphTitPais from './UclAPI/graphic/prueba.svelte';
 	import GraphTitTemp from './UclAPI/graphic/prueba2.svelte';
+	import grupo1 from './UclAPI/graphic/integrationG1.svelte';
 	import grupo2 from './UclAPI/graphic/integrationG2.svelte';
+	
 	
 
 	const routes = {
@@ -76,6 +78,8 @@
 		"/ucl-graphic/graphHC": GraphTitPais,
 		"/ucl-graphic/graphAS": GraphTitTemp,
 		"/ucl-graphic/grupo2": grupo2,
+		"/ucl-graphic/grupo1": grupo1,
+
 
 
 		"/integrations": Integrations,

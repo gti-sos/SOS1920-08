@@ -36,6 +36,7 @@
                     Highcharts)</a></li>
             <li><a href="#/electricity-graph/awesomeGraph">Electricidad producida por distintas fuentes(Biblioteca
                     Awesome)</a></li>
+<<<<<<< HEAD
             <li><a href="#/electricity-graph/graficaGrupo9"> Grafica de comparacion de la Api del grupo 9
                     Plugin-Vehicles</a></li>
             <li><a href="#/electricity-graph/graficaGrupo2"> Grafica de comparacion de la Api del grupo 2
@@ -50,6 +51,27 @@
                     Atc-Stats</a></li>
             <li><a href="#/electricity-graph/graficaGrupo01"> Grafica de comparacion de la Api del grupo 01
                     Poverty-Stats</a></li>
+=======
+            <li><a href="#/electricity-graph/graficaGrupo9"> Grafica de comparacion de la Api del grupo 9 Plugin-Vehicles</a></li>
+            <li><a href="#/electricity-graph/graficaGrupo2"> Grafica de comparacion de la Api del grupo 2 Plugin-Vehicles</a></li>
+            <li><a href="#/electricity-graph/graficaGrupo23"> Grafica de comparacion de la Api del grupo 23 Cigarrete-Sales</a></li>
+            <li><a href="#/electricity-graph/graficaGrupo12"> Grafica de comparacion de la Api del grupo 12 Overdose-Deaths</a></li>
+            <li><a href="#/electricity-graph/graficaGrupo06"> Grafica de comparacion de la Api del grupo 06 Acc-Stats</a></li>
+            <li><a href="#/electricity-graph/graficaGrupo24"> Grafica de comparacion de la Api del grupo 24 Atc-Stats</a></li>
+            <li><a href="#/electricity-graph/graficaGrupo01"> Grafica de comparacion de la Api del grupo 01 Poverty-Stats</a></li>
+
+<<<<<<< HEAD
+    </ul>
+    <li style="font-size: 22px;"><strong>Ucl</strong></li>
+    <ul style="list-style-type:circle; font-size: 20px;">
+        <li><a href="#/ucl-graphic/graphHC">Victorias por partidos disputados</a></li>
+        <li><a href="#/ucl-graphic/graphAS">Ttitulos UCl</a></li>
+        <li><a href="#/ucl-graphic/grupo1">integracion datos grupo 1</a></li>
+        <li><a href="#/ucl-graphic/grupo2">integracion datos grupo 2</a></li>
+    </ul>
+</div>
+=======
+>>>>>>> fd4c1ac9492b6dda4f27cdb417a7bc3a402b9749
         </ul>
         <li style="font-size: 22px;"><strong>Ucl</strong></li>
         <ul style="list-style-type:circle; font-size: 20px;">
@@ -58,6 +80,7 @@
             <li><a href="#/ucl-graphic/grupo2">integracion datos grupo 2</a></li>
         </ul>
     </div>
+>>>>>>> 4fb763e09885096b5275ea749737b78d1b5ddb74
 </body>
 
 </html>
