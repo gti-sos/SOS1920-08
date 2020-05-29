@@ -1,18 +1,28 @@
-module.exports = function(app) {
+module.exports = function (app) {
 	console.log('Registering uclAPI');
 	const dataStore = require('nedb');
 	const path = require('path');
 	const dbFileName = path.join(__dirname, '/ucl.db');
 	const BASE_PATH = '/api/v1';
 
+
 	const db = new dataStore({
 		filename: dbFileName,
 		autoload: true
 	});
 
+	var serverProxy = "/api/v2/lottery-sales";
+	var urlServerProxy = "https://sos1920-06.herokuapp.com";
+
 	app.get(BASE_PATH + "/ucl_stats/docs/", (req, res) => {
-        res.redirect("https://documenter.getpostman.com/view/10690065/SztBa7m1");
-    });
+		res.redirect("https://documenter.getpostman.com/view/10690065/SztBa7m1");
+	});
+
+	app.use(serverProxy, function (req, res) {
+		var url = urlServerProxy + req.baseUrl + req.url;
+		console.log("piped: " + req.baseUrl + req.url);
+		req.pipe(request(url)).pipe(res)
+	});
 
 	//-----------------------------API JOSE CARLOS----------------------------------
 
@@ -73,11 +83,11 @@ module.exports = function(app) {
 			victory: 262
 		}
 	];
-	
+
 	//Load initial data
 	app.get(BASE_PATH + '/ucl_stats/loadInitialData', (req, res) => {
 		console.log('new Get../loadInitialData');
-		db.remove({}, { multi: true }, function(err, numRemoved) {});
+		db.remove({}, { multi: true }, function (err, numRemoved) { });
 		db.insert(ucl_statsInitial);
 		res.send(JSON.stringify(ucl_statsInitial, null, 2));
 		res.sendStatus(200, 'Datos iniciales creados');
@@ -142,7 +152,7 @@ module.exports = function(app) {
 			.find(search)
 			.skip(offset)
 			.limit(limit)
-			.exec(function(err, ucl_stats) {
+			.exec(function (err, ucl_stats) {
 				ucl_stats.forEach(c => {
 					delete c._id;
 				});
@@ -224,16 +234,16 @@ module.exports = function(app) {
 					}
 				},
 				{},
-				function(err, numReplaced) {}
+				function (err, numReplaced) { }
 			);
 			res.sendStatus(200, 'OK');
 		}
 	});
-	
+
 	//DELETE /ucl-stats
 	app.delete(BASE_PATH + '/ucl_stats', (req, res) => {
 		console.log('delete../ucl_stats');
-		db.remove({}, { multi: true }, function(err, numRemoved) {});
+		db.remove({}, { multi: true }, function (err, numRemoved) { });
 		res.sendStatus(200, 'Base de datos borrada');
 	});
 	//DELETE /ucl-stats/:team
@@ -242,7 +252,7 @@ module.exports = function(app) {
 
 		var team = req.params.team;
 
-		db.remove({ team: team }, {}, function(err, numRemoved) {
+		db.remove({ team: team }, {}, function (err, numRemoved) {
 			res.sendStatus(200, 'OK');
 		});
 	});

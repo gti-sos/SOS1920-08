@@ -51,6 +51,7 @@
         <li><a href="#/ucl-graphic/graphAS">Ttitulos UCl</a></li>
         <li><a href="#/ucl-graphic/grupo1">integracion datos grupo 1</a></li>
         <li><a href="#/ucl-graphic/grupo2">integracion datos grupo 2</a></li>
+        <li><a href="#/ucl-graphic/grupo6">integracion datos grupo 3</a></li>
     </ul>
 </div>
 </body>
