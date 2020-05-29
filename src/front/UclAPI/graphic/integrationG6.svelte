@@ -2,105 +2,85 @@
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
     var uclApi = "api/v1/ucl_stats";
-    async function loadGraph(){
+    async function loadGraph() {
 
-        let datosEx = [];
-        let MyData =[];
-        let ventasTotales=[];
-        let years=[];
-        let ultimoTituloS = [];
-        let teamS = [];
-        
-        const resDataG6 = await fetch("/api/v2/lottery-sales");
-        datosEx = await resDataG6.json;
+
+       
+        var allLines = [];
+
+        const resDataG6 = await fetch("https://sos1920-06.herokuapp.com/api/v2/lottery-sales");
+        const datosEx = await resDataG6.json;
 
         const resData = await fetch(uclApi);
-        MyData = await resData.json();
+        const MyData = await resData.json();
 
-        datosEx.forEach((x)=>{
-            if(x.province=="Barcelona"){
-                ventasTotales.push(x.total);
-                years.push(x.years);
-            }
-        });
+        for (var i in datosEx) {
+            var lineTotal = [];
+            //Creamos un array por elemento del json de la forma [Madrid,2017,4959]
+            lineTotal.push(datosEx.map(function (d) { return d["province"] })[i]);
+            lineTotal.push(datosEx.map(function (d) { return d["year"] })[i]);
+            lineTotal.push(datosEx.map(function (d) { return d["total"] / 10000 })[i]);
+            //Añadimos la linea al array de todas
+            allLines.push(lineTotal);
+        }
 
-        MyData.forEach((x)=>{
-            if(x.last_title=="2017"||x.last_title=="2015"){
-                if(x.country=="Spain"){
-                ultimoTituloS.push(x.last_title);
-                teamS.push(x.team);
-                }
-            }
-        });
+        console.log(allLines);
+        for (var i in MyData) {
+            var line1 = [];
+            //Creamos un array por elemento del json de la forma [Madrid,2017,4959]
+            line1.push(MyData.map(function (d) { return d["country"] })[i]);
+            line1.push("2020");
+            line1.push(MyData.map(function (d) { return d["season"] })[i]);
+            //Añadimos la linea al array de todas
+            allLines.push(line1);
+        }
 
         Highcharts.chart('container', {
-            chart: {
-                type: 'spline'
-            },
             title: {
-                text: 'Monthly Average Temperature'
+                text: 'Ventas totales de loteria y negativos en covid en EE.UU.'
             },
-            subtitle: {
-                text: 'Source: WorldClimate.com'
-            },
-            xAxis: {
-                categories: years
-            },
-            yAxis: {
-                title: {
-                    text: 'Temperature'
-                },
-                labels: {
-                    formatter: function () {
-                        return this.value + '°';
-                    }
+            accessibility: {
+                point: {
+                    valueDescriptionFormat: '{index}. From {point.from} to {point.to}: {point.weight}.'
                 }
             },
-            tooltip: {
-                crosshairs: true,
-                shared: true
-            },
-            plotOptions: {
-                spline: {
-                    marker: {
-                        radius: 4,
-                        lineColor: '#666666',
-                        lineWidth: 1
-                    }
-                },
-            },
             series: [{
-                name: 'Barcelona',
-                data: ventasTotales
-            }, {
-                name: 'Madrid',
-                data: [0]
-            },
-            {
-                name: teamS,
-                color:'rgba(223, 83, 83, .5)',
-                data: [null,ultimoTituloS,null]
+                keys: ['from', 'to', 'weight'],
+                data: allLines,
+                type: 'dependencywheel',
+                name: 'Total',
+                dataLabels: {
+                    color: '#333',
+                    textPath: {
+                        enabled: true,
+                        attributes: {
+                            dy: 10
+                        }
+                    },
+                    distance: 5
+                },
+                size: '100%'
             }]
         });
-
-
     }
 
 
 
-    
+
 </script>
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/dependency-wheel.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js" on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 <main>
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            
+
         </p>
         <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
@@ -147,5 +127,4 @@
     .highcharts-data-table tr:hover {
         background: #f1f7ff;
     }
-
 </style>

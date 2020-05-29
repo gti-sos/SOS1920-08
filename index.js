@@ -11,7 +11,7 @@ const uclAPIv2= require("./src/back/uclAPI/v2");
 const motogpAPI = require(path.join(__dirname,"motogpAPI"));
 const uclAPI = require(path.join(__dirname,"uclAPI"));
 const port = process.env.PORT || 9999;
-const app = express();
+var app = express();
 const cors = require("cors");
 const back = require("./src/back");
 

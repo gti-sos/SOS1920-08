@@ -4,26 +4,23 @@ module.exports = function (app) {
 	const path = require('path');
 	const dbFileName = path.join(__dirname, '/ucl.db');
 	const BASE_PATH = '/api/v1';
+	const  request = require("request")
+	const  express = require("express") ;
 
+	var serverProxy = "/api/v2/lottery-sales";
+	var urlServerProxy = "https://sos1920-06.herokuapp.com";
 
 	const db = new dataStore({
 		filename: dbFileName,
 		autoload: true
 	});
 
-	var serverProxy = "/api/v2/lottery-sales";
-	var urlServerProxy = "https://sos1920-06.herokuapp.com";
 
 	app.get(BASE_PATH + "/ucl_stats/docs/", (req, res) => {
 		res.redirect("https://documenter.getpostman.com/view/10690065/SztBa7m1");
 	});
 
-	app.use(serverProxy, function (req, res) {
-		var url = urlServerProxy + req.baseUrl + req.url;
-		console.log("piped: " + req.baseUrl + req.url);
-		req.pipe(request(url)).pipe(res)
-	});
-
+	app.use(express.static('.'));
 	//-----------------------------API JOSE CARLOS----------------------------------
 
 	//array con datos iniciales
@@ -83,6 +80,13 @@ module.exports = function (app) {
 			victory: 262
 		}
 	];
+
+	app.use(serverProxy, function (req, res) {
+		var url = urlServerProxy + req.baseUrl + req.url;
+		console.log("piped: " + req.baseUrl + req.url);
+		req.pipe(request(url)).pipe(res)
+	});
+
 
 	//Load initial data
 	app.get(BASE_PATH + '/ucl_stats/loadInitialData', (req, res) => {
