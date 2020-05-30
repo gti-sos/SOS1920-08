@@ -41,7 +41,7 @@
                         color: 'green'
                     },
                     visible: i === 0,
-                    name: 'Victimas en accidentes',
+                    name: 'Victorias',
                 };
             } else if (i == 1) {
                 return {
