@@ -8,6 +8,14 @@ module.exports = function (app) {
 		autoload: true,
 		corruptAlertThreshold: 1
 	});
+	var serverProxy = '/jokes/random';
+	var urlServerProxy = 'https://api.chucknorris.io';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
 	const BASE_PATH = '/api/v2';
 	var electricityProducedInitial = [
 		{
