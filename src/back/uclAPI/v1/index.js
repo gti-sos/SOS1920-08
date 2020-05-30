@@ -7,8 +7,15 @@ module.exports = function (app) {
 	const  request = require("request")
 	const  express = require("express") ;
 
-	var serverProxy = "/api/v2/lottery-sales";
-	var urlServerProxy = "https://sos1920-06.herokuapp.com";
+	var serverProxy = 'api/v2/lottery-sales';
+	var urlServerProxy = 'https://sos1920-06.herokuapp.com';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
 
 	const db = new dataStore({
 		filename: dbFileName,
@@ -20,7 +27,6 @@ module.exports = function (app) {
 		res.redirect("https://documenter.getpostman.com/view/10690065/SztBa7m1");
 	});
 
-	app.use(express.static('.'));
 	//-----------------------------API JOSE CARLOS----------------------------------
 
 	//array con datos iniciales
@@ -81,11 +87,6 @@ module.exports = function (app) {
 		}
 	];
 
-	app.use(serverProxy, function (req, res) {
-		var url = urlServerProxy + req.baseUrl + req.url;
-		console.log("piped: " + req.baseUrl + req.url);
-		req.pipe(request(url)).pipe(res)
-	});
 
 
 	//Load initial data

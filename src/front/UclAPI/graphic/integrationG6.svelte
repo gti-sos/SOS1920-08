@@ -1,43 +1,45 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
-    var uclApi = "api/v1/ucl_stats";
+
     async function loadGraph() {
 
-
-       
-        var allLines = [];
-
-        const resDataG6 = await fetch("https://sos1920-06.herokuapp.com/api/v2/lottery-sales");
-        const datosEx = await resDataG6.json;
-
-        const resData = await fetch(uclApi);
+        var datosGrafica = [];
+        var datosGrafica2 = [];
+        const resData = await fetch("/api/v1/ucl_stats");
         const MyData = await resData.json();
 
-        for (var i in datosEx) {
-            var lineTotal = [];
-            //Creamos un array por elemento del json de la forma [Madrid,2017,4959]
-            lineTotal.push(datosEx.map(function (d) { return d["province"] })[i]);
-            lineTotal.push(datosEx.map(function (d) { return d["year"] })[i]);
-            lineTotal.push(datosEx.map(function (d) { return d["total"] / 10000 })[i]);
-            //Añadimos la linea al array de todas
-            allLines.push(lineTotal);
+        const resDataG6 = await fetch('https://sos1920-06.herokuapp.com/api/v2/lottery-sales');
+        const datosEx = await resDataG6.json();
+
+
+
+        for (var i in MyData) {
+            var dataUcl = [];
+            dataUcl.push(MyData.map(function (d) { return d["country"] })[i]);
+            dataUcl.push(MyData.map(function (d) { return d["last_title"] })[i]);
+            dataUcl.push(MyData.map(function (d) { return d["season"] * 100000 })[i]);
+            datosGrafica.push(dataUcl);
         }
 
-        console.log(allLines);
-        for (var i in MyData) {
-            var line1 = [];
-            //Creamos un array por elemento del json de la forma [Madrid,2017,4959]
-            line1.push(MyData.map(function (d) { return d["country"] })[i]);
-            line1.push("2020");
-            line1.push(MyData.map(function (d) { return d["season"] })[i]);
-            //Añadimos la linea al array de todas
-            allLines.push(line1);
+        for (var i in datosEx) {
+            var dataLottery = [];
+            dataLottery.push(datosEx.map(function (d) { return d["province"] })[i]);
+            dataLottery.push(datosEx.map(function (d) { return d["year"] })[i]);
+            dataLottery.push(datosEx.map(function (d) { return d["total"] })[i]);
+            datosGrafica2.push(dataLottery);
         }
+
+        console.log(datosEx);
+
+        console.log(datosGrafica);
+        console.log(datosGrafica2);
+
+
 
         Highcharts.chart('container', {
             title: {
-                text: 'Ventas totales de loteria y negativos en covid en EE.UU.'
+                text: 'Prueba Proxy'
             },
             accessibility: {
                 point: {
@@ -46,7 +48,23 @@
             },
             series: [{
                 keys: ['from', 'to', 'weight'],
-                data: allLines,
+                data: datosGrafica,
+                type: 'dependencywheel',
+                name: 'Total',
+                dataLabels: {
+                    color: '#333',
+                    textPath: {
+                        enabled: true,
+                        attributes: {
+                            dy: 10
+                        }
+                    },
+                    distance: 5
+                },
+                size: '100%'
+            }, {
+                keys: ['from', 'to', 'weight'],
+                data: datosGrafica2,
                 type: 'dependencywheel',
                 name: 'Total',
                 dataLabels: {
