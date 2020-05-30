@@ -5,112 +5,85 @@
     var miAPI = "api/v1/motogp-statistics";
     var API22 = "https://sos1920-22.herokuapp.com/api/v2/formula-stats";
 
-    async function loadGraph() {
+    async function loadGraph(){
 
-        let MyData = [];
         let dataG22 = [];
-    
+        let myData = [];
+        let datosTitulos = [];
+        let datosPilotos = [];
+        let datosG22 = [];
+        let datosPais = [];
+
 
         const resDataG22 = await fetch(API22);
         const resData = await fetch(miAPI);
 
-        MyData = await resData.json();
+        myData = await resData.json();
         dataG22 = await resDataG22.json();
 
-    let datosMotoGp = MyData.map((d) => {
-            let res = {
-                name: d.country,
-                values: d["world_title"]
-            };
-            return res;
-        });
+        datosPilotos = myData.map((myData)=> myData.pilot);
 
-    let datosG22 = dataG22.map((d) => {
-            let res = {
-                name: d.country,
-                values: d["totalpointnumber"]
-            };
-            return res;
-        });
+        datosTitulos = myData.map((myData)=> parseInt(myData.world_title));
 
-
-        let dataGraph = 
-            [
-                {
-                    name: "Numero de titulos mundiales de MotoGp",
-                    data: datosMotoGp
-                },
-                {
-                    name: "Puntos Totales de F1",
-                    data: datosG22
-                }
-            ];
-
+        dataG22.forEach( (x) => {
+           
+                datosG22.push(x.totalpointnumber);
+                datosPais.push(x.country);
             
-    console.log(dataGraph);
-
-
-
-        Highcharts.chart('container', {
-            chart: {
-                type: 'packedbubble',
-                height: '100%'
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                useHTML: true,
-                pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
-            },
-            plotOptions: {
-                packedbubble: {
-                    minSize: '30%',
-                    maxSize: '120%',
-                    zMin: 0,
-                    zMax: 1000,
-                    layoutAlgorithm: {
-                        splitSeries: false,
-                        gravitationalConstant: 0.02
-                    },
-                    dataLabels: {
-                        enabled: true,
-                        format: '{point.name}',
-                        filter: {
-                            property: 'y',
-                            operator: '>',
-                            value: 250
-                        },
-                        style: {
-                            color: 'black',
-                            textOutline: 'none',
-                            fontWeight: 'normal'
-                        }
-                    }
-                }
-            },
-            series: dataGraph
         });
+
+        function makeTrace(i) {
+            if (i == 0) {
+                return {
+                    x: datosPilotos,
+                    y: Array.apply(null, datosTitulos),
+                    line: { 
+                        color: '#EBDF00'
+                    },
+                    visible: i === 0,
+                    name: 'Titulos Mundiales',
+                };
+            } else if (i == 1) {
+                return {
+                    x: datosPais,
+                    y: Array.apply(null, datosG22),
+                    line: { 
+                        color: 'orange'
+                    },
+                    visible: i === 0,
+                    name: "Puntos",
+                };
+            }
+            
+        }
+        Plotly.plot('graph', [0, 1].map(makeTrace), {
+            updatemenus: [{
+                y: 1,
+                yanchor: 'top',
+                buttons: [{
+                    method: 'restyle',
+                    args: ['visible', [true, false]],
+                    label: 'Titulos'
+                }, {
+                    method: 'restyle',
+                    args: ['visible', [false, true]],
+                    label: 'Total de Puntos'
+                }]
+            }],
+        });
+
+
     }
+
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js" on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
-    <h3 style="text-align: center;"> Titulos de Moto GP y Total de puntos de F1</h3>
+    <h3 style="text-align: center;"> Número de Titulos Mundiales por Piloto y Total de Puntos de F1</h3>
 
-    <figure class="highcharts-figure">
-        <div id="container"></div>
-        <p class="highcharts-description">
-        Integracion con Grupo 22    
-        </p>
-    </figure>
-
+    <div id="graph"></div>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
-

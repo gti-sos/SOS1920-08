@@ -52,7 +52,7 @@
 		"/motogp-statistics/:pilot": EditPilot,
 		"/motogp-graph/graphHC": GraphVicPod,
 		"/motogp-graph/graphAS": GraphTitMun,
-		//"/motogp-graph/graphExt1": GraphExt1,
+		"/motogp-graph/graphExt1": GraphExt1,
 		"/motogp-graph/graphExt2": GraphExt2,
 		"/motogp-graph/graphG1": GraphG1,
 		"/motogp-graph/graphG2": GraphG2,
@@ -60,6 +60,7 @@
 		"/motogp-graph/graphG7": GraphG7,
 		"/motogp-graph/graphG9": GraphG9,
 		"/motogp-graph/graphG22": GraphG22,
+
 		//Angel
 		"/electricity-produced-stats" : ElectricityTable,
 		"/electricity-produced-stats/:country/:state" : EditStat,

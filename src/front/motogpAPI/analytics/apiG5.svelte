@@ -38,7 +38,7 @@
                     x: datosPilotos,
                     y: Array.apply(null, datosTitulos),
                     line: { 
-                        color: 'yellow'
+                        color: '#EBDF00'
                     },
                     visible: i === 0,
                     name: 'Titulos Mundiales',
@@ -51,7 +51,7 @@
                         color: 'turquoise'
                     },
                     visible: i === 0,
-                    name: 'Gasto en Salud Pública',
+                    name: "M €",
                 };
             }
             
