@@ -16,7 +16,6 @@
 
       
 
-
         var chart = bb.generate({
             data: {
                 x: "x",
@@ -40,9 +39,8 @@
             bindto: "#rotateXAxisTickText"
         });
 
-
-
     };
+
     loadGraph();
 </script>
 <svelte:head>

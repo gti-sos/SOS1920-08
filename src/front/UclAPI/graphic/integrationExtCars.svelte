@@ -5,7 +5,6 @@
     async function loadGraph() {
 
         var datosGrafica = [];
-        //var codigo = [];
         const resData = await fetch("/api/v1/ucl_stats");
         const MyData = await resData.json();
 
