@@ -111,7 +111,7 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Gráfica comun a las tres APIs. Muestra victorias por equipos y pilotos y lo de Angel.
+            Gráfica comun a las tres APIs. Muestra victorias por equipos y pilotos y lo de Angel .
         </p>
     </figure>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
