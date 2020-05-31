@@ -7,7 +7,7 @@
     <html lang="ES">
     <link rel="stylesheet" href="style.css">
 
-    <body style="font-size: 22px;">
+    <body style="font-size: 15px;">
        
         <div class="cuerpo">
             <head>
