@@ -1,6 +1,8 @@
 module.exports = function(app) {
 	const dataStore = require('nedb');
 	const BASE_PATH = '/api/v1';
+	const  request = require("request");
+	const  express = require("express") ;
 	const path = require('path');
 	const dbFileName = path.join(__dirname, 'electricity.db');
 	const db = new dataStore({
@@ -8,7 +10,15 @@ module.exports = function(app) {
 		autoload: true,
 		corruptAlertThreshold:1
 	});
-	
+	var serverProxy = '/jokes/random';
+	var urlServerProxy = 'https://api.chucknorris.io';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
 	app.get(BASE_PATH + '/electricity-produced-stats/loadInitialData', (req, res) => {
 		var electricityProducedInitial = [
 			{

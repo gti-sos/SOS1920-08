@@ -10,7 +10,7 @@ module.exports = function(app) {
 
 	//------------------------- PROXY GRUPO 2 -------------------------------------------
 	var serverProxy = 'api/v1/traffic-accidents';
-	var urlServerProxy = 'https://sos1920-02.herokuapp.com/';
+	var urlServerProxy = 'https://sos1920-02.herokuapp.com';
 
 	app.use(serverProxy,function(req, res) {
 		var url = urlServerProxy+req.baseUrl+req.url;
@@ -18,6 +18,31 @@ module.exports = function(app) {
 		req.pipe(request(url)).pipe(res);
 	});
 	app.use(express.static('.'));
+
+
+	//------------------------- PROXY GRAFICA EXTERNA 1 -------------------------------------------
+	var serverProxy = 'api/vehicles/GetWMIsForManufacturer/hon?format=json';
+	var urlServerProxy = 'https://vpic.nhtsa.dot.gov';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
+
+	//------------------------- PROXY GRAFICA EXTERNA 2 -------------------------------------------
+	var serverProxy = 'rest/v2/region/europe';
+	var urlServerProxy = 'https://restcountries.eu/';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
+
+	
 
 	app.get(BASE_PATH + '/motogp-statistics/docs/', (req, res) => {
 		res.redirect('https://documenter.getpostman.com/view/10864755/SzYUa1rg');
