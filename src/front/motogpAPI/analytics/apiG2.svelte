@@ -68,6 +68,11 @@
                     method: 'restyle',
                     args: ['visible', [false, true]],
                     label: 'Fallecidos'
+                },
+                {
+                    method: 'restyle',
+                    args: ['visible', [true, true]],
+                    label: 'Conjunta'
                 }]
             }],
         });

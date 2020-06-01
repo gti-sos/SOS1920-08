@@ -31,6 +31,17 @@ module.exports = function(app) {
 	});
 	app.use(express.static('.'));
 
+	//------------------------- PROXY GRAFICA EXTERNA 2 -------------------------------------------
+	var serverProxy = 'rest/v2/region/europe';
+	var urlServerProxy = 'https://restcountries.eu/';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
+
 	
 
 	app.get(BASE_PATH + '/motogp-statistics/docs/', (req, res) => {

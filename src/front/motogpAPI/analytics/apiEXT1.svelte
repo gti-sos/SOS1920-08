@@ -2,7 +2,7 @@
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
     var miAPI = "api/v1/motogp-statistics";
-    var API2 = "https://vpic.nhtsa.dot.gov/api/vehicles/GetWMIsForManufacturer/hon?format=json";
+    var APIExt1 = "https://vpic.nhtsa.dot.gov/api/vehicles/GetWMIsForManufacturer/hon?format=json";
 
 
     async function loadGraph() {
@@ -17,7 +17,7 @@
         let graficaGP = [];
 
 
-        const resData = await fetch(API2);
+        const resData = await fetch(APIExt1);
         data2 = await resData.json();
         data2 = data2.Results
 

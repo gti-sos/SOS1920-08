@@ -2,7 +2,7 @@
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
     var APIgp = "api/v1/motogp-statistics";
-    //var APIelc = "api/v2/electricity-produced-stats";
+    var APIelc = "api/v2/electricity-produced-stats";
     var APIucl = "api/v1/ucl_stats";
 
     async function loadGraph() {
@@ -12,16 +12,16 @@
         let dataElec = [];
         let graficaUcl = [];
         let graficaGP = [];
-        // let graficaElec =[];
+        let graficaElec =[];
         const resData = await fetch(APIucl);
         dataUcl = await resData.json();
 
         const resData2 = await fetch(APIgp);
         dataGP = await resData2.json();
 
-        /* const resData3 = await fetch(APIelc);
+        const resData3 = await fetch(APIelc);
          dataElec = await resData3.json();
-         */
+        
         dataUcl.forEach((x) => {
             graficaUcl.push({ name: x.team, value: parseInt(x.victory) });
         });
@@ -30,24 +30,24 @@
             graficaGP.push({ name: x.pilot, value: parseInt(x.victory) });
         });
 
-        /*  dataElec.forEach((x) => {
+        dataElec.forEach((x) => {
               graficaElec.push({name:x.state, value: parseInt(x.solar)});
-          });*/
+          });
 
         let datosGrafica = [
             {
-                name: "Moto GP",
+                name: "Victorias en Moto GP",
                 data: graficaGP
 
             },
             {
-                name: "UCL",
+                name: "Victorias en Champions",
                 data: graficaUcl
             }
-            /* ,{
-                 name:"Electricity",
+            ,{
+                 name:"Kwatts producidos",
                  data:graficaElec
-             }*/
+             }
         ];
 
 
@@ -111,7 +111,7 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Gráfica comun a las tres APIs. Muestra victorias por equipos y pilotos y lo de Angel .
+            Gráfica comun a las tres APIs. Muestra victorias por equipos y pilotos de Moto Gp y Kwatts producidos por plantas hidroeléctricas .
         </p>
     </figure>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
