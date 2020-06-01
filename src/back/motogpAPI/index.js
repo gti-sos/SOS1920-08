@@ -5,6 +5,33 @@ module.exports = function(app) {
 	const path = require('path');
 	const dbFileName = path.join(__dirname, 'motogp_statistics.db');
 	const BASE_PATH = '/api/v1';
+	const request = require("request");
+	const express = require("express");
+
+	//------------------------- PROXY GRUPO 2 -------------------------------------------
+	var serverProxy = 'api/v1/traffic-accidents';
+	var urlServerProxy = 'https://sos1920-02.herokuapp.com';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
+
+
+	//------------------------- PROXY GRAFICA EXTERNA 1 -------------------------------------------
+	var serverProxy = 'api/vehicles/GetWMIsForManufacturer/hon?format=json';
+	var urlServerProxy = 'https://vpic.nhtsa.dot.gov';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
+
+	
 
 	app.get(BASE_PATH + '/motogp-statistics/docs/', (req, res) => {
 		res.redirect('https://documenter.getpostman.com/view/10864755/SzYUa1rg');

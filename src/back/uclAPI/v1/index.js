@@ -6,9 +6,31 @@ module.exports = function (app) {
 	const BASE_PATH = '/api/v1';
 	const  request = require("request")
 	const  express = require("express") ;
+	//Proxy API externa Bikes
+	var serverProxy = 'vls/v1/stations/?contract=Seville&apiKey=6fa39265431480ca0b5f3393cd78f29e2d436882';
+	var urlServerProxy = 'https://api.jcdecaux.com/';
 
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
+
+	//Proxy API grupo6
 	var serverProxy = 'api/v2/lottery-sales';
 	var urlServerProxy = 'https://sos1920-06.herokuapp.com';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
+
+	//Proxy API grupo6
+	var serverProxy = 'fipe/api/v1/carros/marcas';
+	var urlServerProxy = 'https://parallelum.com.br';
 
 	app.use(serverProxy,function(req, res) {
 		var url = urlServerProxy+req.baseUrl+req.url;

@@ -16,30 +16,31 @@
 
         for (var i in MyData) {
             var dataUcl = [];
-            dataUcl.push(MyData.map(function (d) { return d["country"] })[i]);
+            dataUcl.push(MyData.map(function (d) { return d["team"] })[i]);
             dataUcl.push(MyData.map(function (d) { return d["last_title"] })[i]);
-            dataUcl.push(MyData.map(function (d) { return d["season"] * 100000 })[i]);
+            dataUcl.push(MyData.map(function (d) { return d["victory"]})[i]);
             datosGrafica.push(dataUcl);
         }
 
         for (var i in datosEx) {
             var dataLottery = [];
             dataLottery.push(datosEx.map(function (d) { return d["province"] })[i]);
-            dataLottery.push(datosEx.map(function (d) { return d["year"] })[i]);
-            dataLottery.push(datosEx.map(function (d) { return d["total"] })[i]);
+            dataLottery.push("2018");
+            dataLottery.push(datosEx.map(function (d) { return d["total"]/100000 })[i]);
             datosGrafica2.push(dataLottery);
         }
+        
 
-        console.log(datosEx);
 
         console.log(datosGrafica);
         console.log(datosGrafica2);
+        
 
 
 
         Highcharts.chart('container', {
             title: {
-                text: 'Prueba Proxy'
+                text: 'Impacto de un club en la compra de lotería'
             },
             accessibility: {
                 point: {
@@ -62,7 +63,7 @@
                     distance: 5
                 },
                 size: '100%'
-            }, {
+            },{
                 keys: ['from', 'to', 'weight'],
                 data: datosGrafica2,
                 type: 'dependencywheel',
@@ -72,12 +73,12 @@
                     textPath: {
                         enabled: true,
                         attributes: {
-                            dy: 10
+                            dy: 11
                         }
                     },
                     distance: 5
                 },
-                size: '100%'
+                size: '70%'
             }]
         });
     }
@@ -98,7 +99,10 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-
+        En esta gráfica se mide el impacto de las victorias de un club en la compra de lotería.
+        En la grafica exterior podemos observar el número de victorias por equipos.
+        En la gráfica interior la compra de lotería.
+        Nos centramos principalmente en el año 2018 tras la consecución de un titulo europeo por un equipo español.
         </p>
         <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
