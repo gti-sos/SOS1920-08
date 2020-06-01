@@ -1,6 +1,8 @@
 module.exports = function(app) {
 	const dataStore = require('nedb');
 	const BASE_PATH = '/api/v1';
+	const  request = require("request");
+	const  express = require("express") ;
 	const path = require('path');
 	const dbFileName = path.join(__dirname, 'electricity.db');
 	const db = new dataStore({
