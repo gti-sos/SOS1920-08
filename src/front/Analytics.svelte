@@ -23,11 +23,11 @@
          dataElec = await resData3.json();
         
         dataUcl.forEach((x) => {
-            graficaUcl.push({ name: x.team, value: parseInt(x.victory)*10 });
+            graficaUcl.push({ name: x.team, value: parseInt(x.victory)*10});
         });
 
         dataGP.forEach((x) => {
-            graficaGP.push({ name: x.pilot, value: parseInt(x.victory)*10 });
+            graficaGP.push({ name: x.pilot, value: parseInt(x.victory)});
         });
 
         dataElec.forEach((x) => {
