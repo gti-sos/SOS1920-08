@@ -37,13 +37,14 @@
             <li><a href="#/electricity-graph/awesomeGraph">Electricidad producida por distintas fuentes(Biblioteca
                     Awesome)</a></li>
             <li><a href="#/electricity-graph/graficaGrupo9"> Grafica de comparacion de la Api del grupo 9 Plugin-Vehicles</a></li>
-            <li><a href="#/electricity-graph/graficaGrupo2"> Grafica de comparacion de la Api del grupo 2 Plugin-Vehicles</a></li>
+            <li><a href="#/electricity-graph/graficaGrupo2"> Grafica de comparacion de la Api del grupo 2 Evolution-of-cycling-routes</a></li>
             <li><a href="#/electricity-graph/graficaGrupo23"> Grafica de comparacion de la Api del grupo 23 Cigarrete-Sales</a></li>
             <li><a href="#/electricity-graph/graficaGrupo12"> Grafica de comparacion de la Api del grupo 12 Overdose-Deaths</a></li>
             <li><a href="#/electricity-graph/graficaGrupo06"> Grafica de comparacion de la Api del grupo 06 Acc-Stats</a></li>
             <li><a href="#/electricity-graph/graficaGrupo24"> Grafica de comparacion de la Api del grupo 24 Atc-Stats</a></li>
             <li><a href="#/electricity-graph/graficaGrupo01"> Grafica de comparacion de la Api del grupo 01 Poverty-Stats</a></li>
-            <li><a href="#/electricity-graph/graficaApiExt"> Grafica de comparacion de la Api d</a></li>
+            <li><a href="#/electricity-graph/graficaExt1"> Grafica de comparacion de la Api Externa 1</a></li>
+            <li><a href="#/electricity-graph/graficaExt2"> Grafica de comparacion de la Api Externa 2</a></li>
 
     </ul>
     <li style="font-size: 22px;"><strong>Ucl</strong></li>

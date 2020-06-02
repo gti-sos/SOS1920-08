@@ -2,35 +2,72 @@
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
     var miAPI = "https://sos1920-08.herokuapp.com/api/v2/electricity-produced-stats";
-    var API2 = "https://sos1920-09.herokuapp.com/api/v3/plugin-vehicles-stats";
+    var API2 = "http://api.eia.gov/series/?series_id=ELEC.GEN.ALL-AK-99.A&api_key=b9d1c54c56f964cf73b76ddb8f62f8fe&out=json";
 
 
     async function loadGraphGr9() {
-        let dataG9 = [];
+        let dataG01 = [];
         let myData = [];
         let State = [];
+        let Solar = [];
+        let SolarDiv = [];
+        let Hydro = [];
         let Coal = [];
-        let CountryG9 = [];
-        let annualSalesG9 = [];
+        let HydroDiv = [];
+        let CoalDiv = [];
+        let dataGraphExt2=[];
 
-        const resDataG9 = await fetch(API2);
+        const resdataG01 = await fetch(API2);
         const resMyData = await fetch(miAPI);
-        dataG9 = await resDataG9.json();
+        dataG01 = await resdataG01.json();
         myData = await resMyData.json();
         State = myData.map((myData) => myData.state);
+        Solar = myData.map((myData) => myData.solar);
+        Hydro = myData.map((myData) => myData.hydro);
         Coal = myData.map((myData) => myData.coal);
-        CountryG9 = dataG9.map((dataG9) => dataG9.coutry);
-        annualSalesG9 = dataG9.map((dataG9) => dataG9['annual-sale']);
+        let dataGraphExt= dataG01.series[0].data;
+       console.log(dataG01);
+       //Funciones para ajustar los datos
+        myData.forEach((x) => {
+            if (x.solar > 100000) {
+                SolarDiv.push(parseInt(x.solar / 10000));
+            } else if (x.solar > 10000000) {
+                SolarDiv.push(parseInt(x.solar / 100000));
+            } else if (x.solar > 10000) {
+                SolarDiv.push(parseInt(x.solar / 1000))
+            }
 
+        });
+        myData.forEach((x) => {
+            if (x.hydro > 100000) {
+                HydroDiv.push(parseInt(x.hydro / 10000));
+            } else if (x.hydro > 10000000) {
+                HydroDiv.push(parseInt(x.hydro / 100000));
+            } else if (x.hydro > 10000) {
+                HydroDiv.push(parseInt(x.hydro / 1000))
+            }
+
+        });
+        myData.forEach((x) => {
+            if (x.coal > 100000) {
+                CoalDiv.push(parseInt(x.coal / 10000));
+            } else if (x.coal > 10000000) {
+                CoalDiv.push(parseInt(x.coal / 100000));
+            } else if (x.coal > 10000) {
+                CoalDiv.push(parseInt(x.coal / 1000))
+            }
+
+        });
+        /////////////////////////////////////////////////
         Highcharts.chart('container', {
             chart: {
                 type: 'line'
             },
             title: {
-                text: 'Electricidad producida por plantas que usan carbon y la cantidad anual de coches vendidos'
+                text: 'Electricidad producida por distintas fuentes y los datos del sumatorio de todos los combustibles usados para producir energia en Alaska'
             },
             subtitle: {
-                text: 'Source: A PDF '
+                text: 'Source: ElectricityAPI y Api externa'
             },
             xAxis: {
                 categories: State
@@ -38,7 +75,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'KWatt producidos-Nº Coches vendidos'
+                    text: 'KWatt producidos / MegaWatt-hora * 1000'
                 }
             },
             plotOptions: {
@@ -51,11 +88,18 @@
             },
             series: [{
                 name: 'Plantas Solares',
-                data: Coal
+                data: SolarDiv
             },
             {
-                name: 'Coches vendidos',
-                data: annualSalesG9
+                name: 'Plantas Hidroeléctricas',
+                data: HydroDiv
+            },
+            {
+                name: 'Plantas de Carbon',
+                data: CoalDiv
+            }, {
+                name: 'Todos los combustibles',
+                data: dataGraphExt
             }
             ]
         });
@@ -76,12 +120,16 @@
     <body>
         <figure class="highcharts-figure">
             <div id="container"></div>
-            <p class="highcharts-description">En esta grafica comparamos la cantidad de energia que se produce usando un
-                combustible fosil y la cantidad de coches electricos vendidos anualmente </p>
+            <p class="highcharts-description"> Los datos de mi grafica estan ajustados para que se puedan mostrar dentro
+                de una escala parecida a los datos de la otra API.</p>
+
+            <h7>Con esta Api externa, obtenemos los datos de la energia producida usando todos los tipos de combustibles en Alaska</h7>
+
             <div>
                 <Button outline color="primary" on:click={loadGraphGr9}>Cargar Datos</Button>
                 <Button outline color="secondary" on:click="{pop}">Back</Button>
             </div>
+
         </figure>
     </body>
 </main>
