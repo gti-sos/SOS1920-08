@@ -12,7 +12,7 @@
         const resDataG6 = await fetch('https://sos1920-06.herokuapp.com/api/v2/lottery-sales');
         const datosEx = await resDataG6.json();
 
-
+        
 
         for (var i in MyData) {
             var dataUcl = [];
@@ -25,7 +25,7 @@
         for (var i in datosEx) {
             var dataLottery = [];
             dataLottery.push(datosEx.map(function (d) { return d["province"] })[i]);
-            dataLottery.push("2018");
+            dataLottery.push(datosEx.map(function (d) { return d["year"] })[i]);
             dataLottery.push(datosEx.map(function (d) { return d["total"]/100000 })[i]);
             datosGrafica2.push(dataLottery);
         }
@@ -76,7 +76,7 @@
                             dy: 11
                         }
                     },
-                    distance: 5
+                    distance: 8
                 },
                 size: '70%'
             }]
@@ -98,6 +98,9 @@
 <main>
     <figure class="highcharts-figure">
         <div id="container"></div>
+        <p>
+            Nota:para apreciar bien la grafica se recomienda poner a pantalla completa
+        </p>
         <p class="highcharts-description">
         En esta gráfica se mide el impacto de las victorias de un club en la compra de lotería.
         En la grafica exterior podemos observar el número de victorias por equipos.
@@ -120,7 +123,7 @@
         border: 1px solid #EBEBEB;
         margin: 10px auto;
         text-align: center;
-        width: 100%;
+        width: 120%;
         max-width: 500px;
     }
 

@@ -1,53 +1,39 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
-    var APIgp = "api/v1/motogp-statistics";
-    var APIelc = "api/v2/electricity-produced-stats";
     var APIucl = "api/v1/ucl_stats";
-
+    var ApiGrupo26 = "http://sos1920-26.herokuapp.com/api/v2/global-transfers";
     async function loadGraph() {
 
         let dataUcl = [];
-        let dataGP = [];
-        let dataElec = [];
+        let dataGT = [];
         let graficaUcl = [];
-        let graficaGP = [];
-        let graficaElec =[];
+        let graficaGT = [];
         const resData = await fetch(APIucl);
         dataUcl = await resData.json();
 
-        const resData2 = await fetch(APIgp);
-        dataGP = await resData2.json();
+        const resData2 = await fetch(ApiGrupo26);
+        dataGT = await resData2.json();
 
-        const resData3 = await fetch(APIelc);
-         dataElec = await resData3.json();
         
         dataUcl.forEach((x) => {
-            graficaUcl.push({ name: x.team, value: parseInt(x.victory)*10 });
+            graficaUcl.push({ name: x.team, value: parseInt(x.victory) });
         });
 
-        dataGP.forEach((x) => {
-            graficaGP.push({ name: x.pilot, value: parseInt(x.victory)*10 });
+        dataGT.forEach((x) => {
+            graficaGT.push({ name: x.team, value: x.balance });
         });
-
-        dataElec.forEach((x) => {
-              graficaElec.push({name:x.state, value: parseInt(x.solar)});
-          });
 
         let datosGrafica = [
             {
-                name: "Victorias en Moto GP",
-                data: graficaGP
+                name: "Balance economico por equipo",
+                data: graficaGT
 
             },
             {
                 name: "Victorias en Champions",
                 data: graficaUcl
             }
-            ,{
-                 name:"Kwatts producidos",
-                 data:graficaElec
-             }
         ];
 
 
@@ -58,15 +44,15 @@
                 height: '60%'
             },
             title: {
-                text: 'Analytics'
+                text: 'Balance y victorias por equipos'
             },
             tooltip: {
                 useHTML: true,
-                pointFormat: '<b>{point.name}:</b> {point.value}</sub>'
+                pointFormat: '<b>{point.name}:</b> <b>{point.value}</b>'
             },
             plotOptions: {
                 packedbubble: {
-                    minSize: '20%',
+                    minSize: '80%',
                     maxSize: '100%',
                     zMin: 0,
                     zMax: 1000,
@@ -101,17 +87,17 @@
     loadGraph();
 </script>
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js" prefer></script>
-    <script src="https://code.highcharts.com/highcharts-more.js" prefer></script>
-    <script src="https://code.highcharts.com/modules/exporting.js" prefer></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js" prefer on:load="{loadGraph}"></script>
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 <main>
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Gráfica comun a las tres APIs. Muestra victorias por equipos Ucl y pilotos de Moto Gp y Kwatts producidos por plantas hidroeléctricas .
+            En esta gráfica podemos observar el número de victorias en competición europea por equipo así como su balance economico en los últimos años,
+            pudiendo hacer de esta forma un anlisis del impacto economico en la repercusión de los logros de un club.
         </p>
     </figure>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
@@ -160,3 +146,4 @@
         background: #f1f7ff;
     }
 </style>
+

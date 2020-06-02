@@ -53,9 +53,11 @@
         <li><a href="#/ucl-graphic/graphAS">Ttitulos UCl</a></li>
         <li><a href="#/ucl-graphic/grupo1">integracion datos grupo 1</a></li>
         <li><a href="#/ucl-graphic/grupo2">integracion datos grupo 2</a></li>
-        <li><a href="#/ucl-graphic/grupo6">integracion datos grupo 3</a></li>
+        <li><a href="#/ucl-graphic/grupo6">integracion datos grupo 6</a></li>
+        <li><a href="#/ucl-graphic/grupo26">integracion datos grupo 26</a></li>
         <li><a href="#/ucl-graphic/extBike">integracion datos externos bicis</a></li>
         <li><a href="#/ucl-graphic/extCars">integracion datos externos vehiculos</a></li>
+        <li><a href="#/ucl-graphic/extEuro">integracion datos externos Europa</a></li>
     </ul>
 </div>
 </body>
