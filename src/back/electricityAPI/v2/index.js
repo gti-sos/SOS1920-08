@@ -9,8 +9,8 @@ module.exports = function (app) {
 		autoload: true,
 		corruptAlertThreshold: 1
 	});
-	var serverProxy = '/jokes/random';
-	var urlServerProxy = 'https://api.chucknorris.io';
+	var serverProxy = '/api/v2/evolution-of-cycling-routes/';
+	var urlServerProxy = 'https://sos1920-02.herokuapp.com';
 
 	app.use(serverProxy,function(req, res) {
 		var url = urlServerProxy+req.baseUrl+req.url;
