@@ -45,6 +45,7 @@
 	import grupo26 from './UclAPI/graphic/integrationG26.svelte';
 	import extBike from './UclAPI/graphic/integrationExtBike.svelte';
 	import extCars from './UclAPI/graphic/integrationExtCars.svelte';
+	import extEuro from './UclAPI/graphic/integrationExtEuro.svelte';
 	
 	
 
@@ -90,6 +91,7 @@
 		"/ucl-graphic/grupo26": grupo26,
 		"/ucl-graphic/extBike": extBike,
 		"/ucl-graphic/extCars": extCars,
+		"/ucl-graphic/extEuro": extEuro,
 
 
 

@@ -23,11 +23,11 @@
          dataElec = await resData3.json();
         
         dataUcl.forEach((x) => {
-            graficaUcl.push({ name: x.team, value: parseInt(x.victory) });
+            graficaUcl.push({ name: x.team, value: parseInt(x.victory)*10 });
         });
 
         dataGP.forEach((x) => {
-            graficaGP.push({ name: x.pilot, value: parseInt(x.victory) });
+            graficaGP.push({ name: x.pilot, value: parseInt(x.victory)*10 });
         });
 
         dataElec.forEach((x) => {
@@ -111,7 +111,7 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Gráfica comun a las tres APIs. Muestra victorias por equipos y pilotos de Moto Gp y Kwatts producidos por plantas hidroeléctricas .
+            Gráfica comun a las tres APIs. Muestra victorias por equipos Ucl y pilotos de Moto Gp y Kwatts producidos por plantas hidroeléctricas .
         </p>
     </figure>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>

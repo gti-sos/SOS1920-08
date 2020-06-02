@@ -22,14 +22,19 @@
 
         ExData.forEach((x) => {
             if (x.year == 2015) {
-                datosGrafica.push(parseInt(x.averagestay));
+                datosGrafica.push(parseInt(x.overnightstay/1000));
                 datosProvincias.push(x.province);
             }
         });
 
-        team = MyData.map((MyData) => MyData.team);
-        title = MyData.map((MyData) => parseInt(MyData.title));
-        
+        MyData.forEach((x) => {
+            if (x.country == "Spain") {
+                team.push(x.team);
+                title.push(x.title);
+            }
+        });
+
+        console.log(team);
 
         am4core.ready(function () {
 
@@ -105,6 +110,10 @@
 
 
     <div id="chartdiv"></div>
+    <p>
+        En esta gráfica se miden el impacto en la consecución de un titulo europeo por un equipo nacional
+        en los viajeros que pernoctan en una localidad
+    </p>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
 <style>

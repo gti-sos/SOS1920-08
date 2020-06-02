@@ -50,6 +50,9 @@
 
 <main>
     <div id="rotateXAxisTickText"></div>
+    <p>
+        Gráfica donde se muestra el número total de titulos conseguidos por cada club.
+    </p>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
 <style>

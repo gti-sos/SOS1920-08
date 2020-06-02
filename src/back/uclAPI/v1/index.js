@@ -28,9 +28,20 @@ module.exports = function (app) {
 	});
 	app.use(express.static('.'));
 
-	//Proxy API grupo6
+	//Proxy API cars
 	var serverProxy = 'fipe/api/v1/carros/marcas';
 	var urlServerProxy = 'https://parallelum.com.br';
+
+	app.use(serverProxy,function(req, res) {
+		var url = urlServerProxy+req.baseUrl+req.url;
+		console.log('piped:'+req.baseUrl+req.url);
+		req.pipe(request(url)).pipe(res);
+	});
+	app.use(express.static('.'));
+
+	//Proxy API Euro
+	var serverProxy = 'rest/v2/regionalbloc/eu';
+	var urlServerProxy = 'https://restcountries.eu';
 
 	app.use(serverProxy,function(req, res) {
 		var url = urlServerProxy+req.baseUrl+req.url;

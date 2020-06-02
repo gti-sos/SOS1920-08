@@ -56,6 +56,7 @@
         <li><a href="#/ucl-graphic/grupo26">integracion datos grupo 26</a></li>
         <li><a href="#/ucl-graphic/extBike">integracion datos externos bicis</a></li>
         <li><a href="#/ucl-graphic/extCars">integracion datos externos vehiculos</a></li>
+        <li><a href="#/ucl-graphic/extEuro">integracion datos externos Europa</a></li>
     </ul>
 </div>
 </body>
