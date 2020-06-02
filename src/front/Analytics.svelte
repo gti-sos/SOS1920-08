@@ -27,7 +27,7 @@
         });
 
         dataGP.forEach((x) => {
-            graficaGP.push({ name: x.pilot, value: parseInt(x.victory)});
+            graficaGP.push({ name: x.pilot, value: parseInt(x.victory) });
         });
 
         dataElec.forEach((x) => {
