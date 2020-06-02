@@ -4,11 +4,15 @@ const path = require("path");
 //Api Angel
 const electricityAPIv1= require("./src/back/electricityAPI/v1");
 const electricityAPIv2= require("./src/back/electricityAPI/v2");
+
 //API Jose Carlos
 const uclAPIv1= require("./src/back/uclAPI/v1");
 const uclAPIv2= require("./src/back/uclAPI/v2");
 
-const motogpAPI = require(path.join(__dirname,"motogpAPI"));
+//API Fran
+const APImotogp = require("./src/back/motogpAPI");
+
+
 const uclAPI = require(path.join(__dirname,"uclAPI"));
 const port = process.env.PORT || 9999;
 var app = express();
@@ -23,7 +27,7 @@ app.use("/", express.static("./public"));
 
 electricityAPIv1(app);	
 electricityAPIv2(app);
-motogpAPI(app);
+APImotogp(app);
 uclAPIv1(app);
 uclAPIv2(app);
 

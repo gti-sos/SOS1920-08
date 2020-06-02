@@ -68,6 +68,10 @@
                     method: 'restyle',
                     args: ['visible', [false, true]],
                     label: 'Emigraciones de Mujeres'
+                }, {
+                    method: 'restyle',
+                    args: ['visible', [true, true]],
+                    label: 'Gráfica Conjunta'
                 }]
             }],
         });
@@ -83,7 +87,9 @@
 
 
 <main>
-    <h3 style="text-align: center;"> Número de podiums por piloto y Número de Emigraciones de Mujeres en 2017</h3>
+    <h3 style="text-align: center;"> 
+        Número de podiums por piloto y Número de Emigraciones de Mujeres en 2017
+    </h3>
 
     <div id="graph"></div>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>

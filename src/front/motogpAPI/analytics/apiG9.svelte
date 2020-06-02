@@ -68,6 +68,10 @@
                     method: 'restyle',
                     args: ['visible', [false, true]],
                     label: 'Energia Hidroeléctrica'
+                }, {
+                    method: 'restyle',
+                    args: ['visible', [true, true]],
+                    label: 'Gráfica Conjunta'
                 }]
             }],
         });

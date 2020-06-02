@@ -68,6 +68,10 @@
                     method: 'restyle',
                     args: ['visible', [false, true]],
                     label: 'Total de Puntos'
+                }, {
+                    method: 'restyle',
+                    args: ['visible', [true, true]],
+                    label: 'Gráfica Conjunta'
                 }]
             }],
         });

@@ -101,10 +101,10 @@
     loadGraph();
 </script>
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js" ></script>
-    <script src="https://code.highcharts.com/highcharts-more.js" ></script>
-    <script src="https://code.highcharts.com/modules/exporting.js" ></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"  on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/highcharts.js" prefer></script>
+    <script src="https://code.highcharts.com/highcharts-more.js" prefer></script>
+    <script src="https://code.highcharts.com/modules/exporting.js" prefer></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" prefer on:load="{loadGraph}"></script>
 
 </svelte:head>
 <main>

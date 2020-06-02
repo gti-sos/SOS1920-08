@@ -55,7 +55,7 @@ console.log(pais);
             },
             tooltip: {
                 useHTML: true,
-                pointFormat: '<b>{point.name}:</b> {point.value}</sub>'
+                pointFormat: '<b>{point.name}:</b> {point.value} Habitantes</sub>'
             },
             plotOptions: {
                 packedbubble: {
@@ -110,6 +110,10 @@ console.log(pais);
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
 <style>
+     #container {
+      border: 1px solid black;
+      margin: 10px auto;
+    } 
     body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }

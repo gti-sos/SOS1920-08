@@ -72,7 +72,7 @@
                 {
                     method: 'restyle',
                     args: ['visible', [true, true]],
-                    label: 'Conjunta'
+                    label: 'Gráfica Conjunta'
                 }]
             }],
         });

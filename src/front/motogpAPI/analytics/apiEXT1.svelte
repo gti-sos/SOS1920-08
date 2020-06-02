@@ -75,7 +75,7 @@
         Highcharts.chart('container', {
             chart: {
                 type: 'packedbubble',
-                height: '50%'
+                height: '55%'
             },
             title: {
                 text: 'Fábricas de Motocicletas y Titulos Mundiales de MotoGP'
@@ -137,6 +137,10 @@
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>
 <style>
+     #container {
+      border: 1px solid black;
+      margin: 10px auto;
+    } 
     .highcharts-figure,
     .highcharts-data-table table {
         min-width: 320px;

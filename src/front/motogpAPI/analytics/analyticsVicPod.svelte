@@ -93,7 +93,7 @@
 
     <figure class="highcharts-figure">
         <div id="container"></div>
-        <p class="highcharts-description" text-align="center">
+        <p class="highcharts-description" style="text-align: center">
             En la gráfica se muestra el número de podiums y victorias de los pilotos.
         </p>
     </figure>
