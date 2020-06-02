@@ -6,30 +6,38 @@
 
     async function loadGraph() {
 
+        let datosEx =[];
         let datosGrafica = [];
+        let datosGrafica1 = [];
         let datosGrafica2 = [];
 
-
         const resDataG6 = await fetch('https://restcountries.eu/rest/v2/regionalbloc/eu');
-        const datosEx = await resDataG6.json();
+        datosEx = await resDataG6.json();
+
 
         for (var i in datosEx) {
             var utc1 = [];
             var utc2 = [];
             var utc3 = [];
 
-            utc1.push(datosEx.map(function (d) { return d["alpha2Code"] })[i]);
-            utc1.push(datosEx.map(function (d) { return toString(d["timezones"]) })[i]);
-
-            datosGrafica.push(utc1);
-
-
-
+            var time = datosEx[i].timezones.toString();
+            if(time=="UTC+00:00"){
+                utc1.push(datosEx.map(function (d) { return d["alpha2Code"] })[i]);
+                datosGrafica.push(utc1);
+            }else if(time =="UTC+01:00"){
+                utc2.push(datosEx.map(function (d) { return d["alpha2Code"] })[i]);
+                datosGrafica1.push(utc2);
+            }else if(time =="UTC+02:00"){
+                utc3.push(datosEx.map(function (d) { return d["alpha2Code"] })[i]);
+                datosGrafica2.push(utc3);
+            }
+          
         }
 
-
-        //console.log(datosEx);
+       
         console.log(datosGrafica);
+        console.log(datosGrafica1);
+        console.log(datosGrafica2);
 
 
 
@@ -77,25 +85,19 @@
 
             series: [{
                 name: 'UTC',
-                data: ['IE', 'IS', 'GB', 'PT'].map(function (code) {
+                data: datosGrafica.map(function (code) {
                     return { code: code };
                 })
             }, {
                 name: 'UTC + 1',
-                data: ['NO', 'SE', 'DK', 'DE', 'NL', 'BE', 'LU', 'ES', 'FR', 'PL', 'CZ', 'AT', 'CH', 'LI', 'SK', 'HU',
-                    'SI', 'IT', 'SM', 'HR', 'BA', 'YF', 'ME', 'AL', 'MK'].map(function (code) {
-                        return { code: code };
-                    })
-            }, {
-                name: 'UTC + 2',
-                data: ['FI', 'EE', 'LV', 'LT', 'BY', 'UA', 'MD', 'RO', 'BG', 'GR', 'TR', 'CY'].map(function (code) {
+                data: datosGrafica1.map(function (code) {
                     return { code: code };
                 })
             }, {
-                name: 'UTC + 3',
-                data: [{
-                    code: 'RU'
-                }]
+                name: 'UTC + 2',
+                data: datosGrafica2.map(function (code) {
+                    return { code: code };
+                })
             }]
         });
 
