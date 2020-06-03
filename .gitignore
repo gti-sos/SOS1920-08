@@ -1,5 +1,2 @@
 /node_modules/
 /public/build/
-/electricityAPI/electricity.db/
-/motogpAPI/motogp_statistics.db/
-/uclAPI/ucl.db/
