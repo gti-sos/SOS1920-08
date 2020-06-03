@@ -34,7 +34,7 @@
           
         }
 
-       
+       console.log(datosEx);
         console.log(datosGrafica);
         console.log(datosGrafica1);
         console.log(datosGrafica2);
