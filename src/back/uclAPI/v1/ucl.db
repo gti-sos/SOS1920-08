@@ -4,6 +4,7 @@
 {"country":"England","team":"LiverpoolFC","last_title":2019,"title":6,"season":22,"match":216,"victory":121,"_id":"WnhMIPsnsp7WW9pV"}
 {"country":"England","team":"ManUnited","last_title":2008,"title":3,"season":26,"match":279,"victory":154,"_id":"mjFY9Jm0Riwb6ouV"}
 {"country":"Italy","team":"ACMilan","last_title":2007,"title":7,"season":22,"match":249,"victory":125,"_id":"vgRvFI92vsvN2cgx"}
+<<<<<<< HEAD
 {"$$deleted":true,"_id":"NCSMU6srlzRh69lP"}
 {"$$deleted":true,"_id":"RXOreIfIZh2tUO61"}
 {"$$deleted":true,"_id":"SwSIW5XJgCE1m4YW"}
@@ -24,3 +25,5 @@
 {"$$deleted":true,"_id":"U2N1Uhef2yf4qK75"}
 {"$$deleted":true,"_id":"capCjMt7BMvnPx8L"}
 {"$$deleted":true,"_id":"fO3h0517orAsGBWM"}
+=======
+>>>>>>> bede39e0ea4fd46f59df5edb59037bc07dcda668

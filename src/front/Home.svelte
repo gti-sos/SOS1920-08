@@ -30,8 +30,7 @@
                 </li>
             </ul>
             <li>
-                <strong>Project description: </strong>In this proyect we’ve tried to compare diferent things such as
-                Cars, Bikes and Energy Production</li>
+                <strong>Project description: </strong>In this proyect we’ve tried to compare diferent things such as UCL, MotoGp and Energy Production</li>
             <li>
                 <strong>Repository: </strong>
                 <a href="https://github.com/gti-sos/SOS1920-08">gti-sos/SOS1920-08</a>
