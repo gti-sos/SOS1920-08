@@ -9,7 +9,7 @@
     </title>
 </head>
 
-<body style="background-color: #fcfa90;">
+<body>
     <div>
         <h1>Integrations</h1>
 

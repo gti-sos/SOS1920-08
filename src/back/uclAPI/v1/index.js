@@ -83,51 +83,6 @@ module.exports = function (app) {
 			victory: 154
 		},
 		{
-			country: 'England',
-			team: 'Arsenal',
-			last_title: 2002,
-			title: 3,
-			season: 28,
-			match: 280,
-			victory: 152
-		},
-		{
-			country: 'England',
-			team: 'Chelsea',
-			last_title: 2000,
-			title: 1,
-			season: 22,
-			match: 180,
-			victory: 101
-		},
-		{
-			country: 'Holland',
-			team: 'Ajax',
-			last_title: 1995,
-			title: 4,
-			season: 35,
-			match: 227,
-			victory: 102
-		},
-		{
-			country: 'Germany',
-			team: 'Bayern',
-			last_title: 2013,
-			title: 5,
-			season: 28,
-			match: 305,
-			victory: 205
-		},
-		{
-			country: 'Spain',
-			team: 'AtMadrid',
-			last_title: 1975,
-			title: 1,
-			season: 21,
-			match: 175,
-			victory: 105
-		},
-		{
 			country: 'Italy',
 			team: 'ACMilan',
 			last_title: 2007,

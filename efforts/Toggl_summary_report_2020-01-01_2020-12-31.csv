@@ -1,0 +1,40 @@
+﻿User,Title,Duration
+Fran_bornos6,#10 Probar el apartado de Heroku,01:27:09
+Fran_bornos6,#11 Introducción de ejemplos,00:21:52
+Fran_bornos6,#12 Probar a hacer el servidor web de esta sesión,00:40:50
+Fran_bornos6,#14 Realizar API REST,02:22:07
+Fran_bornos6,#15 Despliegue de API en Heroku,00:40:33
+Fran_bornos6,#16 Crear conjunto de pruebas en postman,01:12:59
+Fran_bornos6,#18 Parametrizar la colección en heroku,00:23:00
+Fran_bornos6,#2 Clonar repositorio,00:08:30
+Fran_bornos6,#20 Implementar nedb,00:56:35
+Fran_bornos6,#21 Implementar paginación,00:33:53
+Fran_bornos6,#22 Modificar los GET y quitar id,00:15:58
+Fran_bornos6,#23 Implementar busquedas,01:39:44
+Fran_bornos6,#25 Pruebas automáticas con travis,01:52:09
+Fran_bornos6,#28 Integración awesome,05:03:31
+Fran_bornos6,#33 Integración API grupo 1,01:51:32
+Fran_bornos6,#35 Integraciones de otro grupos,02:14:36
+Fran_bornos6,#38 Integracion Proxy,03:36:03
+Fran_bornos6,#5 Leer noticias en piazza,00:10:08
+Fran_bornos6,#7 Sincronizar repositorio,00:19:10
+Fran_bornos6,#8 Quitar la carpeta node_modules,00:29:25
+Jose Carlos Molina Coloma,#17 Actualización código de proyecto,07:13:54
+Jose Carlos Molina Coloma,#24 Depuración paginación y nedb,03:06:01
+Jose Carlos Molina Coloma,#29 integracion HighCharts,01:25:28
+Jose Carlos Molina Coloma,#30 Integración de gráfica AWS,01:48:01
+Jose Carlos Molina Coloma,#31 Exportar pruebas automáticas con Travis,01:39:28
+Jose Carlos Molina Coloma,#32 Integración APIs,09:31:26
+Jose Carlos Molina Coloma,#37 Integración Apis externas + Proxy,00:52:35
+Jose Carlos Molina Coloma,#39 Creación gráfica conjunta,01:08:34
+Jose Carlos Molina Coloma,#9 Instalación de POSTMAN y leer documentacion,03:24:19
+Jose Carlos Molina Coloma,,06:04:22
+Loaizadavila Angeldario,#1 Modificación del README.md,00:22:13
+Loaizadavila Angeldario,#13 Preparación de la API,24:38:28
+Loaizadavila Angeldario,#19 Trabajo individual para mi API,16:12:34
+Loaizadavila Angeldario,#26 Integración de las graficas de HighChart,04:57:35
+Loaizadavila Angeldario,#27 Integración de las gráficas con Awesome-Chart,72:01:05
+Loaizadavila Angeldario,#3 Despliegue del proyecto en HerokuApp,01:28:29
+Loaizadavila Angeldario,#34 Integraciones con Alumnos de SOS,01:29:42
+Loaizadavila Angeldario,#36 Integraciones de Apis Externas,02:16:46
+Loaizadavila Angeldario,#6 TI-Ejemplos de la plantilla,01:39:48
