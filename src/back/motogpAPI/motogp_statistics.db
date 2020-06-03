@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {"country":"Spain","pilot":"Jorge_Lorenzo","last_title":2015,"world_title":3,"victory":47,"podium":114,"_id":"YO6KEBZuFTSP4gBA"}
 {"country":"Spain","pilot":"Marc_Marquez","last_title":2019,"world_title":6,"victory":56,"podium":95,"_id":"ZylfYfKB3ZZpi9TK"}
 {"country":"Italy","pilot":"Giacomo_Agostini","last_title":1975,"world_title":8,"victory":68,"podium":88,"_id":"0uCTwjCI8LJNKWsg"}
@@ -19,3 +20,5 @@
 {"$$deleted":true,"_id":"ZylfYfKB3ZZpi9TK"}
 {"$$deleted":true,"_id":"horzVA5wtHYSepV3"}
 {"$$deleted":true,"_id":"pAde90rlVz9z1tSQ"}
+=======
+>>>>>>> 2991ef9d3225846eb7427cf0d1e18e0fdf0a6349

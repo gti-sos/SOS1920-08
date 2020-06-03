@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {"country":"England","team":"LiverpoolFC","last_title":2019,"title":6,"season":22,"match":216,"victory":121,"_id":"3ysnhIJGaPmvAmX3"}
 {"country":"Italy","team":"Internazionale","last_title":2010,"title":3,"season":17,"match":178,"victory":86,"_id":"AXKef8g5pmpMRxGH"}
 {"country":"England","team":"ManUnited","last_title":2008,"title":3,"season":26,"match":279,"victory":154,"_id":"M7Y3LkGMKaRI7GEP"}
@@ -34,3 +35,5 @@
 {"$$deleted":true,"_id":"bWjUkGdxy6Pbr9oC"}
 {"$$deleted":true,"_id":"ckrLfWxm5X1pezAz"}
 {"$$deleted":true,"_id":"noHiQfggpCXJBCWb"}
+=======
+>>>>>>> 2991ef9d3225846eb7427cf0d1e18e0fdf0a6349
