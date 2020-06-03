@@ -51,7 +51,7 @@
             },
 
             title: {
-                text: 'Europe time zones'
+                text: 'Zonas horarias de Europa'
             },
 
             legend: {
@@ -84,11 +84,7 @@
             },
 
             series: [{
-                name: 'UTC',
-                data: datosGrafica.map(function (code) {
-                    return { code: code };
-                })
-            }, {
+
                 name: 'UTC + 1',
                 data: datosGrafica1.map(function (code) {
                     return { code: code };
@@ -119,5 +115,7 @@
 </svelte:head>
 <main>
     <div id="container" style="height: 500px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
+    <p>En esta gráfica recogemos un conjunto de datos de una API externa,</p>
+    <p>gestinamos estos datos para mostrar en un mapa las diferentes zonas horarias de Europa</p>
     <Button outline color="secondary" on:click="{pop}">Atrás</Button>
 </main>

@@ -76,14 +76,15 @@
     };
 </script>
 <main>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <h3>Edit Team :<strong>{params.uclCountry} {params.uclTeam}</strong></h3>
 
     {#await ucl_stats}
 		Cargando datos...
 	{:then ucl_stats}	
-	<Table bordered>
+	<Table bordered class="w3-table w3-bordered w3-striped">
 		<thead>
-			<tr>
+			<tr class="w3-teal">
                 <th>País</th>
 				<th>Equipo</th>
 				<th>Ultimo titulo</th>
@@ -95,7 +96,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+			<tr class="w3-teal">
                 <td><input bind:value="{updatedCountry}"></td>
                 <td><input bind:value="{updatedTeam}"></td>
                 <td><input bind:value="{updatedLastTitle}"></td>
@@ -103,7 +104,7 @@
                 <td><input bind:value="{updatedSeason}"></td>
                 <td><input bind:value="{updatedMatch}"></td>
                 <td><input bind:value="{updatedVictory}"></td>
-				<td><Button outline color="primary" on:click={updatedUcl}>Modificar</Button></td>
+				<td><Button class="w3-button w3-black" on:click={updatedUcl}>Modificar</Button></td>
 			</tr>
 		</tbody>
 	</Table>
@@ -111,5 +112,5 @@
     {#if errorMsg}
     <p style="color: red">ERROR:{errorMsg}</p>
     {/if}
-    <button outline color ="secondary" on:click="{pop}">volver</button>
+    <button class="w3-button w3-black" on:click="{pop}">volver</button>
 </main>
